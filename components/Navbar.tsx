@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <header>
       <div className={styles.beach}>
-        <Image src={beachImg} className={styles.clip} />
+        <Image src={beachImg} alt='beach' className={styles.clip} />
       </div>
       <div className={styles.flex}>
         <div className={styles.logo}>
