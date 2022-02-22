@@ -1,0 +1,19 @@
+.wrapper {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.wrapper--sm {
+  max-width: 640px;
+}
+.wrapper--md {
+  max-width: 768px;
+}
+
+.wrapper--lg {
+  max-width: 1024px;
+}
+
+.wrapper--xl {
+  max-width: 1280px;
+}
