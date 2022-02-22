@@ -5,11 +5,11 @@ import beachImg from '../public/beach.png';
 
 function Navbar() {
   return (
-    <header>
+    <header className={styles.header}>
       <div className={styles.beach}>
-        <Image src={beachImg} alt='beach' className={styles.clip} />
+        <Image src={beachImg} alt="beach" className={styles.clip} />
       </div>
-      <div className={styles.flex}>
+      <div className={styles.headerNav}>
         <div className={styles.logo}>
           <Image src={logo} alt="Beyonderbound" placeholder="blur" />
         </div>
