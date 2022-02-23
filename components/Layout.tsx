@@ -1,16 +1,16 @@
+import styles from './Footer.module.css';
+import Navbar from './Navbar';
+import Footer from './Footer';
+import React from 'react';
 
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import React from "react";
-
-function Layout({children}:{children:React.ReactNode}) {
+function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div>
-        <Navbar />
-            {children}
-        <Footer />
+      <Navbar />
+      {children}
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;
