@@ -20,7 +20,7 @@ export default function Heading({
 }) {
   return (
     <h2
-      className={styles.test}
+      className={styles.heading}
       style={{ textAlign: justify } as React.CSSProperties}
     >
       {text}
