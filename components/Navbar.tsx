@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from './styles/Navbar.module.css';
 import logo from '../public/beyonderbound.png';
-import beachImg from '../public/beach.png';
+import beachImg from '../public/beach1.png';
 
 function Navbar() {
   return (
