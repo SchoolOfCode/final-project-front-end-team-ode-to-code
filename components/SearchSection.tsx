@@ -10,7 +10,7 @@ export default function SearchSection() {
         <Heading text="Find your next destination" justify="center" />
       </div>
       <div className={styles.input}>
-        <input type="text" placeholder="search here..."></input>
+        <input type="text" placeholder="Search for holiday type..."></input>
         <button></button>
       </div>
       <div className={styles.buttons}>

@@ -8,9 +8,13 @@
   gap: 10px;
   padding: 1rem 0 1rem 0;
   border-radius: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 4rem;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
     rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+.heading {
+  margin-bottom: 0.5rem;
 }
 
 .heading h2 {
@@ -26,10 +30,15 @@
 
 .input input {
   border-radius: 50%;
-  box-shadow: 10px 10px 20px #c3c3c3, -10px -10px 20px #ffffff;
+  box-shadow: 8px 8px 18px #c3c3c3, -8px -8px 18px #ffffff;
   border: none;
   padding: 0.25rem 1rem 0.25rem 1rem;
   border-radius: 8px;
+}
+
+.input input::placeholder {
+  font-size: 0.75rem;
+  color: #c4c4c4;
 }
 
 .input button {
