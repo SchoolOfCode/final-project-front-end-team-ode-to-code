@@ -22,7 +22,7 @@
 }
 
 .input {
-  margin-bottom: 6px;
+  margin-bottom: 15px;
   margin-right: auto;
   margin-left: auto;
   position: relative;
@@ -44,7 +44,7 @@
 }
 
 .input input:focus {
-  box-shadow: 15px 15px 30px #e6c09a, -15px -15px 30px #eee0d2;
+  box-shadow: 8px 8px 18px #094666, -8px -8px 18px #ffffff;
   border: none;
 }
 
