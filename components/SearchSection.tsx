@@ -7,7 +7,7 @@ export default function SearchSection() {
   return (
     <div className={styles.searchContainer}>
       <div className={styles.heading}>
-        <Heading text="Find your next destination" /* justify="center" */ />
+        <Heading text="Find your next destination" justify="center" />
       </div>
       <div className={styles.input}>
         <input type="text" placeholder="search here..."></input>

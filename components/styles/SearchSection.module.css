@@ -47,18 +47,20 @@
   height: 1.25rem;
   width: 1.25rem;
   border-radius: 50%;
-  border: 2px black solid;
+  border: 3px #003049 solid;
   display: inline-block;
   position: relative;
+  transform: translateY(2px);
 }
 
 .input button::after {
   content: '';
   width: 1px;
-  height: 15px;
-  border: 1px black solid;
+  height: 12px;
+  border: 1.5px #003049 solid;
+  background-color: #003049;
   position: absolute;
   top: 0;
   left: 0;
-  transform: translateY(15px) translateX(3px) rotate(45deg);
+  transform: translateY(18px) translateX(3px) rotate(45deg);
 }
