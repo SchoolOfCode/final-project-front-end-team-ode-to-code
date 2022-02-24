@@ -5,7 +5,7 @@
   justify-content: space-between;
   padding: 0.75rem 2rem 0.3rem 2rem;
   margin-bottom: 45px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(163, 163, 163);
 }
 
 .logo {
