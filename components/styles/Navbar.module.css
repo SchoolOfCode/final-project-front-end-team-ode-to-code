@@ -3,12 +3,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 2rem 0.75rem 2rem;
+  padding: 0.75rem 2rem 0.3rem 2rem;
+  margin-bottom: 45px;
+  border-bottom: 1px solid black;
 }
 
 .logo {
   width: 15rem;
   height: auto;
+  position: relative;
+  bottom: -2px;
 }
 
 @media screen and (min-width: 768px) {
@@ -21,5 +25,40 @@
     top: 0;
     left: 0;
     width: 100%;
+    border: none;
   }
+}
+
+.hamburger {
+  width: 30px;
+  height: 3px;
+  background: black;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgb(255, 101, 47, 0.2);
+}
+
+.hamburger::before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: black;
+  border-radius: 5px;
+  transform: translateY(-8px);
+}
+
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: black;
+  border-radius: 5px;
+  transform: translateY(8px);
+}
+
+.hamburgerContainer {
+  position: relative;
+  right: -4px;
+  top: -4px;
 }

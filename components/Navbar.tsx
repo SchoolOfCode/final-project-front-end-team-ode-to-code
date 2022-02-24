@@ -11,7 +11,9 @@ function Navbar() {
         <div className={styles.logo}>
           <Image src={logo} alt="Beyonderbound" height={76} width={479} />
         </div>
-        <nav className={styles.nav}>Nav</nav>
+        <div className={styles.hamburgerContainer}>
+          <nav className={styles.hamburger}></nav>
+        </div>
       </div>
     </header>
   );
