@@ -1,0 +1,107 @@
+.searchContainer {
+  width: 80%;
+  background-color: #e5e5e5;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1rem 0 1rem 0;
+  border-radius: 10px;
+  margin-bottom: 4rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+    rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+.heading {
+  margin-bottom: 0.5rem;
+}
+
+.heading h2 {
+  font-size: 1.15rem;
+}
+
+.input {
+  margin-bottom: 6px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+
+.input input {
+  border-radius: 50%;
+  box-shadow: 8px 8px 18px #c3c3c3, -8px -8px 18px #ffffff;
+  border: none;
+  outline: none;
+  padding: 0.25rem 1rem 0.25rem 1rem;
+  border-radius: 8px;
+  transition: box-shadow 0.5s;
+}
+
+.input input::placeholder {
+  font-size: 0.75rem;
+  color: #c4c4c4;
+}
+
+.input input:focus {
+  box-shadow: 15px 15px 30px #e6c09a, -15px -15px 30px #eee0d2;
+  border: none;
+}
+
+.input button {
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.input button::before {
+  content: '';
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 50%;
+  border: 3px #003049 solid;
+  display: inline-block;
+  position: relative;
+  transform: translateY(2px);
+}
+
+.input button::after {
+  content: '';
+  width: 1px;
+  height: 12px;
+  border: 1.5px #003049 solid;
+  background-color: #003049;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(18px) translateX(3px) rotate(45deg);
+}
+
+@media screen and (min-width: 768px) {
+  .searchContainer {
+    max-width: 640px;
+    margin-bottom: 0.25rem;
+    transform: translateY(-45px);
+  }
+
+  .heading h2 {
+    font-size: 1.5rem;
+  }
+
+  .input input {
+    width: 20rem;
+    padding: 0.5rem 1.15rem 0.5rem 1.15rem;
+  }
+
+  .input input::placeholder {
+    font-size: 0.85rem;
+  }
+
+  .input button::after {
+    transform: translateY(23px) translateX(4px) rotate(45deg);
+  }
+}
