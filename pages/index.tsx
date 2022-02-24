@@ -10,7 +10,6 @@ function Home<NextPage>() {
   return (
     <>
       <WaveImage />
-      <p>123</p>
       <SearchSection />
       <GlassSection />
     </>
