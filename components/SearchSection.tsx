@@ -11,7 +11,7 @@ export default function SearchSection() {
       </div>
       <div className={styles.input}>
         <input type="text" placeholder="search here..."></input>
-        <button>O</button>
+        <button></button>
       </div>
       <div className={styles.buttons}>
         <Button text="Advanced" />

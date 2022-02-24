@@ -1,5 +1,4 @@
 .searchContainer {
-  /* height: 100px; */
   width: 80%;
   background-color: #e5e5e5;
   text-align: center;
@@ -10,11 +9,6 @@
   padding: 1rem 0 1rem 0;
   border-radius: 10px;
   margin-bottom: 40px;
-  /* box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
-    rgba(17, 17, 26, 0.05) 0px 8px 32px; */
-  /* box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
-    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
     rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
@@ -23,21 +17,48 @@
   font-size: 1.15rem;
 }
 
+.input {
+  margin-bottom: 6px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+
 .input input {
-  /* box-shadow: 7px 7px 14px #9d9d9d, -7px -7px 14px #ffffff; */
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
-    rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  border-radius: 50%;
+  box-shadow: 10px 10px 20px #c3c3c3, -10px -10px 20px #ffffff;
   border: none;
-  padding: 0.1rem 1rem 0.1rem 1rem;
+  padding: 0.25rem 1rem 0.25rem 1rem;
   border-radius: 8px;
 }
 
 .input button {
-  border-radius: 10px;
+  cursor: pointer;
   border: none;
   background-color: inherit;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 
-.input {
-  margin-bottom: 6px;
+.input button::before {
+  content: '';
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 50%;
+  border: 2px black solid;
+  display: inline-block;
+  position: relative;
+}
+
+.input button::after {
+  content: '';
+  width: 1px;
+  height: 15px;
+  border: 1px black solid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(15px) translateX(3px) rotate(45deg);
 }
