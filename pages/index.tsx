@@ -20,14 +20,14 @@ export async function getStaticProps() {
   };
 }
 
-function Home<NextPage>({ cities, countries }) {
+function Home<NextPage>({ cities, countries }:{cities:any,countries:any}) {
   return (
     <>
       <WaveImage />
       <SearchSection />
       <Glasssection />
       <div>
-        {cities.map((city) => (
+        {cities.map((city:any) => (
           <div key={city.id}>
             <h2>{city.city_name}</h2>
           </div>
