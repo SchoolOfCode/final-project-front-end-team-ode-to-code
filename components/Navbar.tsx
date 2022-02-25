@@ -7,7 +7,7 @@ const logo =
   'https://ik.imagekit.io/wletmmv9huf/beyonderbound_6sCbv4RPO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1645615669388';
 
 function Navbar() {
-  const [navbarOpen, setNavbarOpen] = useState(true);
+  const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
     <header className={styles.header}>
@@ -21,7 +21,7 @@ function Navbar() {
             className={styles.hamburger}
           ></nav>
           {/*  {navbarOpen && <RightNav />} */}
-          {!navbarOpen ? <RightNav /> : <></>}
+          {navbarOpen ? <RightNav /> : <></>}
         </div>
       </div>
     </header>
