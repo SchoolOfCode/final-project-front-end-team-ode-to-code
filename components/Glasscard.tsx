@@ -3,7 +3,8 @@
     * Individual Glass Card Component *
     -- Props:
       -- imageUrl: takes in a image URL for the background image
-    */
+    
+      */
 }
 
 import styles from './styles/GlassCard.module.css';
