@@ -31,8 +31,6 @@ export default function Carousel () {
         <SwiperSlide className={styles.swiperSlide}>Slide 6</SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>Slide 7</SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>Slide 8</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>Slide 9</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>Slide 10</SwiperSlide>
       </Swiper>
     </div>
   );
