@@ -1,0 +1,25 @@
+.headerNav {
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem 0.75rem 2rem;
+}
+
+.logo {
+  width: 15rem;
+  height: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .logo {
+    width: 20rem;
+  }
+
+  .headerNav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
