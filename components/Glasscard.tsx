@@ -7,9 +7,9 @@
       */
 }
 
-import styles from './styles/GlassCard.module.css';
+import styles from './styles/Glasscard.module.css';
 
-export default function GlassCard({
+export default function Glasscard({
   text,
   imageUrl,
 }: {

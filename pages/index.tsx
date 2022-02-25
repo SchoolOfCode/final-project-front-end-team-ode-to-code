@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import WaveImage from '../components/WaveImage';
-import GlassSection from '../components/GlassSection';
+import Glasssection from '../components/Glasssection';
 import SearchSection from '../components/SearchSection';
 
 function Home<NextPage>() {
@@ -11,7 +11,7 @@ function Home<NextPage>() {
     <>
       <WaveImage />
       <SearchSection />
-      <GlassSection />
+      <Glasssection />
     </>
   );
 }

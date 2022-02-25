@@ -1,8 +1,8 @@
-import GlassCard from './GlassCard';
+import GlassCard from './Glasscard';
 
-import styles from './styles/GlassSection.module.css';
+import styles from './styles/Glasssection.module.css';
 
-export default function GlassSection() {
+export default function Glasscection() {
   return (
     <section className={styles.section}>
       <GlassCard
