@@ -12,8 +12,8 @@ function Home<NextPage>() {
     <>
       <WaveImage />
       <SearchSection />
-      <Glasssection />
       <Carousel />
+      <Glasssection />
     </>
   );
 }
