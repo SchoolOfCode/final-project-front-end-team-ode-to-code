@@ -14,3 +14,7 @@
     max-width: 1024px;
   }
 }
+
+.section a {
+  text-decoration: none;
+}
