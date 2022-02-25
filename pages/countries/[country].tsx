@@ -8,7 +8,7 @@ const countriesApi = 'https://four-week-project.herokuapp.com/countries';
     const resCountries = await fetch(countriesApi);
     const dataCountries = await resCountries.json();
 
-    const paths = dataCountries.payload.map(country =>{
+    const paths = dataCountries.payload.map((country:any) =>{
         return {
             params:{
                 country:country.country
@@ -22,11 +22,16 @@ const countriesApi = 'https://four-week-project.herokuapp.com/countries';
     }
  }
 
+////capitalize all string
+ function capitalizeFirstLetter(string:string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 
  export async function getStaticProps(context:any) {
 
-  const countryName = context.params.city;
-  const response = await fetch(`https://four-week-project.herokuapp.com/countries/?name=${countryName}`)
+  const countryName = context.params.country;
+  const response = await fetch(`https://four-week-project.herokuapp.com/countries/?name=${capitalizeFirstLetter(countryName)}`)
   const data = await response.json();
   
   return{
