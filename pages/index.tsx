@@ -5,11 +5,12 @@ import styles from '../styles/Home.module.css';
 import WaveImage from '../components/WaveImage';
 import Glasssection from '../components/Glasssection';
 import SearchSection from '../components/SearchSection';
+import {images} from '../lib/images'
 
 function Home<NextPage>() {
   return (
     <>
-      <WaveImage />
+      <WaveImage imageUrl={images.homepage}/>
       <SearchSection />
       <Glasssection />
     </>
