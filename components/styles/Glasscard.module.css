@@ -26,3 +26,8 @@
   text-align: center;
 }
 
+
+
+.card :hover {
+  background: transparent;
+}

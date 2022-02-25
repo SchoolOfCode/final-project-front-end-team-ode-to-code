@@ -7,6 +7,7 @@ import Glasssection from '../components/Glasssection';
 import SearchSection from '../components/SearchSection';
 import {images} from '../lib/images'
 import Carousel from '../components/Carousel';
+import Heading from '../components/Heading'
 
 
 function Home<NextPage>() {
@@ -14,6 +15,7 @@ function Home<NextPage>() {
     <>
       <WaveImage imageUrl={images.homepage}/>
       <SearchSection />
+      <div className='wrapper wrapper--lg'><Heading text="Countries to discover..." justify="left"/></div>
       <Carousel />
       <Glasssection />
     </>
