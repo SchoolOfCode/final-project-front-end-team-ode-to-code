@@ -19,6 +19,11 @@
   padding: 2rem;
 }
 
+.glass:hover{
+  background-color: rgb(7, 7, 7);
+  opacity: 0.3;
+}
+
 .text {
   color: white;
   font-weight: bold;
