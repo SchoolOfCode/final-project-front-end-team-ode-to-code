@@ -48,10 +48,18 @@ function Navbar() {
           {/* Too bad the menu has to be inside of the button
     but hey, it's pure CSS magic. */}
           <ul className={styles.menu}>
-            <li>Home</li>
-            <li>About</li>
-            <li>Info</li>
-            <li>Contact</li>
+            <a>
+              <li>Home</li>
+            </a>
+            <a>
+              <li>About</li>
+            </a>
+            <a>
+              <li>Info</li>
+            </a>
+            <a>
+              <li>Contact</li>
+            </a>
           </ul>
         </div>
       </nav>
