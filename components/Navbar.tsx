@@ -9,20 +9,22 @@ function Navbar() {
       <div className={styles.identidy}>
         <Link href="/">
           <a>
-            <div className={styles.flex}>
-              <div className={styles.flexItem}>
-                <Image
-                  src={images.globe}
-                  alt="header image"
-                  className={styles.globe}
-                  height={40}
-                  width={40}
-                />
-              </div>
-              <div className={styles.flexItem}>
-                <h1 className={styles.beyonderbound}>
-                  be<span className={styles.span}>yonder</span>bound
-                </h1>
+            <div className={styles.bar}>
+              <div className={styles.flex}>
+                <div className={styles.flexItem}>
+                  <Image
+                    src={images.globe}
+                    alt="header image"
+                    className={styles.globe}
+                    height={40}
+                    width={40}
+                  />
+                </div>
+                <div className={styles.flexItem}>
+                  <h1 className={styles.beyonderbound}>
+                    be<span className={styles.span}>yonder</span>bound
+                  </h1>
+                </div>
               </div>
             </div>
           </a>
