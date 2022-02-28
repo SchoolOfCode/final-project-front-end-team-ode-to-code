@@ -1,13 +1,10 @@
-import type { NextPage } from 'next';
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
 import Glasssection from '../components/Glasssection';
 import SearchSection from '../components/SearchSection';
 import { images } from '../lib/images';
 import Carousel from '../components/Carousel';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
-// import { useMediaQuery } from 'react-responsive';
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';

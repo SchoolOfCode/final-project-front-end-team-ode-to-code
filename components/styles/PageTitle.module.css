@@ -1,0 +1,12 @@
+.title {
+  text-align: center;
+  font-size: 3rem;
+  color: #264653;
+}
+
+.title span {
+  background: linear-gradient(90deg, #2a9c8f 0%, #0c685d 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.75rem;
+  background-position: 0 90%;
+}
