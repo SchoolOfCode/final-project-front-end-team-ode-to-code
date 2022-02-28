@@ -51,7 +51,7 @@ function Country({country}:{country:any}) {
 
     return (
       <div>
-        <WaveImage imageUrl={(country.image) ? country.image : country.image2} />
+        <WaveImage imageUrl={country.image} />
           <h1>{country.country}</h1>
             <p>{country.cities[0]}</p>
             <p>{country.cities[1]}</p>
