@@ -1,21 +1,30 @@
-import GlassCard from './GlassCard';
-import styles from './styles/GlassSection.module.css';
+import GlassCard from './Glasscard';
+import { images } from '../lib/images'
+import Link from 'next/link'
 
-export default function GlassSection() {
+import styles from './styles/Glasssection.module.css';
+
+export default function Glasssection() {
   return (
     <section className={styles.section}>
+      <Link href="/topdestinations"><a>
       <GlassCard
         text="Top 2022 Destinations"
-        imageUrl="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1496&q=80"
+        imageUrl={images.article1}
       />
+      </a></Link>
+      <Link href="/traveltips"><a>
       <GlassCard
         text="Travel Tips"
-        imageUrl="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1496&q=80"
+        imageUrl={images.article2}
       />
+      </a></Link>
+      <Link href="/feelinghot"><a>
       <GlassCard
         text="Where's hot now?"
-        imageUrl="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1496&q=80"
+        imageUrl={images.article3}
       />
+      </a></Link>
     </section>
   );
 }

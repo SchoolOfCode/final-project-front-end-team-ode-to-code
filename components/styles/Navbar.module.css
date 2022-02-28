@@ -9,25 +9,32 @@
 }
 
 .logo {
+  transform: translateY(-2.5vw) translateX(-3vw);;
   width: 15rem;
   height: auto;
   position: relative;
   bottom: -2px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) { 
   .logo {
+    transform: translateY(-0.5vw) translateX(-1vw);
     width: 20rem;
+    height: auto;
   }
+}
 
-  .headerNav {
+
+  /* .headerNav {
+    z-index: 999;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     border: none;
   }
-}
+  } */
+
 
 .hamburger {
   width: 30px;
@@ -63,3 +70,6 @@
   top: -4px;
   z-index: 999;
 }
+
+
+

@@ -3,21 +3,16 @@ import styles from './styles/Navbar.module.css';
 import React, { useState } from 'react';
 import RightNav from './RightNav';
 import Link from 'next/link';
-
-const logo =
-  'https://ik.imagekit.io/wletmmv9huf/beyonderbound_6sCbv4RPO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1645615669388';
+import { images } from '../lib/images'
 
 function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
-
+    
   return (
-    <header className={styles.header}>
-      <div className={styles.headerNav}>
-        <div className={styles.logo}>
           <Link href="/">
-            <a>
-              <Image src={logo} alt="Beyonderbound" height={76} width={479} />
-            </a>
+            <div className={styles.logo}><a>
+              <Image src={images.logo} alt="Beyonderbound" height={76} width={479} />
+              </a></div>
           </Link>
         </div>
         <div className={styles.hamburgerContainer}>
@@ -34,3 +29,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
