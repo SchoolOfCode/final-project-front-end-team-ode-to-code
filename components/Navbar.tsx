@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import styles from './styles/Navbar.module.css';
+import Image from 'next/image';
 import Link from 'next/link';
 import { images } from '../lib/images';
 
@@ -9,20 +9,37 @@ function Navbar() {
       <div className={styles.logo}>
         <Link href="/">
           <a>
-            <Image
-              src={images.logo}
-              alt="Beyonderbound"
-              height={76}
-              width={479}
-            />
+            <h1>
+              be<span>yonder</span>bound
+            </h1>
           </a>
         </Link>
       </div>
-      <div className={styles.hamburgerContainer}>
-        <nav>
-          <p>nav</p>
-        </nav>
-      </div>
+      <nav>
+        <div className={styles.menuToggle}>
+          {/* A fake / hidden checkbox is used as click reciever,
+          so you can use the :checked selector on it. */}
+
+          <input type="checkbox" />
+
+          {/* Some spans to act as a hamburger.
+    
+          They are acting like a real hamburger,
+          not that McDonalds stuff. */}
+          <span></span>
+          <span></span>
+          <span></span>
+
+          {/* Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic. */}
+          <ul className={styles.menu}>
+            <li>Home</li>
+            <li>About</li>
+            <li>Info</li>
+            <li>Contact</li>
+          </ul>
+        </div>
+      </nav>
     </header>
   );
 }

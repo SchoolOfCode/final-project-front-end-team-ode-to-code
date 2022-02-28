@@ -11,8 +11,8 @@ function HomeLayout({
 }) {
   return (
     <div>
-      <WaveImage imageUrl={imageUrl} />
       <Navbar />
+      <WaveImage imageUrl={imageUrl} />
       {children}
       <Footer />
     </div>
