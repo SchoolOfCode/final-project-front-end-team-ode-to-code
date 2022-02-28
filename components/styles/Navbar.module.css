@@ -12,7 +12,10 @@
   /* transform: translateY(-2.5vw) translateX(-3vw); */
   width: 15rem;
   height: auto;
-    bottom: -2px;
+    top:0;
+    position: absolute;
+    margin: 1%;
+    z-index: 2;
 }
 
 @media screen and (min-width: 768px) { 
@@ -20,6 +23,8 @@
     /* transform: translateY(-0.5vw) translateX(-1vw); */
     width: 20rem;
     height: auto;
+    margin: 1%;
+    
   }
 }
 
@@ -41,6 +46,7 @@
   background: black;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgb(255, 101, 47, 0.2);
+  position: absolute;
 }
 
 .hamburger::before {
@@ -64,10 +70,11 @@
 }
 
 .hamburgerContainer {
-  position: relative;
-  right: -4px;
-  top: -4px;
-  z-index: 999;
+  position: absolute;
+  /* right: -4px;
+  top: -4px; */
+  z-index: 3;
+  margin: 2%;
 }
 
 

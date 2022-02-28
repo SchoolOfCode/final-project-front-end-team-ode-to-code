@@ -1,5 +1,5 @@
 import React from 'react'
-
+import WaveImage from '../../components/WaveImage';
 
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
 
@@ -51,7 +51,18 @@ function Country({country}:{country:any}) {
 
     return (
       <div>
+        <WaveImage imageUrl={country.image} />
           <h1>{country.country}</h1>
+            <p>{country.cities[0]}</p>
+            <p>{country.cities[1]}</p>
+            <p>{country.cities[2]}</p>
+
+            <br/>
+
+           <p> All About <span style={{fontSize:'20px',fontWeight:'bold'}}>{country.country}</span></p>
+           <p>{country.country_description}</p>
+           <br/>
+           <h2>Back to  <a href={`http://localhost:3000/cities/${capitalizeFirstLetter(country.cities[0])}`}>{country.cities[0]}</a></h2>
       </div>
     )
   }
