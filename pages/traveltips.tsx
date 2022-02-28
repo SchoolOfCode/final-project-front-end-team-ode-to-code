@@ -1,15 +1,14 @@
 import type { NextPage } from 'next';
-import WaveImage from '../components/WaveImage';
+import Layout from '../components/Layout';
 import { images } from '../lib/images';
 import styles from '../components/styles/Article.module.css';
-import HomeLayout from '../components/HomeLayout';
 
 function TravelTips<NextPage>() {
   return (
     <>
-      <HomeLayout imageUrl={images.article1L}>
-        <h1 className={styles.heading}>Travel Tips</h1>
-      </HomeLayout>
+      <Layout imageUrl={images.article1L}>
+        <p>Title Component goes here</p>
+      </Layout>
     </>
   );
 }

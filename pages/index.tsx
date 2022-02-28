@@ -1,13 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Glasssection from '../components/Glasssection';
 import SearchSection from '../components/SearchSection';
 import { images } from '../lib/images';
 import Carousel from '../components/Carousel';
 import Heading from '../components/Heading';
-import HomeLayout from '../components/HomeLayout';
+import Layout from '../components/Layout';
 // import { useMediaQuery } from 'react-responsive';
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
@@ -33,7 +32,7 @@ function Home<NextPage>({
 }) {
   return (
     <>
-      <HomeLayout imageUrl={images.homepage}>
+      <Layout imageUrl={images.homepage}>
         <SearchSection />
         <div className="wrapper wrapper--lg">
           <Heading text="Countries to discover..." justify="left" />
@@ -47,7 +46,7 @@ function Home<NextPage>({
             </div>
           ))}
         </div>
-      </HomeLayout>
+      </Layout>
     </>
   );
 }
