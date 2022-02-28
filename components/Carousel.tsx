@@ -1,5 +1,7 @@
 import {Navigation, Pagination, FreeMode, Mousewheel} from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Image from "next/image";
+import { images } from "../lib/images"
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -23,7 +25,7 @@ export default function Carousel () {
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log('slide change')}
       >
-        <SwiperSlide className={styles.swiperSlide}>Slide 1</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide}><Image src={images.card} alt="Slide 1" width="232" height="324"/></SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>Slide 2</SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>Slide 3</SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>Slide 4</SwiperSlide>
