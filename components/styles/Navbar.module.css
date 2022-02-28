@@ -1,8 +1,24 @@
-.logo {
+.flex {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  z-index: 1;
+}
+
+.flexItem h1 {
+  color: #264653;
+}
+
+.span {
+  color: #2a9c8f;
+}
+
+.globe {
+  transform: rotate(23.5deg);
 }
 
 .menuToggle {

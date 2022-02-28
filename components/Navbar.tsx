@@ -6,12 +6,25 @@ import { images } from '../lib/images';
 function Navbar() {
   return (
     <header>
-      <div className={styles.logo}>
+      <div className={styles.identidy}>
         <Link href="/">
           <a>
-            <h1>
-              be<span>yonder</span>bound
-            </h1>
+            <div className={styles.flex}>
+              <div className={styles.flexItem}>
+                <Image
+                  src={images.globe}
+                  alt="header image"
+                  className={styles.globe}
+                  height={40}
+                  width={40}
+                />
+              </div>
+              <div className={styles.flexItem}>
+                <h1 className={styles.beyonderbound}>
+                  be<span className={styles.span}>yonder</span>bound
+                </h1>
+              </div>
+            </div>
           </a>
         </Link>
       </div>
