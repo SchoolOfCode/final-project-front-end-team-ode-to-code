@@ -51,7 +51,7 @@ function Country({country}:{country:any}) {
 
     return (
       <div>
-        <WaveImage imageUrl={country.image} />
+        <WaveImage imageUrl={(country.image) ? country.image : country.image2} />
           <h1>{country.country}</h1>
             <p>{country.cities[0]}</p>
             <p>{country.cities[1]}</p>
@@ -62,7 +62,6 @@ function Country({country}:{country:any}) {
            <p> All About <span style={{fontSize:'20px',fontWeight:'bold'}}>{country.country}</span></p>
            <p>{country.country_description}</p>
            <br/>
-           <h2>Back to  <a href={`http://localhost:3000/cities/${capitalizeFirstLetter(country.cities[0])}`}>{country.cities[0]}</a></h2>
       </div>
     )
   }
