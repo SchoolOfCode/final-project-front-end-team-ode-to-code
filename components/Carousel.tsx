@@ -17,13 +17,30 @@ export default function Carousel () {
       <Swiper
         className={styles.swiper}
         modules={[Navigation, Pagination, FreeMode, Mousewheel]}
-        spaceBetween={50}
-        slidesPerView={4}
+        spaceBetween={30}
+        slidesPerView={2}
         loop={true}
         navigation
         pagination={{ clickable: true }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log('slide change')}
+        breakpoints={{
+          0: {
+            width: 100,
+            slidesPerView: 1,
+          },
+          // when window width is >= 640px
+          640: {
+            width: 640,
+            slidesPerView: 2,
+          },
+          // when window width is >= 768px
+          768: {
+            width: 768,
+            slidesPerView: 4,
+            spaceBetween: 50,
+          },
+        }}
       >
         <SwiperSlide className={styles.swiperSlide}><Image src={images.card} alt="Slide 1" width="232" height="324"/></SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>Slide 2</SwiperSlide>
