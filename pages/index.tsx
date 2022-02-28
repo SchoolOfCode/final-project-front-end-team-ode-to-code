@@ -11,8 +11,23 @@ import Heading from '../components/Heading'
 // import { useMediaQuery } from 'react-responsive';
 
 
-function Home<NextPage>() {
-  // const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
+const citiesApi = 'https://four-week-project.herokuapp.com/cities';
+const countriesApi = 'https://four-week-project.herokuapp.com/countries';
+
+export async function getStaticProps() {
+  const resCities = await fetch(citiesApi);
+  const resCountries = await fetch(countriesApi);
+  const dataCities = await resCities.json();
+  const dataCountries = await resCountries.json();
+
+  return {
+    props: { cities: dataCities.payload, countries: dataCountries.payload },
+  };
+}
+
+function Home<NextPage>({ cities, countries }:{cities:any,countries:any}) {
+    // const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
+
   return (
     <>
       {/* {isMobile? <Image className={styles.logo} src={images.logo} alt="Beyonderbound" height={38} width={239} /> : <></>} */}
@@ -21,6 +36,13 @@ function Home<NextPage>() {
       <div className='wrapper wrapper--lg'><Heading text="Countries to discover..." justify="left"/></div>
       <Carousel />
       <Glasssection />
+      <div>
+        {cities.map((city:any) => (
+          <div key={city.id}>
+            <h2>{city.city_name}</h2>
+          </div>
+        ))}
+      </div>
     </>
   );
 }
