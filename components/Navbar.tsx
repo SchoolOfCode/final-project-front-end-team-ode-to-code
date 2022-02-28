@@ -9,7 +9,8 @@ function Navbar() {
     <header className={styles.header}>
       <div className={styles.headerNav}>
         <div className={styles.logo}>
-          {isMobile ? <></> : <Image src={images.logo} alt="Beyonderbound" height={76} width={479} />}
+          {/* {isMobile ? <></> : } */}
+          <Image src={images.logo} alt="Beyonderbound" height={76} width={479} />
         </div>
         <nav className={styles.nav}>Nav</nav>
       </div>

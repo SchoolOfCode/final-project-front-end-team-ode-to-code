@@ -8,11 +8,19 @@
 }
 
 .logo {
-  width: 20rem;
+  transform: translateY(-2.5vw) translateX(-3vw);;
+  width: 15rem;
   height: auto;
 }
 
-/* @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) { 
+  .logo {
+    transform: translateY(-0.5vw) translateX(-1vw);
+    width: 20rem;
+    height: auto;
+  }
+}
+
 
   /* .headerNav {
     z-index: 999;
@@ -21,4 +29,4 @@
     left: 0;
     width: 100%;
   } */
-/* } */
+
