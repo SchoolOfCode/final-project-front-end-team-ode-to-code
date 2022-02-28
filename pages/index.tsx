@@ -5,6 +5,11 @@ import styles from '../styles/Home.module.css';
 import WaveImage from '../components/WaveImage';
 import Glasssection from '../components/Glasssection';
 import SearchSection from '../components/SearchSection';
+import {images} from '../lib/images'
+import Carousel from '../components/Carousel';
+import Heading from '../components/Heading'
+// import { useMediaQuery } from 'react-responsive';
+
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
@@ -21,10 +26,15 @@ export async function getStaticProps() {
 }
 
 function Home<NextPage>({ cities, countries }:{cities:any,countries:any}) {
+    // const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
+
   return (
     <>
-      <WaveImage />
+      {/* {isMobile? <Image className={styles.logo} src={images.logo} alt="Beyonderbound" height={38} width={239} /> : <></>} */}
+      <WaveImage imageUrl={images.homepage} />
       <SearchSection />
+      <div className='wrapper wrapper--lg'><Heading text="Countries to discover..." justify="left"/></div>
+      <Carousel />
       <Glasssection />
       <div>
         {cities.map((city:any) => (
