@@ -2,8 +2,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  padding: 1rem;
   display: flex;
+  padding: 1rem;
   gap: 0.5rem;
   align-items: center;
   z-index: 1;
@@ -115,9 +115,8 @@
   background: #e5e5e5;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
-  /* to stop flickering of text in safari */
   transform-origin: 0% 0%;
-  transform: translate(120%, 0);
+  transform: translate(0, -22rem);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
 
