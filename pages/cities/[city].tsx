@@ -1,42 +1,40 @@
 import React from 'react'
 import WaveImage from '../../components/WaveImage';
 
-
-
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 
- export async function getStaticPaths(){
+export async function getStaticPaths() {
+  const resCities = await fetch(citiesApi);
+  const dataCities = await resCities.json();
 
-    const resCities = await fetch(citiesApi);
-    const dataCities = await resCities.json();
-
-    const paths = dataCities.payload.map((city:any) =>{
-        return {
-            params:{
-                city:city.city_name
-            }
-        }
-    })
-    
+  const paths = dataCities.payload.map((city: any) => {
     return {
-      paths,
-      fallback:false
-    }
- }
+      params: {
+        city: city.city_name,
+      },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
 
 ////capitalize all string
- function capitalizeFirstLetter(string:string) {
+function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-
- export async function getStaticProps(context:any) {
-
+export async function getStaticProps(context: any) {
   const cityName = context.params.city;
-  const response = await fetch(`https://four-week-project.herokuapp.com/cities/?name=${capitalizeFirstLetter(cityName)}`)
+  const response = await fetch(
+    `https://four-week-project.herokuapp.com/cities/?name=${capitalizeFirstLetter(
+      cityName
+    )}`
+  );
   const data = await response.json();
-  
-  return{
+    return{
     props:{
       city:data.payload[0]
     }
@@ -52,6 +50,7 @@ function City({city}:{city:any}) {
   const stars = '⭐️';
   let icons = ['👨‍👩‍👧‍👦  ','🚶‍♀️  ','💆  ','👫  ','👢  ','🌞  ', '🌝  ','💃🕺🏻']
 
+function City({ city }: { city: any }) {
   return (
     <div>
       <WaveImage imageUrl={city.image} />
@@ -78,9 +77,8 @@ function City({city}:{city:any}) {
       <br/>
       {/* set actual country link site */}
         <h2>Back to  <a href={`http://localhost:3000/countries/${capitalizeFirstLetter(city.country)}`}>{city.country}</a></h2>
-
     </div>
-  )
+  );
 }
 
 export default City;

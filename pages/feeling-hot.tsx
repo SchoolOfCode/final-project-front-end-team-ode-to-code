@@ -1,13 +1,16 @@
 import type { NextPage } from 'next';
-import WaveImage from '../components/WaveImage';
-import {images} from '../lib/images'
+import Layout from '../components/Layout';
+import PageTitle from '../components/PageTitle';
+
+import { images } from '../lib/images';
 import styles from '../components/styles/Article.module.css';
 
 function FeelingHot<NextPage>() {
   return (
     <>
-      <WaveImage imageUrl={images.article3L} />
-      <h1 className={styles.heading}>Where's Hot Now?</h1>
+      <Layout imageUrl={images.article3L}>
+        <PageTitle text="Where's hot now?" />
+      </Layout>
     </>
   );
 }
