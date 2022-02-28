@@ -9,13 +9,13 @@ function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
     
   return (
-          <Link href="/">
-            <div className={styles.logo}><a>
+    <header>
+          <div className={styles.logo}><Link href="/">
+            <a>
               <Image src={images.logo} alt="Beyonderbound" height={76} width={479} />
-              </a></div>
-          </Link>
-        </div>
-        <div className={styles.hamburgerContainer}>
+              </a>
+          </Link></div>
+          <div className={styles.hamburgerContainer}>
           <nav
             onClick={() => setNavbarOpen(!navbarOpen)}
             className={styles.hamburger}
@@ -23,8 +23,7 @@ function Navbar() {
           {/*  {navbarOpen && <RightNav />} */}
           {navbarOpen ? <RightNav /> : <></>}
         </div>
-      </div>
-    </header>
+        </header>
   );
 }
 

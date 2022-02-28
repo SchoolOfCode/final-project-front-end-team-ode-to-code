@@ -6,19 +6,18 @@
   padding: 0.75rem 2rem 0.3rem 2rem;
   margin-bottom: 45px;
   border-bottom: 1px solid rgb(163, 163, 163);
-}
+  }
 
 .logo {
-  transform: translateY(-2.5vw) translateX(-3vw);;
+  /* transform: translateY(-2.5vw) translateX(-3vw); */
   width: 15rem;
   height: auto;
-  position: relative;
-  bottom: -2px;
+    bottom: -2px;
 }
 
 @media screen and (min-width: 768px) { 
   .logo {
-    transform: translateY(-0.5vw) translateX(-1vw);
+    /* transform: translateY(-0.5vw) translateX(-1vw); */
     width: 20rem;
     height: auto;
   }
