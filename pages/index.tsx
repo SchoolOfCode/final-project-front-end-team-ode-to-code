@@ -7,7 +7,7 @@ import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import { useState } from 'react';
 import Link from 'next/link';
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
@@ -23,8 +23,6 @@ export async function getStaticProps() {
   };
 }
 
-
-
 function Home<NextPage>({
   cities,
   countries,
@@ -32,36 +30,47 @@ function Home<NextPage>({
   cities: any;
   countries: any;
 }) {
+  const [input, setInput] = useState('');
+  const [word, setWord] = useState('');
 
-const[input,setInput]=useState('')
-const [word,setWord]= useState('')
-const [tags,setTags]= useState([])
+  ///////Search functionality
+  function handleChange(e: any) {
+    setInput(e.target.value);
+  }
 
-///////Search functionality
-function handleChange(e:any){
-  setInput(e.target.value)
-}
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    setWord(input);
+    e.target.reset();
+  }
 
-function handleSubmit(e:any){
-  e.preventDefault();
-  setWord(input)
-  e.target.reset()
-}
-
-/////
-
-
+  /////
 
   return (
     <>
       <Layout imageUrl={images.homepage}>
-        <SearchSection input={input} handleChange={handleChange} handleSubmit={handleSubmit}/>
+        <SearchSection
+          input={input}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
         <div className={styles.searchResult}>
           {cities.map((city: any) => (
             <div key={city.id}>
               <Link href={`/cities/${city.city_name}`}>
-              <a>{(city.city_name=== word || city.country=== word || city.continent=== word || city.rating=== word || city.great_for.join(",").includes(word) || city.tags.join(",").includes(word) || city.budget=== word || city.holiday_type===word ) ? city.city_name : false }</a>
-              </Link> 
+                <a>
+                  {city.city_name === word ||
+                  city.country === word ||
+                  city.continent === word ||
+                  city.rating === word ||
+                  city.great_for.join(',').includes(word) ||
+                  city.tags.join(',').includes(word) ||
+                  city.budget === word ||
+                  city.holiday_type === word
+                    ? city.city_name
+                    : false}
+                </a>
+              </Link>
             </div>
           ))}
         </div>
