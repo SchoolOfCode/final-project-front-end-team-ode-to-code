@@ -1,12 +1,18 @@
-import styles from './Footer.module.css';
 import Navbar from './Navbar';
+import WaveImage from './WaveImage';
 import Footer from './Footer';
-import React from 'react';
 
-function Layout({ children }: { children: React.ReactNode }) {
+function Layout({
+  imageUrl,
+  children,
+}: {
+  imageUrl: string;
+  children: React.ReactNode;
+}) {
   return (
     <div>
       <Navbar />
+      <WaveImage imageUrl={imageUrl} />
       {children}
       <Footer />
     </div>

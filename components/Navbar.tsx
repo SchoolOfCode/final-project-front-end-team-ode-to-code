@@ -1,18 +1,66 @@
-import Image from 'next/image';
 import styles from './styles/Navbar.module.css';
-
-const logo =
-  'https://ik.imagekit.io/wletmmv9huf/beyonderbound_6sCbv4RPO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1645615669388';
+import Image from 'next/image';
+import Link from 'next/link';
+import { images } from '../lib/images';
 
 function Navbar() {
   return (
-    <header className={styles.header}>
-      <div className={styles.headerNav}>
-        <div className={styles.logo}>
-          <Image src={logo} alt="Beyonderbound" height={76} width={479} />
-        </div>
-        <nav className={styles.nav}>Nav</nav>
+    <header>
+      <div className={styles.identidy}>
+        <Link href="/">
+          <a>
+            <div className={styles.bar}>
+              <div className={styles.flex}>
+                <div className={styles.flexItem}>
+                  <Image
+                    src={images.globe}
+                    alt="header image"
+                    className={styles.globe}
+                    height={40}
+                    width={40}
+                  />
+                </div>
+                <div className={styles.flexItem}>
+                  <h1 className={styles.beyonderbound}>
+                    be<span className={styles.span}>yonder</span>bound
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </a>
+        </Link>
       </div>
+      <nav>
+        <div className={styles.menuToggle}>
+          {/* A fake / hidden checkbox is used as click reciever,
+          so you can use the :checked selector on it. */}
+
+          <input type="checkbox" />
+
+          {/* Some spans to act as a hamburger.
+    
+          They are acting like a real hamburger,
+          not that McDonalds stuff. */}
+          <span></span>
+          <span></span>
+          <span></span>
+
+          {/* Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic. */}
+          <ul className={styles.menu}>
+            <li>
+              <Link href="http://localhost:3000/">    
+            <a>Home</a>
+          </Link>
+            </li>
+            <li>
+              <Link href="http://localhost:3000/about">    
+            <a>About us</a>
+          </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </header>
   );
 }
