@@ -1,11 +1,14 @@
-import React from 'react'
+import Layout from '../components/Layout';
+import PageTitle from '../components/PageTitle';
+import { images } from '../lib/images';
 
 function About() {
   return (
-    <div>
-        <img src="https://via.placeholder.com/1500x160"></img>
-        <h1>About Us</h1>
-    </div>
+    <>
+      <Layout imageUrl={images.about}>
+        <PageTitle text="About Us" />
+      </Layout>
+    </>
   )
 }
 
