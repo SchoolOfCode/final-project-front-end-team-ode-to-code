@@ -49,14 +49,14 @@ function Navbar() {
     but hey, it's pure CSS magic. */}
           <ul className={styles.menu}>
             <li>
-              <Link href="http://localhost:3000/">    
-            <a>Home</a>
-          </Link>
+              <Link href="/">
+                <a>Home</a>
+              </Link>
             </li>
             <li>
-              <Link href="http://localhost:3000/about">    
-            <a>About us</a>
-          </Link>
+              <Link href="/about">
+                <a>About us</a>
+              </Link>
             </li>
           </ul>
         </div>
