@@ -6,6 +6,8 @@ import Carousel from '../components/Carousel';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import { useState } from 'react';
+import Link from 'next/link';
+import styles from '../styles/Home.module.css'
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
@@ -33,6 +35,7 @@ function Home<NextPage>({
 
 const[input,setInput]=useState('')
 const [word,setWord]= useState('')
+const [tags,setTags]= useState([])
 
 ///////Search functionality
 function handleChange(e:any){
@@ -51,9 +54,17 @@ function handleSubmit(e:any){
 
   return (
     <>
-      <p>{word}</p>
       <Layout imageUrl={images.homepage}>
         <SearchSection input={input} handleChange={handleChange} handleSubmit={handleSubmit}/>
+        <div className={styles.searchResult}>
+          {cities.map((city: any) => (
+            <div key={city.id}>
+              <Link href={`/cities/${city.city_name}`}>
+              <a>{(city.city_name=== word || city.country=== word || city.continent=== word || city.rating=== word || city.great_for.join(",").includes(word) || city.tags.join(",").includes(word) || city.budget=== word || city.holiday_type===word ) ? city.city_name : false }</a>
+              </Link> 
+            </div>
+          ))}
+        </div>
         <div className="wrapper wrapper--lg">
           <Heading text="Countries to discover..." justify="left" />
         </div>
@@ -62,8 +73,11 @@ function handleSubmit(e:any){
         <div>
           {cities.map((city: any) => (
             <div key={city.id}>
-              <h2>{(city.city_name=== word || city.country=== word || city.continent=== word || city.rating=== word || city.great_for=== word || city.tags=== word || city.budget=== word || city.holiday_type === word ) ? city.city_name : false }</h2>
-              <h2>{city.tags}</h2>
+              <Link href={`/cities/${city.city_name}`}>
+              <a>{(city.city_name=== word || city.country=== word || city.continent=== word || city.rating=== word || city.great_for.join(",").includes(word) || city.tags.join(",").includes(word) || city.budget=== word || city.holiday_type===word ) ? city.city_name : false }</a>
+              </Link>
+              {console.log(city.holiday_type)}
+
             </div>
           ))}
         </div>
