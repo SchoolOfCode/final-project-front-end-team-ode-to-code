@@ -70,17 +70,6 @@ function handleSubmit(e:any){
         </div>
         <Carousel />
         <Glasssection />
-        <div>
-          {cities.map((city: any) => (
-            <div key={city.id}>
-              <Link href={`/cities/${city.city_name}`}>
-              <a>{(city.city_name=== word || city.country=== word || city.continent=== word || city.rating=== word || city.great_for.join(",").includes(word) || city.tags.join(",").includes(word) || city.budget=== word || city.holiday_type===word ) ? city.city_name : false }</a>
-              </Link>
-              {console.log(city.holiday_type)}
-
-            </div>
-          ))}
-        </div>
       </Layout>
     </>
   );
