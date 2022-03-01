@@ -26,7 +26,7 @@ export default function Carousel () {
         onSlideChange={() => console.log('slide change')}
         breakpoints={{
           0: {
-            width: 100,
+            width: 300,
             slidesPerView: 1,
           },
           // when window width is >= 640px
