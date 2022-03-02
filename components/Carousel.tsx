@@ -1,4 +1,4 @@
-import {Navigation, Pagination, FreeMode, Mousewheel} from "swiper";
+import {Autoplay, Navigation, Pagination, FreeMode, Mousewheel} from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image from "next/image";
 import { images } from "../lib/images"
@@ -16,12 +16,17 @@ export default function Carousel () {
     <div className={styles.carousel}>
       <Swiper
         className={styles.swiper}
-        modules={[Navigation, Pagination, FreeMode, Mousewheel]}
+        modules={[Autoplay, Navigation, Pagination, FreeMode, Mousewheel]}
         spaceBetween={30}
         slidesPerView={2}
         loop={true}
-        navigation
+        navigation={true}
+        freeMode={true}
         pagination={{ clickable: true }}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log('slide change')}
         breakpoints={{
