@@ -1,17 +1,18 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
-const AppContext = createContext();
+export const AppContext = createContext();
 
 export function AppWrapper({ children }) {
-  let sharedState = {/* whatever we need */}
+  const [searchCriteria, setSearchCriteria] = useState(['initial', 'data']);
 
   return (
-    <AppContext.Provider value={sharedState}>
+    <AppContext.Provider
+      value={{
+        data: searchCriteria,
+        updateSearchCriteria: setSearchCriteria,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
-}
-
-export function useAppContext() {
-  return useContext(AppContext);
 }
