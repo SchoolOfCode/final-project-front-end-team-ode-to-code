@@ -8,8 +8,8 @@ export function AppWrapper({ children }) {
   return (
     <AppContext.Provider
       value={{
-        data: searchCriteria,
-        updateSearchCriteria: setSearchCriteria,
+        searchCriteria,
+        setSearchCriteria,
       }}
     >
       {children}

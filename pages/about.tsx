@@ -7,14 +7,14 @@ import {useContext} from 'react'
 
 
 function About() {
-  const {data, updateSearchCriteria} = useContext(AppContext);
+  const {searchCriteria, setSearchCriteria} = useContext(AppContext);
 
-  updateSearchCriteria("test")
+  setSearchCriteria("test")
   return (
     <>
       <Layout imageUrl={images.about}>
         <PageTitle text="About Us" />
-        <p>{data}</p>
+        <p>{searchCriteria}</p>
        </Layout>
     </>
   )
