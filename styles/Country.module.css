@@ -1,47 +1,29 @@
-
-/* .pageTitle{
-    font-family:'Monserrat';
-    font-size: 400px ;
-    text-align: center;
-
-   
-} */
-
-.cityList{
-   text-align: center;
-   color: brown;
-   display: flex;
-   flex-direction: row;
-   justify-content: space-evenly;
-   /* border: 1px solid black; */
-   background-color: #1e6d64;
-   color: white;
-   width: 70%;
-   margin: 0 auto;
-   margin-top: 30px;
-};
-
-
-.city {
-    
+.cityList {
+  text-align: center;
+  color: brown;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #1e6d64;
+  color: white;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 30px;
 }
-
 
 .aboutCountry {
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 40px;
-    font-size: 24px;
-
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 40px;
+  font-size: 24px;
 }
 
-.countryDescription{
+.countryDescription {
   margin: 0 auto;
   text-align: left;
   width: 80%;
   margin-top: 20px;
   background-color: rgb(219, 218, 218);
   border-radius: 15px;
-  padding: 20px
-
+  padding: 20px;
 }

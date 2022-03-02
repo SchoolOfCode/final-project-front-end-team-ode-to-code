@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import styles from '../../styles/Country.module.css';
@@ -49,16 +50,21 @@ function Country({ country }: { country: any }) {
     <>
       <Layout imageUrl={country.image}>
         <PageTitle text={country.country} />
-        <div className= {styles.cityList}>
-        <p className={styles.city}>{country.cities[0]}</p>
-        <p className={styles.city}>{country.cities[1]}</p>
-        <p className={styles.city}>{country.cities[2]}</p>
+
+        <div className={styles.cityList}>
+          {country.cities.map((city: any) => (
+            <Link href={`/cities/${city}`}>
+              <a>
+                <p className={styles.city}>{city}</p>
+              </a>
+            </Link>
+          ))}
         </div>
         <div>
-        <p className={styles.aboutCountry}> All About {country.country}</p>
+          <p className={styles.aboutCountry}> All About {country.country}</p>
         </div>
         <div className={styles.countryDescription}>
-        <p>{country.country_description}</p>
+          <p>{country.country_description}</p>
         </div>
       </Layout>
     </>
