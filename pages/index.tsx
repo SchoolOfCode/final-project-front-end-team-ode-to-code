@@ -5,9 +5,10 @@ import { images } from '../lib/images';
 import Carousel from '../components/Carousel';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
+import { get } from 'http';
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
@@ -32,19 +33,33 @@ function Home<NextPage>({
 }) {
   const [input, setInput] = useState('');
   const [word, setWord] = useState('');
+  const [randCity,setRandCity] = useState('');
 
-  ///////Search functionality
+  
   function handleChange(e: any) {
     setInput(e.target.value);
   }
-
+  
   function handleSubmit(e: any) {
     e.preventDefault();
     setWord(input);
     e.target.reset();
   }
 
-  /////
+
+
+function luckyDip() { //function to get the city name  
+    let url = `/cities/${randCity}`;
+    window.location.href=url;
+  }
+
+useEffect(()=>{
+  function randomCity(){
+    let randomCity:any = Math.floor(Math.random() * cities.length)
+    setRandCity(cities[randomCity].city_name)
+  }
+  randomCity()
+},[])
 
   return (
     <>
@@ -53,6 +68,8 @@ function Home<NextPage>({
           input={input}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
+          luckyDip={luckyDip}
+          
         />
         <div className={styles.searchResult}>
           {cities.map((city: any) => (
