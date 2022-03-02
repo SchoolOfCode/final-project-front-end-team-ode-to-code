@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
+import styles from '../../styles/Country.module.css';
 
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
 
@@ -48,11 +49,17 @@ function Country({ country }: { country: any }) {
     <>
       <Layout imageUrl={country.image}>
         <PageTitle text={country.country} />
-        <p>{country.cities[0]}</p>
-        <p>{country.cities[1]}</p>
-        <p>{country.cities[2]}</p>
-        <p> All About {country.country}</p>
+        <div className= {styles.cityList}>
+        <p className={styles.city}>{country.cities[0]}</p>
+        <p className={styles.city}>{country.cities[1]}</p>
+        <p className={styles.city}>{country.cities[2]}</p>
+        </div>
+        <div>
+        <p className={styles.aboutCountry}> All About {country.country}</p>
+        </div>
+        <div className={styles.countryDescription}>
         <p>{country.country_description}</p>
+        </div>
       </Layout>
     </>
   );
