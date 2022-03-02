@@ -14,20 +14,14 @@ import styles from './styles/Carousel.module.css';
 
 export default function Carousel ({countries}:any) {
 
-//random countries
-
+// 5 random countries
 let randomCountries:any = countries.sort(() => Math.random() - 0.5)
 let sixCountries:any = randomCountries.slice(0,6) 
   console.log(sixCountries)
+////////
 
-  
-
-
-  ////////
   return (
     <div className={styles.carousel}>
-    
-      
       <Swiper
         className={styles.swiper}
         modules={[Navigation, Pagination, FreeMode, Mousewheel]}
@@ -60,7 +54,7 @@ let sixCountries:any = randomCountries.slice(0,6)
         {sixCountries.map((country:any)=>{
           return(<SwiperSlide className={styles.swiperSlide}>
             <Link href={`/countries/${country.country}`}>
-                <Image src={country.image2} alt="Slide 1" width="232" height="324"/>
+                <Image src={country.image2} alt={country.country} width="232" height="324"/>
              </Link>   
             </SwiperSlide>)
         })}
