@@ -71,19 +71,20 @@ useEffect(()=>{
           luckyDip={luckyDip}
           
         />
+        {input && 
         <div className={styles.searchResult}>
           {cities.map((city: any) => (
             <div key={city.id}>
               <Link href={`/cities/${city.city_name}`}>
                 <a>
-                  {city.city_name === word ||
-                  city.country === word ||
-                  city.continent === word ||
-                  city.rating === word ||
-                  city.great_for.join(',').includes(word) ||
-                  city.tags.join(',').includes(word) ||
-                  city.budget === word ||
-                  city.holiday_type === word
+                  {city.city_name === input ||
+                  city.country === input ||
+                  city.continent === input ||
+                  city.rating === input ||
+                  city.great_for.join(',').includes(input) ||
+                  city.tags.join(',').includes(input) ||
+                  city.budget === input ||
+                  city.holiday_type === input
                     ? city.city_name
                     : false}
                 </a>
@@ -91,6 +92,7 @@ useEffect(()=>{
             </div>
           ))}
         </div>
+        }
         <div className="wrapper wrapper--lg">
           <Heading text="Countries to discover..." justify="left" />
         </div>
