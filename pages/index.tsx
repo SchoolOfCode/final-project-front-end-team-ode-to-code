@@ -68,8 +68,7 @@ useEffect(()=>{
           input={input}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          luckyDip={luckyDip}
-          
+          luckyDip={luckyDip} 
         />
         {input && 
         <div className={styles.searchResult}>
@@ -96,7 +95,7 @@ useEffect(()=>{
         <div className="wrapper wrapper--lg">
           <Heading text="Countries to discover..." justify="left" />
         </div>
-        <Carousel />
+        <Carousel countries={countries}/>
         <Glasssection />
       </Layout>
     </>
