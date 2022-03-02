@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {Navigation, Pagination, FreeMode, Mousewheel} from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image from "next/image";
@@ -13,11 +14,15 @@ import 'swiper/css/free-mode';
 import styles from './styles/Carousel.module.css';
 
 export default function Carousel ({countries}:any) {
+const [sixCountrie,setSixCountries]=useState([])
 
 // 5 random countries
+useEffect(()=>{
 let randomCountries:any = countries.sort(() => Math.random() - 0.5)
 let sixCountries:any = randomCountries.slice(0,6) 
-  console.log(sixCountries)
+  setSixCountries(sixCountries)
+},[])
+
 ////////
 
   return (
@@ -51,12 +56,18 @@ let sixCountries:any = randomCountries.slice(0,6)
         }}
       >
         {/* <SwiperSlide className={styles.swiperSlide}><Image src={images.card} alt="Slide 1" width="232" height="324"/></SwiperSlide> */}
-        {sixCountries.map((country:any)=>{
-          return(<SwiperSlide className={styles.swiperSlide}>
+        {sixCountrie.map((country:any)=>{
+          return(
+          <SwiperSlide className={styles.swiperSlide}>
+            <div style={{position:'relative'}}>
             <Link href={`/countries/${country.country}`}>
                 <Image src={country.image2} alt={country.country} width="232" height="324"/>
-             </Link>   
-            </SwiperSlide>)
+            </Link>  
+            <div style={{top:'0',bottom:'0'}}>
+              <p style={{zIndex:'2',textAlign:'center',position:'absolute',marginLeft:'40%',bottom:"5%",left: "-30%",color:'white',borderRadius:'10px',fontSize:'20px',backgroundColor:'rgba(0, 0, 0, 0.5)'}}>{country.country}</p>
+            </div>
+            </div> 
+          </SwiperSlide>)
         })}
       </Swiper>
     </div>
