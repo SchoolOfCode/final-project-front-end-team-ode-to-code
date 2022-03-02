@@ -34,7 +34,6 @@ function Home<NextPage>({
   const [input, setInput] = useState('');
   const [word, setWord] = useState('');
   const [randCity,setRandCity] = useState('');
-
   
   function handleChange(e: any) {
     setInput(e.target.value);
@@ -45,8 +44,6 @@ function Home<NextPage>({
     setWord(input);
     e.target.reset();
   }
-
-
 
 function luckyDip() { //function to get the city name  
     let url = `/cities/${randCity}`;
