@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import Heading from '../../components/Heading';
+import Link from 'next/link'
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 
@@ -93,13 +94,13 @@ function City({ city }: { city: any }) {
         {/* set actual country link site */}
         <h2>
           Back to{' '}
-          <a
+          <Link
             href={`http://localhost:3000/countries/${capitalizeFirstLetter(
               city.country
             )}`}
           >
             {city.country}
-          </a>
+          </Link>
         </h2>
       </Layout>
     </>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
+import Link from 'next/link';
 
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
 
@@ -48,7 +49,7 @@ function Country({ country }: { country: any }) {
     <>
       <Layout imageUrl={country.image}>
         <PageTitle text={country.country} />
-        <p>{country.cities[0]}</p>
+        <Link href={`/cities/${country.cities[0]}`}><p>{country.cities[0]}</p></Link>
         <p>{country.cities[1]}</p>
         <p>{country.cities[2]}</p>
         <p> All About {country.country}</p>
