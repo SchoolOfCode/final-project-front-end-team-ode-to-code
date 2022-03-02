@@ -63,9 +63,7 @@ let sixCountries:any = randomCountries.slice(0,6)
             <Link href={`/countries/${country.country}`}>
                 <Image src={country.image2} alt={country.country} width="232" height="324"/>
             </Link>  
-            <div style={{top:'0',bottom:'0'}}>
-              <p style={{zIndex:'2',textAlign:'center',position:'absolute',marginLeft:'40%',bottom:"5%",left: "-30%",color:'white',borderRadius:'10px',fontSize:'20px',backgroundColor:'rgba(0, 0, 0, 0.5)'}}>{country.country}</p>
-            </div>
+            <p style={{zIndex:'2',textAlign:'center',position:'absolute',marginLeft:'40%',top:'0',right:'0%',color:'white',borderRadius:'10px',fontSize:'20px',backgroundColor:'rgba(0, 0, 0, 0.6)'}}>{country.country}</p>
             </div> 
           </SwiperSlide>)
         })}
