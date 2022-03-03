@@ -54,16 +54,14 @@ function City({ city }: { city: any }) {
         <div className={styles.body}>
           <div className={styles.stats}>
             <p>
-              Rating
+              <strong>Rating: </strong>
               {stars.repeat(city.rating)}
             </p>
             <p>
-              Great for...
-              {city.great_for.join('   ')}
+              <strong>Great for: </strong>
+              {city.great_for.join(', ')}
             </p>
-
-            <p>
-              Great for...
+            <p className={styles.emojis}>
               {city.great_for.map((element: string) => {
                 if (element === 'families') {
                   return (element = icons[0]);
@@ -93,9 +91,9 @@ function City({ city }: { city: any }) {
             </p>
           </div>
           <Heading text={`About ${city.city_name}`} justify="left" />
-          <p>{city.city_description}</p>
+          <p className={styles.description}>{city.city_description}</p>
           {/* set actual country link site */}
-          <h2>
+          <h2 className={styles.country}>
             Back to{' '}
             <a
               href={`http://localhost:3000/countries/${capitalizeFirstLetter(
