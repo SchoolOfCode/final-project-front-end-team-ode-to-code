@@ -7,11 +7,9 @@ import styles from '../components/styles/Article.module.css';
 
 function FeelingHot<NextPage>() {
   return (
-    <>
-      <Layout imageUrl={images.article3L}>
+     <Layout imageUrl={images.article3L}>
         <PageTitle text="Where's hot now?" />
       </Layout>
-    </>
   );
 }
 

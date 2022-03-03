@@ -6,8 +6,7 @@ import styles from '../components/styles/Article.module.css';
 
 function TravelTips<NextPage>() {
   return (
-    <>
-      <Layout imageUrl={images.article2L}>
+   <Layout imageUrl={images.article2L}>
         <PageTitle text="Travel Tips" />
 
         <p>
@@ -25,7 +24,7 @@ function TravelTips<NextPage>() {
             This may seem obvious, but too many people keep all their cash and
             important documents such as their passport on them every time they
             leave the hotel. This means that if your bag gets lost or stolen,
-            it'll be a huge setback. Which brings us to the second tip...{' '}
+            it'll be a huge setback. Which brings us to the second tip...
           </p>
           <li>
             Make extra copies of your passport and all of your important
@@ -75,8 +74,7 @@ function TravelTips<NextPage>() {
           </p>
         </ol>
       </Layout>
-    </>
-  );
-}
+    )};
+
 
 export default TravelTips;

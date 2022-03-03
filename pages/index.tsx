@@ -5,9 +5,11 @@ import { images } from '../lib/images';
 import Carousel from '../components/Carousel';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
-import { useState,useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
+import { useRouter } from 'next/router';
+import { AppContext } from '../context/state';
 import { get } from 'http';
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
@@ -27,22 +29,28 @@ export async function getStaticProps() {
 function Home<NextPage>({
   cities,
   countries,
-}: {
+} : {
   cities: any;
   countries: any;
 }) {
+  const {data, setData} = useContext(AppContext)
+
+  useEffect(()=>
+  {setData({ cities: cities, countries: countries })}, [])
+
   const [input, setInput] = useState('');
-  const [word, setWord] = useState('');
   const [randCity,setRandCity] = useState('');
-  
+  const router = useRouter()
+
+  ///////Search functionality
   function handleChange(e: any) {
     setInput(e.target.value);
   }
   
   function handleSubmit(e: any) {
     e.preventDefault();
-    setWord(input);
     e.target.reset();
+    router.push(`/result?search=${input}`)
   }
 
 function luckyDip() { //function to get the city name  
@@ -59,9 +67,8 @@ useEffect(()=>{
 },[])
 
   return (
-    <>
       <Layout imageUrl={images.homepage}>
-        <SearchSection
+         <SearchSection
           input={input}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
@@ -95,7 +102,6 @@ useEffect(()=>{
         <Carousel countries={countries}/>
         <Glasssection />
       </Layout>
-    </>
   );
 }
 
