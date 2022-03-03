@@ -38,8 +38,6 @@ let sixCountries:any = randomCountries.slice(0,6)
           delay: 5000,
           disableOnInteraction: false,
         }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
         breakpoints={{
           0: {
             width: 300,
