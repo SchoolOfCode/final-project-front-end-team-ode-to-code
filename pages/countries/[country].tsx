@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import styles from '../../styles/Country.module.css';
+import Button from '../../components/Button';
 
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
 
@@ -54,8 +55,9 @@ function Country({ country }: { country: any }) {
         <div className={styles.cityList}>
           {country.cities.map((city: any) => (
             <Link href={`/cities/${city}`}>
+              {/* <a> <p className={styles.city}>{city}</p> </a> */}
               <a>
-                <p className={styles.city}>{city}</p>
+                <Button text={city} />
               </a>
             </Link>
           ))}
