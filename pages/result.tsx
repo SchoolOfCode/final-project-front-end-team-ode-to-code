@@ -1,16 +1,18 @@
-import React from 'react'
+import {AppContext} from '../context/state';
+import {useContext} from 'react'
+import Link from 'next/link';
+import {images} from '../lib/images';
+import Layout from '../components/Layout';
+import PageTitle from '../components/PageTitle';
 
 function Result() {
+  const {searchCriteria} = useContext(AppContext);
   return (
-    <div>
-      <img src="https://via.placeholder.com/1500x160"></img>
-      <h1>Search Results</h1>
-      <h3>Try one of these destinations... </h3>
-
-      <p>Bangkok , Thailand</p>
-      <p>Rotteneg , Austria</p>
-
-    </div>
+    <Layout imageUrl={images.article1L}>
+    <PageTitle text="Search Results" />
+    <p>{searchCriteria}</p>
+    {/* {searchCriteria.length > 0 && searchCriteria.map((city: any)=><li key={city.id}><Link href={`/cities/${city.city_name}`}>{city.city_name}</Link></li>)} */}
+  </Layout>
   )
 }
 

@@ -5,11 +5,9 @@ import { images } from '../lib/images';
 
 function TopDestinations<NextPage>() {
   return (
-    <>
       <Layout imageUrl={images.article1L}>
         <PageTitle text="Top 2022 Destinations" />
       </Layout>
-    </>
   );
 }
 

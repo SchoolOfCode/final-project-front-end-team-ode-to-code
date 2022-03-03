@@ -9,7 +9,6 @@ import { teamOdeToCode } from '../lib/team';
 
 function About() {
    return (
-    <>
       <Layout imageUrl={images.about}>
         <PageTitle text="About Us" />
         <p className={styles.container}>We are <br /><span className={styles.highlight}>Team Ode to Code</span>!</p>
@@ -21,11 +20,11 @@ function About() {
         Name={teamMember.Name} 
         LinkedIn={teamMember.Linkedin} 
         Portfolio={teamMember.Portfolio} 
-        GitHub={teamMember.GitHub} />
+        GitHub={teamMember.GitHub} 
+        key={teamMember.Name}/>
         </li>))};  
         </ul>
        </Layout>
-    </>
   )
 }
 

@@ -5,11 +5,11 @@ import { images } from '../lib/images';
 import Carousel from '../components/Carousel';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import {AppContext} from '../context/state';
-import {useContext} from 'react'
+
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
@@ -45,13 +45,15 @@ function Home<NextPage>({
     e.preventDefault();
     setWord(input);
     e.target.reset();
+    setSearchCriteria("Testing more")
+    window.location.href= '/result'
   }
 
   /////
 
   return (
-    <>
       <Layout imageUrl={images.homepage}>
+        <p>{searchCriteria}</p>
         <SearchSection
           input={input}
           handleChange={handleChange}
@@ -83,7 +85,6 @@ function Home<NextPage>({
         <Carousel />
         <Glasssection />
       </Layout>
-    </>
   );
 }
 
