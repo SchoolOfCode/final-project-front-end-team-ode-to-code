@@ -6,7 +6,7 @@
   width: 350px;
   background-size: cover;
   background-repeat: no-repeat;
-  }
+}
 
 .glass {
   background: rgba(0, 0, 0, 0.2);
@@ -17,8 +17,8 @@
   border: 0.75px solid rgba(229, 229, 229, 0.2);
   width: 15rem;
   padding: 2rem;
+  transition: all 0.15s;
 }
-
 
 .text {
   color: white;
@@ -26,8 +26,6 @@
   font-size: 1.25rem;
   text-align: center;
 }
-
-
 
 .card :hover {
   background: transparent;

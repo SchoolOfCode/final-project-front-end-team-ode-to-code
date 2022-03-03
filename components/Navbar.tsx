@@ -1,31 +1,68 @@
-import Image from 'next/image';
 import styles from './styles/Navbar.module.css';
-import React, { useState } from 'react';
-import RightNav from './RightNav';
+import Image from 'next/image';
 import Link from 'next/link';
-import { images } from '../lib/images'
+import { images } from '../lib/images';
 
 function Navbar() {
-  const [navbarOpen, setNavbarOpen] = useState(false);
-    
   return (
     <header>
-          <div className={styles.logo}><Link href="/">
-            <a>
-              <Image src={images.logo} alt="Beyonderbound" height={76} width={479} />
-              </a>
-          </Link></div>
-          <div className={styles.hamburgerContainer}>
-          <nav
-            onClick={() => setNavbarOpen(!navbarOpen)}
-            className={styles.hamburger}
-          ></nav>
-          {/*  {navbarOpen && <RightNav />} */}
-          {navbarOpen ? <RightNav /> : <></>}
+      <div className={styles.identidy}>
+        <Link href="/">
+          <a>
+            <div className={styles.bar}>
+              <div className={styles.flex}>
+                <div className={styles.flexItem}>
+                  <Image
+                    src={images.globe}
+                    alt="header image"
+                    className={styles.globe}
+                    height={40}
+                    width={40}
+                  />
+                </div>
+                <div className={styles.flexItem}>
+                  <h1 className={styles.beyonderbound}>
+                    be<span className={styles.span}>yonder</span>bound
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </a>
+        </Link>
+      </div>
+      <nav>
+        <div className={styles.menuToggle}>
+          {/* A fake / hidden checkbox is used as click reciever,
+          so you can use the :checked selector on it. */}
+
+          <input type="checkbox" />
+
+          {/* Some spans to act as a hamburger.
+    
+          They are acting like a real hamburger,
+          not that McDonalds stuff. */}
+          <span></span>
+          <span></span>
+          <span></span>
+
+          {/* Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic. */}
+          <ul className={styles.menu}>
+            <li>
+              <Link href="/">
+                <a>Home</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/about">
+                <a>About us</a>
+              </Link>
+            </li>
+          </ul>
         </div>
-        </header>
+      </nav>
+    </header>
   );
 }
 
 export default Navbar;
-
