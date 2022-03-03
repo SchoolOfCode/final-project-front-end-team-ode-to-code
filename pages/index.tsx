@@ -9,6 +9,7 @@ import { useState, useContext } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import {AppContext} from '../context/state';
+import { useRouter } from 'next/router';
 
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
@@ -35,6 +36,7 @@ function Home<NextPage>({
   const {searchCriteria, setSearchCriteria} = useContext(AppContext);
   const [input, setInput] = useState('');
   const [word, setWord] = useState('');
+  const router = useRouter()
 
   ///////Search functionality
   function handleChange(e: any) {
@@ -46,7 +48,7 @@ function Home<NextPage>({
     setWord(input);
     e.target.reset();
     setSearchCriteria("Testing more")
-    window.location.href= '/result'
+    router.push('/result')
   }
 
   /////
