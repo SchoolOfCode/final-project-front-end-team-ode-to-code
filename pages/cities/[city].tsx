@@ -46,7 +46,7 @@ export async function getStaticProps(context: any) {
 
 function City({ city }: { city: any }) {
   const stars = '⭐️';
-  let icons = ['👨‍👩‍👧‍👦  ', '🚶‍♀️  ', '💆  ', '👫  ', '👢  ', '🌞  ', '🌝  ', '💃🕺🏻'];
+  let icons = ['👨‍👩‍👧‍👦 ', '🚶‍♀️ ', '💆 ', '👫 ', '👢 ', '🌞 ', '🌝 ', '💃🕺🏻 '];
   return (
     <>
       <Layout imageUrl={city.image}>
