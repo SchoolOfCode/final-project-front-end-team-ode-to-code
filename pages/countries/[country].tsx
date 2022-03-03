@@ -5,6 +5,7 @@ import PageTitle from '../../components/PageTitle';
 import styles from '../../styles/Country.module.css';
 import Button from '../../components/Button';
 
+
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
 
 export async function getStaticPaths() {
@@ -51,7 +52,6 @@ function Country({ country }: { country: any }) {
     <>
       <Layout imageUrl={country.image}>
         <PageTitle text={country.country} />
-
         <div className={styles.cityList}>
           {country.cities.map((city: any) => (
             <Link href={`/cities/${city}`}>
