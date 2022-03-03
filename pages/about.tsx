@@ -22,7 +22,7 @@ function About() {
         Portfolio={teamMember.Portfolio} 
         GitHub={teamMember.GitHub} 
         key={teamMember.Name}/>
-        </li>))};  
+        </li>))}
         </ul>
        </Layout>
   )
