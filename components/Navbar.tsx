@@ -6,7 +6,7 @@ import { images } from '../lib/images';
 function Navbar() {
   return (
     <header>
-      <div className={styles.identidy}>
+      <div className={styles.identity}>
         <Link href="/">
           <a>
             <div className={styles.bar}>
