@@ -1,17 +1,16 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 
+// const citiesApi = 'https://four-week-project.herokuapp.com/cities';
+// const countriesApi = 'https://four-week-project.herokuapp.com/countries';
+
+
 export const AppContext = createContext();
 
 export function AppWrapper({ children }) {
-  const [searchCriteria, setSearchCriteria] = useState(['initial', 'data']);
+  const [data, setData] = useState([]);
 
   return (
-    <AppContext.Provider
-      value={{
-        searchCriteria,
-        setSearchCriteria,
-      }}
-    >
+    <AppContext.Provider value={{data, setData}}>
       {children}
     </AppContext.Provider>
   );

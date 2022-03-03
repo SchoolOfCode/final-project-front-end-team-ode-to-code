@@ -5,11 +5,11 @@ import { images } from '../lib/images';
 import Carousel from '../components/Carousel';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
-import {AppContext} from '../context/state';
 import { useRouter } from 'next/router';
+import { AppContext } from '../context/state';
 
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
@@ -29,13 +29,16 @@ export async function getStaticProps() {
 function Home<NextPage>({
   cities,
   countries,
-}: {
+} : {
   cities: any;
   countries: any;
 }) {
-  const {searchCriteria, setSearchCriteria} = useContext(AppContext);
+  const {data, setData} = useContext(AppContext)
+
+  useEffect(()=>
+  {setData({ cities: cities, countries: countries })}, [])
+
   const [input, setInput] = useState('');
-  const [word, setWord] = useState('');
   const router = useRouter()
 
   ///////Search functionality
@@ -45,18 +48,15 @@ function Home<NextPage>({
 
   function handleSubmit(e: any) {
     e.preventDefault();
-    setWord(input);
     e.target.reset();
-    setSearchCriteria("Testing more")
-    router.push('/result')
+    router.push(`/result?search=${input}`)
   }
 
   /////
 
   return (
       <Layout imageUrl={images.homepage}>
-        <p>{searchCriteria}</p>
-        <SearchSection
+         <SearchSection
           input={input}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
@@ -66,14 +66,14 @@ function Home<NextPage>({
             <div key={city.id}>
               <Link href={`/cities/${city.city_name}`}>
                 <a>
-                  {city.city_name === word ||
-                  city.country === word ||
-                  city.continent === word ||
-                  city.rating === word ||
-                  city.great_for.join(',').includes(word) ||
-                  city.tags.join(',').includes(word) ||
-                  city.budget === word ||
-                  city.holiday_type === word
+                  {city.city_name === input ||
+                  city.country === input ||
+                  city.continent === input ||
+                  city.rating === input ||
+                  city.great_for.join(',').includes(input) ||
+                  city.tags.join(',').includes(input) ||
+                  city.budget === input ||
+                  city.holiday_type === input
                     ? city.city_name
                     : false}
                 </a>
