@@ -8,6 +8,8 @@ import Layout from '../components/Layout';
 import { useState } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
+import {AppContext} from '../context/state';
+import {useContext} from 'react'
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
@@ -30,6 +32,7 @@ function Home<NextPage>({
   cities: any;
   countries: any;
 }) {
+  const {searchCriteria, setSearchCriteria} = useContext(AppContext);
   const [input, setInput] = useState('');
   const [word, setWord] = useState('');
 
