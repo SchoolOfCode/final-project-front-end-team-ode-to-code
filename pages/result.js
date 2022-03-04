@@ -59,27 +59,29 @@ function Result() {
   return (
     <Layout imageUrl={images.search}>
       <PageTitle text="Search Results" />
+      <div className={styles.body}>
       <ul>
         {countrySearchResults.length > 0 &&
           countrySearchResults.map((country) => (
-            <li key={country}>
+            <li key={country} className={styles.listItem}>
               <Link href={`/countries/${country}`}>{country}</Link>
             </li>
           ))}
         {citySearchResults.length > 0 &&
           citySearchResults.map((city) => (
-            <li key={city}>
+            <li key={city} className={styles.listItem}>
               <Link href={`/cities/${city}`}>{city}</Link>
             </li>
           ))}
         {countrySearchResults.length === 0 && citySearchResults.length === 0 && !isLoading && (
-          <p>
+          <p className={styles.error}>
             No Search Results Found! <br />
             Go <Link href="/">back to homepage</Link>.
           </p>
         )}
-        {isLoading && (<p>Search results loading...</p>)}
+        {isLoading && (<p className={styles.error}>Search results loading...</p>)}
       </ul>
+      </div>
     </Layout>
   );
 }

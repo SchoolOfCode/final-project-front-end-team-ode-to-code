@@ -12,6 +12,7 @@ function About<NextPage>() {
    return (
       <Layout imageUrl={images.about}>
         <PageTitle text="About Us" />
+        <div className={styles.body}>
         <p className={styles.container}>We are <br /><span className={styles.highlight}>Team Ode to Code</span>!</p>
         <p className={styles.container}>We met via <Link href="https://schoolofcode.co.uk/">School of Code</Link>'s first national bootcamp, and were grouped together for our Final 4 week project. Our challenge was to work together remotely, using Agile Methodologies, to build a full stack application. Thus, <span className={styles.highlight}>beyonderbound</span> was born!</p>
         <p className={styles.container}>For more information feel free to checkout our pages:</p>
@@ -25,6 +26,7 @@ function About<NextPage>() {
         key={teamMember.Name}/>
         </li>))}
         </ul>
+        </div>
        </Layout>
   )
 }
