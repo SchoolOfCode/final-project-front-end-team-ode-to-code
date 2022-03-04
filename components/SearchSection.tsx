@@ -12,12 +12,21 @@ export default function SearchSection({handleChange,handleSubmit,luckyDip}:any) 
       </div>
       <div className={styles.input}>
         <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Search for holiday type..." onChange={handleChange}></input>
+          <div className={styles.tooltip}>
+            <input className={styles.tooltip} type="text" placeholder="Search for holiday type..." onChange={handleChange}></input> 
+            <br/>  
+            <span className={styles.tooltiptext} >
+              <p>[￡:pound] [👨‍👩‍👧‍👦:family] [🚶‍♀️:solo] [💆:city break] [👫:romance] [👢Shopping] [🌞:sun] [🌝:honeymoon] [💃🕺🏻:night life]</p>
+            </span>
+        </div>
+       
         <button></button>
+        
         </form> 
       </div>
       <div className={styles.buttons}>
-        <Button text="Advanced" luckyDip={luckyDip}/>
+        {/* <p>￡:pound,👨‍👩‍👧‍👦:family,🚶‍♀️:solo,💆:city break,</p>
+        <p>👫:romance,👢Shopping,🌞:sun,🌝:honeymoon,💃🕺🏻:night life</p> */}
        <Button text="Lucky Dip" luckyDip={luckyDip}/>
       </div>
     </div>

@@ -3,7 +3,7 @@ import styles from '../../styles/City.module.css';
 import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import Heading from '../../components/Heading';
-import Link from 'next/link'
+
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 
