@@ -10,7 +10,6 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import { useRouter } from 'next/router';
 import { AppContext } from '../context/state';
-import { get } from 'http';
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
@@ -55,7 +54,7 @@ function Home<NextPage>({
 
 function luckyDip() { //function to get the city name  
     let url = `/cities/${randCity}`;
-    window.location.href=url;
+    router.push(url)
   }
 
 useEffect(()=>{
