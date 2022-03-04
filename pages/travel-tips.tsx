@@ -17,7 +17,6 @@ function TravelTips<NextPage>() {
           to help you keep grounded in all the ways that matter, by listing the
           top travel tips every traveller should have in their arsenal.
         </p>
-
         <ol>
           <li> When you go out, take only what you need.</li>
           <p>
