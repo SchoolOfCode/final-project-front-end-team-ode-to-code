@@ -2,8 +2,9 @@ import React from 'react';
 import Button from './Button';
 import Heading from './Heading';
 import styles from './styles/SearchSection.module.css';
+import Link from 'next/link';
 
-export default function SearchSection({handleChange,handleSubmit}:any) {
+export default function SearchSection({handleChange,handleSubmit,luckyDip}:any) {
   return (
     <div className={styles.searchContainer}>
       <div className={styles.heading}>
@@ -13,12 +14,11 @@ export default function SearchSection({handleChange,handleSubmit}:any) {
         <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Search for holiday type..." onChange={handleChange}></input>
         <button></button>
-        </form>
-        
+        </form> 
       </div>
       <div className={styles.buttons}>
-        <Button text="Advanced" />
-        <Button text="Lucky Dip" />
+        <Button text="Advanced" luckyDip={luckyDip}/>
+       <Button text="Lucky Dip" luckyDip={luckyDip}/>
       </div>
     </div>
   );

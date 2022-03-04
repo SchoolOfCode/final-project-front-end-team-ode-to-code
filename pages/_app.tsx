@@ -12,5 +12,4 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Component {...pageProps} />
     </AppWrapper>);
 }
-
 export default MyApp;
