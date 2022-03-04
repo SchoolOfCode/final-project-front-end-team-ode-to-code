@@ -54,7 +54,7 @@ function Result() {
   }, []);
 
   return (
-    <Layout imageUrl={images.article1L}>
+    <Layout imageUrl={images.search}>
       <PageTitle text="Search Results" />
       <ul>
         {countrySearchResults.length > 0 &&
