@@ -6,9 +6,10 @@ import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import { useRouter } from 'next/router';
 
+
 function Result() {
   const { query } = useRouter();
-  const { data } = useContext(AppContext);
+  const { data, isLoading } = useContext(AppContext); 
 
   const [citySearchResults, setCitySearchResults] = useState([]);
   const [countrySearchResults, setCountrySearchResults] = useState([]);
@@ -50,8 +51,12 @@ function Result() {
   }
 
   useEffect(() => {
-    filterData(data);
-  }, []);
+    if(!isLoading){
+      filterData(data)}
+      else {
+        setTimeout(function() {console.log(data)},5000)
+      }
+    }, []);
 
   return (
     <Layout imageUrl={images.search}>

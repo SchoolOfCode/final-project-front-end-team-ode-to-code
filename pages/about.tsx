@@ -5,9 +5,10 @@ import styles from '../styles/About.module.css'
 import Link from 'next/link';
 import TeamMember from '../components/TeamMember';
 import { teamOdeToCode } from '../lib/team';
+import type { NextPage } from 'next';
 
 
-function About() {
+function About<NextPage>() {
    return (
       <Layout imageUrl={images.about}>
         <PageTitle text="About Us" />
