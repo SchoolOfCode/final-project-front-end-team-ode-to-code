@@ -10,7 +10,7 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import { useRouter } from 'next/router';
 import { AppContext } from '../context/state';
-import { get } from 'http';
+
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
@@ -39,32 +39,20 @@ function Home<NextPage>({
   {setData({ cities: cities, countries: countries })}, [])
 
   const [input, setInput] = useState('');
-  const [randCity,setRandCity] = useState('');
   const router = useRouter()
 
   ///////Search functionality
   function handleChange(e: any) {
     setInput(e.target.value);
   }
-  
+
   function handleSubmit(e: any) {
     e.preventDefault();
     e.target.reset();
     router.push(`/result?search=${input}`)
   }
 
-function luckyDip() { //function to get the city name  
-    let url = `/cities/${randCity}`;
-    window.location.href=url;
-  }
-
-useEffect(()=>{
-  function randomCity(){
-    let randomCity:any = Math.floor(Math.random() * cities.length)
-    setRandCity(cities[randomCity].city_name)
-  }
-  randomCity()
-},[])
+  /////
 
   return (
       <Layout imageUrl={images.homepage}>
@@ -72,9 +60,7 @@ useEffect(()=>{
           input={input}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          luckyDip={luckyDip} 
         />
-        {input && 
         <div className={styles.searchResult}>
           {cities.map((city: any) => (
             <div key={city.id}>
@@ -95,11 +81,10 @@ useEffect(()=>{
             </div>
           ))}
         </div>
-        }
         <div className="wrapper wrapper--lg">
           <Heading text="Countries to discover..." justify="left" />
         </div>
-        <Carousel countries={countries}/>
+        <Carousel />
         <Glasssection />
       </Layout>
   );

@@ -1,10 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
 import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
-import styles from '../../styles/Country.module.css';
-import Button from '../../components/Button';
-
 
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
 
@@ -52,22 +48,11 @@ function Country({ country }: { country: any }) {
     <>
       <Layout imageUrl={country.image}>
         <PageTitle text={country.country} />
-        <div className={styles.cityList}>
-          {country.cities.map((city: any) => (
-            <Link href={`/cities/${city}`}>
-              {/* <a> <p className={styles.city}>{city}</p> </a> */}
-              <a>
-                <Button text={city} />
-              </a>
-            </Link>
-          ))}
-        </div>
-        <div>
-          <p className={styles.aboutCountry}> All About {country.country}</p>
-        </div>
-        <div className={styles.countryDescription}>
-          <p>{country.country_description}</p>
-        </div>
+        <p>{country.cities[0]}</p>
+        <p>{country.cities[1]}</p>
+        <p>{country.cities[2]}</p>
+        <p> All About {country.country}</p>
+        <p>{country.country_description}</p>
       </Layout>
     </>
   );
