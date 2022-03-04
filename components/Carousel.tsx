@@ -1,7 +1,8 @@
-import {Navigation, Pagination, FreeMode, Mousewheel} from "swiper";
+import { useEffect, useState } from "react";
+import {Autoplay, Navigation, Pagination, FreeMode, Mousewheel} from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image from "next/image";
-import { images } from "../lib/images"
+import Link from 'next/link'
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -11,19 +12,32 @@ import 'swiper/css/free-mode';
 
 import styles from './styles/Carousel.module.css';
 
-export default function Carousel () {
+export default function Carousel ({countries}:any) {
+const [sixCountries,setSixCountries]=useState([])
+
+// 5 random countries
+useEffect(()=>{
+let randomCountries:any = countries.sort(() => Math.random() - 0.5)
+let sixCountries:any = randomCountries.slice(0,6) 
+  setSixCountries(sixCountries)
+},[])
+//
+
   return (
     <div className={styles.carousel}>
       <Swiper
         className={styles.swiper}
-        modules={[Navigation, Pagination, FreeMode, Mousewheel]}
+        modules={[Autoplay, Navigation, Pagination, FreeMode, Mousewheel]}
         spaceBetween={30}
         slidesPerView={2}
         loop={true}
-        navigation
+        navigation={true}
+        freeMode={true}
         pagination={{ clickable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
         breakpoints={{
           0: {
             width: 300,
@@ -42,14 +56,18 @@ export default function Carousel () {
           },
         }}
       >
-        <SwiperSlide className={styles.swiperSlide}><Image src={images.card} alt="Slide 1" width="232" height="324"/></SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>Slide 2</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>Slide 3</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>Slide 4</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>Slide 5</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>Slide 6</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>Slide 7</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>Slide 8</SwiperSlide>
+        {sixCountries.map((country:any)=>{
+          return(
+          <SwiperSlide className={styles.swiperSlide}>
+            <div style={{position:'relative'}}>
+            <Link href={`/countries/${country.country}`}>
+                <Image className={styles.image} src={country.image2} alt={country.country} width="232" height="324"/>
+            </Link>  
+            {/* style example */}
+            <p style={{zIndex:'2',textAlign:'center',position:'absolute',marginLeft:'40%',top:'0',right:'0%',color:'white',borderRadius:'10px',fontSize:'20px',backgroundColor:'rgba(0, 0, 0, 0.3)'}}>{country.country}</p>
+            </div> 
+          </SwiperSlide>)
+        })}
       </Swiper>
     </div>
   );
