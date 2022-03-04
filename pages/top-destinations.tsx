@@ -16,7 +16,7 @@ function TopDestinations<NextPage>() {
 
         With a focus on imagining sustainable, city living for the future, you can expect inspiring gardens, workshops and exhibitions mixed with striking attractions and tasting sessions. The 150-acre site is also where 300 eco-homes have been built, with plans for the area to be turned into a green residential neighbourhood of 660 homes, so if you're after a sustainably-focused holiday destination for 2022, Holland is the place worth considering.</p>
       </div>
- className={styles.paragraphs}
+      
       <div className='top-destination-divs'>
         <h1 className={styles.headers1}>Japan</h1>
         <img  className={styles.image} src='https://cdn.pixabay.com/photo/2020/03/28/06/42/kobe-4975863_1280.jpg'/>

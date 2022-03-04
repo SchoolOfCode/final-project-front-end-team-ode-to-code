@@ -147,5 +147,6 @@
   .input button::after {
     transform: translateY(23px) translateX(4px) rotate(45deg);
   }
+
 }
-/* tooplit */
+
