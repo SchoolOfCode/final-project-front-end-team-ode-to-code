@@ -108,26 +108,23 @@ function City({ city }: { city: any }) {
               </p>
             </div>
 
-            <div className={styles.weather}>
-              <h2>Current Weather in {city.city_name}:</h2>
-              {weather && (
-                <>
-                  <p>
-                    <strong>Temp:</strong> {weather.main.temp}˚C
-                  </p>
-                  <p>
-                    <strong>Conditions:</strong>{' '}
-                    {weather.weather[0].description}
-                  </p>
-                  <p>
-                    <strong>Today's High:</strong> {weather.main.temp_max}˚C
-                  </p>
-                  <p>
-                    <strong>Today's Low:</strong> {weather.main.temp_min}˚C
-                  </p>
-                </>
-              )}
-            </div>
+            {weather && (
+              <div className={styles.weather}>
+                <h2>Current Weather in {city.city_name}:</h2>
+                <p>
+                  <strong>Conditions:</strong> {weather.weather[0].description}
+                </p>
+                <p>
+                  <strong>Temp:</strong> {weather.main.temp}˚C
+                </p>
+                <p>
+                  <strong>Today's High:</strong> {weather.main.temp_max}˚C
+                </p>
+                <p>
+                  <strong>Today's Low:</strong> {weather.main.temp_min}˚C
+                </p>
+              </div>
+            )}
           </div>
           <Heading text={`About ${city.city_name}`} justify="left" />
           <p className={styles.description}>{city.city_description}</p>
