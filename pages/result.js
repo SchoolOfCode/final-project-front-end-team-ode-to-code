@@ -17,16 +17,18 @@ function Result() {
     let cityList = [];
     let countryList = [];
     let newValue;
+    let searchCriteria;
     data.cities && data.cities.map((city) => {
+      searchCriteria = (query.search).toLowerCase()
       if (
-        city.city_name === query.search ||
-        city.country === query.search ||
-        city.continent === query.search ||
-        city.city_attractions.join(',').includes(query.search) ||
-        city.great_for.join(',').includes(query.search) ||
-        city.tags.join(',').includes(query.search) ||
-        city.budget === query.search ||
-        city.holiday_type === query.search
+        (city.city_name).toLowerCase() === searchCriteria ||
+        (city.country).toLowerCase() === searchCriteria ||
+        (city.continent).toLowerCase() === searchCriteria ||
+        (city.city_attractions.join(',')).toLowerCase().includes(searchCriteria) ||
+        (city.great_for.join(',')).toLowerCase().includes(searchCriteria) ||
+        (city.tags.join(',')).toLowerCase().includes(searchCriteria) ||
+        (city.budget).toLowerCase() === searchCriteria ||
+        (city.holiday_type).toLowerCase() === searchCriteria
       ) {
         newValue = city.city_name;
         cityList = [...cityList, newValue];
@@ -37,9 +39,9 @@ function Result() {
 
     data.countries && data.countries.map((country) => {
       if (
-        country.cities.join(',').includes(query.search) ||
-        country.country === query.search ||
-        country.continent === query.search
+        (country.cities.join(',')).toLowerCase().includes(searchCriteria) ||
+        (country.country).toLowerCase() === searchCriteria ||
+        (country.continent).toLowerCase() === searchCriteria
       ) {
         newValue = country.country;
         countryList = [...countryList, newValue];
@@ -69,12 +71,13 @@ function Result() {
               <Link href={`/cities/${city}`}>{city}</Link>
             </li>
           ))}
-        {countrySearchResults.length === 0 && citySearchResults.length === 0 && (
+        {countrySearchResults.length === 0 && citySearchResults.length === 0 && !isLoading && (
           <p>
             No Search Results Found! <br />
             Go <Link href="/">back to homepage</Link>.
           </p>
         )}
+        {isLoading && (<p>Search results loading...</p>)}
       </ul>
     </Layout>
   );
