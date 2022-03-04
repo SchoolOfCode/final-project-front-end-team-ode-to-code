@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import { images } from '../lib/images';
-/* import styles from '../components/styles/Article.module.css'; */
 import styles from '../styles/Traveltips.module.css';
 
 function TravelTips<NextPage>() {
