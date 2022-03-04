@@ -52,7 +52,7 @@ function City({ city }: { city: any }) {
   useEffect(() => {
     async function fetchMyAPI() {
       let res = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?units=metric&q=${city.city_name}&APPID=50b40a5db92361b0367f15385971300e`
+        `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city.city_name}&APPID=50b40a5db92361b0367f15385971300e`
       );
       let data = await res.json();
       setWeather(data);
