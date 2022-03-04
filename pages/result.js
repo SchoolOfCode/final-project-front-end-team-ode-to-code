@@ -53,9 +53,6 @@ function Result() {
   useEffect(() => {
     if(!isLoading){
       filterData(data)}
-      else {
-        setTimeout(function() {console.log(data)},5000)
-      }
     }, []);
 
   return (
