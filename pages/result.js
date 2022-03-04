@@ -5,6 +5,7 @@ import { images } from '../lib/images';
 import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import { useRouter } from 'next/router';
+import styles from '../styles/Results.module.css';
 
 function Result() {
   const { query } = useRouter();
