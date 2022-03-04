@@ -2,13 +2,13 @@ import type { NextPage } from 'next';
 import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import { images } from '../lib/images';
-import styles from '../components/styles/Article.module.css';
+import styles from '../styles/travelDivs.module.css';
 
 function TravelTips<NextPage>() {
   return (
    <Layout imageUrl={images.article2L}>
         <PageTitle text="Travel Tips" />
-
+        <div className={styles.travelDiv}>
         <p>
           When you're getting ready to leave your every-day life behind and jet
           off to extraordinary new places, bustling new cities and weather so
@@ -73,6 +73,7 @@ function TravelTips<NextPage>() {
             hike in price if you booked closer to your departure date
           </p>
         </ol>
+        </div>
       </Layout>
     )};
 
