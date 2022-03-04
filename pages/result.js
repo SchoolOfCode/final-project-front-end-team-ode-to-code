@@ -6,10 +6,9 @@ import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import { useRouter } from 'next/router';
 
-
 function Result() {
   const { query } = useRouter();
-  const { data, isLoading } = useContext(AppContext); 
+  const { data, isLoading } = useContext(AppContext);
 
   const [citySearchResults, setCitySearchResults] = useState([]);
   const [countrySearchResults, setCountrySearchResults] = useState([]);
@@ -18,7 +17,7 @@ function Result() {
     let cityList = [];
     let countryList = [];
     let newValue;
-    data.cities.map((city) => {
+    data.cities && data.cities.map((city) => {
       if (
         city.city_name === query.search ||
         city.country === query.search ||
@@ -36,7 +35,7 @@ function Result() {
     });
     setCitySearchResults(cityList);
 
-    data.countries.map((country) => {
+    data.countries && data.countries.map((country) => {
       if (
         country.cities.join(',').includes(query.search) ||
         country.country === query.search ||
@@ -51,9 +50,8 @@ function Result() {
   }
 
   useEffect(() => {
-    if(!isLoading){
-      filterData(data)}
-    }, []);
+    filterData(data);
+  }, [data]);
 
   return (
     <Layout imageUrl={images.search}>
