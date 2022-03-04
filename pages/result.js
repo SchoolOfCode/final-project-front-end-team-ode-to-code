@@ -5,6 +5,7 @@ import { images } from '../lib/images';
 import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import { useRouter } from 'next/router';
+import styles from '../styles/Results.module.css';
 
 function Result() {
   const { query } = useRouter();
@@ -56,26 +57,28 @@ function Result() {
   return (
     <Layout imageUrl={images.search}>
       <PageTitle text="Search Results" />
-      <ul>
-        {countrySearchResults.length > 0 &&
-          countrySearchResults.map((country) => (
-            <li key={country}>
-              <Link href={`/countries/${country}`}>{country}</Link>
-            </li>
-          ))}
-        {citySearchResults.length > 0 &&
-          citySearchResults.map((city) => (
-            <li key={city}>
-              <Link href={`/cities/${city}`}>{city}</Link>
-            </li>
-          ))}
-        {countrySearchResults.length === 0 && citySearchResults.length === 0 && (
-          <p>
-            No Search Results Found! <br />
-            Go <Link href="/">back to homepage</Link>.
-          </p>
-        )}
-      </ul>
+      <div className={styles.body}>
+        <ul>
+          {countrySearchResults.length > 0 &&
+            countrySearchResults.map((country) => (
+              <li className={styles.listItem} key={country}>
+                <Link href={`/countries/${country}`}>{country}</Link>
+              </li>
+            ))}
+          {citySearchResults.length > 0 &&
+            citySearchResults.map((city) => (
+              <li className={styles.listItem} key={city}>
+                <Link href={`/cities/${city}`}>{city}</Link>
+              </li>
+            ))}
+          {countrySearchResults.length === 0 && citySearchResults.length === 0 && (
+            <p>
+              No Search Results Found! <br />
+              Go <Link href="/">back to homepage</Link>.
+            </p>
+          )}
+        </ul>
+      </div>
     </Layout>
   );
 }
