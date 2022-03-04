@@ -9,7 +9,7 @@ import styles from '../styles/Results.module.css';
 
 function Result() {
   const { query } = useRouter();
-  const { data } = useContext(AppContext);
+  const { data, isLoading } = useContext(AppContext);
 
   const [citySearchResults, setCitySearchResults] = useState([]);
   const [countrySearchResults, setCountrySearchResults] = useState([]);
@@ -18,16 +18,18 @@ function Result() {
     let cityList = [];
     let countryList = [];
     let newValue;
-    data.cities.map((city) => {
+    let searchCriteria;
+    data.cities && data.cities.map((city) => {
+      searchCriteria = (query.search).toLowerCase()
       if (
-        city.city_name === query.search ||
-        city.country === query.search ||
-        city.continent === query.search ||
-        city.city_attractions.join(',').includes(query.search) ||
-        city.great_for.join(',').includes(query.search) ||
-        city.tags.join(',').includes(query.search) ||
-        city.budget === query.search ||
-        city.holiday_type === query.search
+        (city.city_name).toLowerCase() === searchCriteria ||
+        (city.country).toLowerCase() === searchCriteria ||
+        (city.continent).toLowerCase() === searchCriteria ||
+        (city.city_attractions.join(',')).toLowerCase().includes(searchCriteria) ||
+        (city.great_for.join(',')).toLowerCase().includes(searchCriteria) ||
+        (city.tags.join(',')).toLowerCase().includes(searchCriteria) ||
+        (city.budget).toLowerCase() === searchCriteria ||
+        (city.holiday_type).toLowerCase() === searchCriteria
       ) {
         newValue = city.city_name;
         cityList = [...cityList, newValue];
@@ -36,11 +38,11 @@ function Result() {
     });
     setCitySearchResults(cityList);
 
-    data.countries.map((country) => {
+    data.countries && data.countries.map((country) => {
       if (
-        country.cities.join(',').includes(query.search) ||
-        country.country === query.search ||
-        country.continent === query.search
+        (country.cities.join(',')).toLowerCase().includes(searchCriteria) ||
+        (country.country).toLowerCase() === searchCriteria ||
+        (country.continent).toLowerCase() === searchCriteria
       ) {
         newValue = country.country;
         countryList = [...countryList, newValue];
@@ -52,33 +54,32 @@ function Result() {
 
   useEffect(() => {
     filterData(data);
-  }, []);
+  }, [data]);
 
   return (
     <Layout imageUrl={images.search}>
       <PageTitle text="Search Results" />
-      <div className={styles.body}>
-        <ul>
-          {countrySearchResults.length > 0 &&
-            countrySearchResults.map((country) => (
-              <li className={styles.listItem} key={country}>
-                <Link href={`/countries/${country}`}>{country}</Link>
-              </li>
-            ))}
-          {citySearchResults.length > 0 &&
-            citySearchResults.map((city) => (
-              <li className={styles.listItem} key={city}>
-                <Link href={`/cities/${city}`}>{city}</Link>
-              </li>
-            ))}
-          {countrySearchResults.length === 0 && citySearchResults.length === 0 && (
-            <p>
-              No Search Results Found! <br />
-              Go <Link href="/">back to homepage</Link>.
-            </p>
-          )}
-        </ul>
-      </div>
+      <ul>
+        {countrySearchResults.length > 0 &&
+          countrySearchResults.map((country) => (
+            <li key={country}>
+              <Link href={`/countries/${country}`}>{country}</Link>
+            </li>
+          ))}
+        {citySearchResults.length > 0 &&
+          citySearchResults.map((city) => (
+            <li key={city}>
+              <Link href={`/cities/${city}`}>{city}</Link>
+            </li>
+          ))}
+        {countrySearchResults.length === 0 && citySearchResults.length === 0 && !isLoading && (
+          <p>
+            No Search Results Found! <br />
+            Go <Link href="/">back to homepage</Link>.
+          </p>
+        )}
+        {isLoading && (<p>Search results loading...</p>)}
+      </ul>
     </Layout>
   );
 }

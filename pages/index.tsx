@@ -5,11 +5,11 @@ import { images } from '../lib/images';
 import Carousel from '../components/Carousel';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import { useRouter } from 'next/router';
-import { AppContext } from '../context/state';
+
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
@@ -32,10 +32,6 @@ function Home<NextPage>({
   cities: any;
   countries: any;
 }) {
-  const {data, setData} = useContext(AppContext)
-
-  useEffect(()=>
-  {setData({ cities: cities, countries: countries })}, [])
 
   const [input, setInput] = useState('');
   const [randCity,setRandCity] = useState('');
