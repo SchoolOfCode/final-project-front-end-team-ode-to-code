@@ -1,0 +1,38 @@
+.imagecontainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+ 
+@media screen and (max-width: 768px) {
+
+.imagecontainer {
+    flex-direction: column;
+}
+}
+
+.image {
+    max-width: 300px;
+}
+
+.headers1 {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.paragraphs {
+  padding-top: 1rem;
+  text-align: left;
+}
+
+.container {
+    margin: 0.5rem auto 3rem auto;
+    max-width: 1024px;
+    padding: 3rem 4rem 3rem 4rem;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    text-align: center;
+  }
+  
