@@ -24,7 +24,7 @@ export default function Carousel({ countries }: any) {
   //
 
   return (
-    <div className={styles.carousel}>
+    <div data-cy="carousel"  className={styles.carousel}>
       <Swiper
         className={styles.swiper}
         modules={[Autoplay, Navigation, Pagination, FreeMode, Mousewheel]}
