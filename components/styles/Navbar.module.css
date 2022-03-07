@@ -15,11 +15,11 @@
 }
 
 .flexItem h1 {
-  color: #264653;
+  color: var(--tc1);
 }
 
 .span {
-  color: #2a9c8f;
+  color: var(--tc2);
 }
 
 .globe {
@@ -64,7 +64,7 @@
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  background: #264653;
+  background: var(--tc1);
   border-radius: 3px;
   z-index: 1;
   transform-origin: 4px 0px;
@@ -83,7 +83,7 @@
 .menuToggle input:checked ~ span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: #264653;
+  background: var(--tc1);
 }
 
 .menuToggle input:checked ~ span:nth-last-child(3) {
@@ -139,8 +139,14 @@
     transform: rotate(23.5deg) scale(0.65) translate(-0.1rem, -0.6rem);
   }
 
+  .menu {
+    right: -10px;
+    width: 200px;
+  }
+
   .menuToggle {
     top: 20px;
+    right: 10px;
   }
 
   .menuToggle span {

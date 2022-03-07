@@ -13,13 +13,13 @@
 .searchResult a {
   font-size: 1.15rem;
   text-decoration: none;
-  color: #264653;
+  color: var(--tc1);
   font-weight: 600;
   transition: color 0.15s;
 }
 
 .searchResult a:hover {
-  color: #2a9c8f;
+  color: var(--tc2);
 }
 
 @media screen and (max-width: 768px) {

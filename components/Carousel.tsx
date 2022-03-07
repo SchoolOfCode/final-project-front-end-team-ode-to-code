@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import {Autoplay, Navigation, Pagination, FreeMode, Mousewheel} from "swiper";
+import { useEffect, useState } from 'react';
+import { Autoplay, Navigation, Pagination, FreeMode, Mousewheel } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Image from "next/image";
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -12,19 +12,19 @@ import 'swiper/css/free-mode';
 
 import styles from './styles/Carousel.module.css';
 
-export default function Carousel ({countries}:any) {
-const [sixCountries,setSixCountries]=useState([])
+export default function Carousel({ countries }: any) {
+  const [sixCountries, setSixCountries] = useState([]);
 
-// 5 random countries
-useEffect(()=>{
-let randomCountries:any = countries.sort(() => Math.random() - 0.5)
-let sixCountries:any = randomCountries.slice(0,6) 
-  setSixCountries(sixCountries)
-},[])
-//
+  // 5 random countries
+  useEffect(() => {
+    let randomCountries: any = countries.sort(() => Math.random() - 0.5);
+    let sixCountries: any = randomCountries.slice(0, 6);
+    setSixCountries(sixCountries);
+  }, []);
+  //
 
   return (
-    <div className={styles.carousel}>
+    <div data-cy="carousel"  className={styles.carousel}>
       <Swiper
         className={styles.swiper}
         modules={[Autoplay, Navigation, Pagination, FreeMode, Mousewheel]}
@@ -72,8 +72,9 @@ let sixCountries:any = randomCountries.slice(0,6)
               </div>
             </div> 
           </SwiperSlide>)
+
         })}
       </Swiper>
     </div>
   );
-};
+}

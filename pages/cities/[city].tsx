@@ -131,16 +131,17 @@ function City({ city }: { city: any }) {
             )}
           </div>
           <Heading text={`About ${city.city_name}`} justify="left" />
-          <p className={styles.description}>{city.city_description}</p>
+          <p data-cy="city-description" className={styles.description}>{city.city_description}</p>
           {/* set actual country link site */}
-          <h2 className={styles.country}>
+          <h2 data-cy="city-back-button" className={styles.country}>
             Back to{' '}
-            <Link href={`/countries/${capitalizeFirstLetter(
+            <Link  href={`/countries/${capitalizeFirstLetter(
                 city.country
               )}`}>
+
               {city.country}
-              </Link>
-             </h2>
+            </Link>
+          </h2>
         </div>
       </Layout>
     </>
