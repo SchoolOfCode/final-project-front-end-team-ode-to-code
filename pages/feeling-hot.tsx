@@ -17,6 +17,7 @@ function FeelingHot<NextPage>() {
         <PageTitle text="Where's hot now?" />
         {hotCountries.map((each) => (<Tile src={each.src} destination={each.destination} text={each.text} key={each.destination} />))}
         </Layout>
+        </>
   );
 }
 
