@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import {Autoplay, Navigation, Pagination, FreeMode, Mousewheel} from "swiper";
+import { useEffect, useState } from 'react';
+import { Autoplay, Navigation, Pagination, FreeMode, Mousewheel } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Image from "next/image";
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -12,16 +12,16 @@ import 'swiper/css/free-mode';
 
 import styles from './styles/Carousel.module.css';
 
-export default function Carousel ({countries}:any) {
-const [sixCountries,setSixCountries]=useState([])
+export default function Carousel({ countries }: any) {
+  const [sixCountries, setSixCountries] = useState([]);
 
-// 5 random countries
-useEffect(()=>{
-let randomCountries:any = countries.sort(() => Math.random() - 0.5)
-let sixCountries:any = randomCountries.slice(0,6) 
-  setSixCountries(sixCountries)
-},[])
-//
+  // 5 random countries
+  useEffect(() => {
+    let randomCountries: any = countries.sort(() => Math.random() - 0.5);
+    let sixCountries: any = randomCountries.slice(0, 6);
+    setSixCountries(sixCountries);
+  }, []);
+  //
 
   return (
     <div className={styles.carousel}>
@@ -56,19 +56,41 @@ let sixCountries:any = randomCountries.slice(0,6)
           },
         }}
       >
-        {sixCountries.map((country:any)=>{
-          return(
-          <SwiperSlide className={styles.swiperSlide}>
-            <div style={{position:'relative'}}>
-            <Link href={`/countries/${country.country}`}>
-                <Image className={styles.image} src={country.image2} alt={country.country} width="232" height="324"/>
-            </Link>  
-            {/* style example */}
-            <p style={{zIndex:'2',textAlign:'center',position:'absolute',marginLeft:'40%',top:'0',right:'0%',color:'white',borderRadius:'10px',fontSize:'20px',backgroundColor:'rgba(0, 0, 0, 0.3)'}}>{country.country}</p>
-            </div> 
-          </SwiperSlide>)
+        {sixCountries.map((country: any) => {
+          return (
+            <SwiperSlide key={country.country} className={styles.swiperSlide}>
+              <div style={{ position: 'relative' }}>
+                <Link href={`/countries/${country.country}`}>
+                  <Image
+                    className={styles.image}
+                    src={country.image2}
+                    alt={country.country}
+                    width="232"
+                    height="324"
+                  />
+                </Link>
+                {/* style example */}
+                <p
+                  style={{
+                    zIndex: '2',
+                    textAlign: 'center',
+                    position: 'absolute',
+                    marginLeft: '40%',
+                    top: '0',
+                    right: '0%',
+                    color: 'white',
+                    borderRadius: '10px',
+                    fontSize: '20px',
+                    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                  }}
+                >
+                  {country.country}
+                </p>
+              </div>
+            </SwiperSlide>
+          );
         })}
       </Swiper>
     </div>
   );
-};
+}

@@ -131,12 +131,10 @@ function City({ city }: { city: any }) {
           {/* set actual country link site */}
           <h2 className={styles.country}>
             Back to{' '}
-            <Link href={`/countries/${capitalizeFirstLetter(
-                city.country
-              )}`}>
+            <Link href={`/countries/${capitalizeFirstLetter(city.country)}`}>
               {city.country}
-              </Link>
-             </h2>
+            </Link>
+          </h2>
         </div>
       </Layout>
     </>
