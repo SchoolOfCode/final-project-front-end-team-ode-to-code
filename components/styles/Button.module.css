@@ -3,8 +3,8 @@
   cursor: pointer;
   font-size: 0.65rem;
   font-weight: 600;
-  color: #003049;
-  border: 2px #003049 solid;
+  color: var(--tc1);
+  border: 2px var(--tc1) solid;
   border-radius: 15px;
   background-color: rgba(0, 0, 0, 0);
   padding: 0.15rem 1.1rem 0.15rem 1.1rem;
@@ -13,7 +13,7 @@
 }
 
 .button:hover {
-  background-color: #003049;
+  background-color: var(--tc1);
   color: #e5e5e5;
 }
 

@@ -4,6 +4,7 @@ import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import styles from '../../styles/Country.module.css';
 import Button from '../../components/Button';
+import Head from 'next/head';
 
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
 
@@ -49,21 +50,25 @@ export async function getStaticProps(context: any) {
 function Country({ country }: { country: any }) {
   return (
     <>
+      <Head>
+        <title>beyonderbound | {country.country}</title>
+      </Head>
       <Layout imageUrl={country.image}>
         <PageTitle text={country.country} />
         <div className={styles.body}>
           <div className={styles.cityList}>
             {country.cities.map((city: any) => (
-              <Link href={`/cities/${city}`}>
+              <Link  href={`/cities/${city}`}>
                 {/* <a> <p className={styles.city}>{city}</p> </a> */}
-                <a>
+                <a data-cy="countries-link">
+
                   <Button text={city} />
                 </a>
               </Link>
             ))}
           </div>
           <div>
-            <p className={styles.aboutCountry}> All About {country.country}</p>
+            <p data-cy="all-about" className={styles.aboutCountry}> All About {country.country}</p>
           </div>
           <div className={styles.countryDescription}>
             <p>{country.country_description}</p>

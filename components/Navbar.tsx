@@ -8,7 +8,7 @@ function Navbar() {
     <header>
       <div className={styles.identity}>
         <Link href="/">
-          <a>
+          <a data-cy="team-logo">
             <div className={styles.bar}>
               <div className={styles.flex}>
                 <div className={styles.flexItem}>
@@ -50,12 +50,12 @@ function Navbar() {
           <ul className={styles.menu}>
             <li>
               <Link href="/">
-                <a>Home</a>
+                <a data-cy="home">Home</a>
               </Link>
             </li>
             <li>
               <Link href="/about">
-                <a>About us</a>
+                <a data-cy="about-link">About us</a>
               </Link>
             </li>
           </ul>

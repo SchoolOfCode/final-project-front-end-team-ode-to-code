@@ -4,6 +4,7 @@ import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import Heading from '../../components/Heading';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 
@@ -65,6 +66,9 @@ function City({ city }: { city: any }) {
   let icons = ['👨‍👩‍👧‍👦 ', '🚶‍♀️ ', '💆 ', '👫 ', '👢 ', '🌞 ', '🌝 ', '💃🕺🏻 '];
   return (
     <>
+    <Head>
+      <title>beyonderbound | {city.city_name}</title>
+    </Head>
       <Layout imageUrl={city.image}>
         <PageTitle text={city.city_name} />
         <div className={styles.body}>
@@ -127,16 +131,17 @@ function City({ city }: { city: any }) {
             )}
           </div>
           <Heading text={`About ${city.city_name}`} justify="left" />
-          <p className={styles.description}>{city.city_description}</p>
+          <p data-cy="city-description" className={styles.description}>{city.city_description}</p>
           {/* set actual country link site */}
-          <h2 className={styles.country}>
+          <h2 data-cy="city-back-button" className={styles.country}>
             Back to{' '}
-            <Link href={`/countries/${capitalizeFirstLetter(
+            <Link  href={`/countries/${capitalizeFirstLetter(
                 city.country
               )}`}>
+
               {city.country}
-              </Link>
-             </h2>
+            </Link>
+          </h2>
         </div>
       </Layout>
     </>

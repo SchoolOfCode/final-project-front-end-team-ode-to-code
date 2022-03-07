@@ -1,4 +1,5 @@
 .footer {
   text-align: center;
-  position: static;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
 }

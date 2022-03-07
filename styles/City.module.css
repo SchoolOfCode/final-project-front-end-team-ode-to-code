@@ -16,8 +16,8 @@
   margin-left: auto;
   margin-right: auto;
   width: 85%;
-  border-top: solid #264653 2px;
-  border-bottom: solid #264653 2px;
+  border-top: solid var(--tc1) 2px;
+  border-bottom: solid var(--tc1) 2px;
   text-transform: capitalize;
 }
 
@@ -40,5 +40,5 @@
 }
 
 .country {
-  color: #264653;
+  color: var(--tc1);
 }
