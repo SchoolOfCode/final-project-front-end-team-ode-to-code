@@ -4,6 +4,7 @@ import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import Heading from '../../components/Heading';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 
@@ -65,6 +66,9 @@ function City({ city }: { city: any }) {
   let icons = ['👨‍👩‍👧‍👦 ', '🚶‍♀️ ', '💆 ', '👫 ', '👢 ', '🌞 ', '🌝 ', '💃🕺🏻 '];
   return (
     <>
+    <Head>
+      <title>beyonderbound | {city.city_name}</title>
+    </Head>
       <Layout imageUrl={city.image}>
         <PageTitle text={city.city_name} />
         <div className={styles.body}>

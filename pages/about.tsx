@@ -6,9 +6,14 @@ import Link from 'next/link';
 import TeamMember from '../components/TeamMember';
 import { teamOdeToCode } from '../lib/team';
 import type { NextPage } from 'next';
+import Head from 'next/head';
 
 function About<NextPage>() {
    return (
+     <>
+     <Head>
+       <title>beyonderbound | About Us</title>
+     </Head>
       <Layout imageUrl={images.about}>
         <PageTitle text="About Us" />
         <div data-cy="about-text-parent" className={styles.body}>
@@ -25,9 +30,11 @@ function About<NextPage>() {
           key={teamMember.Name}/>
           </li>))}
         </ul>
-      </div>
-    </Layout>
-  );
+        </div>
+       </Layout>
+       </>
+  )
+
 }
 
 export default About;
