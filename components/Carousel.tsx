@@ -59,12 +59,17 @@ let sixCountries:any = randomCountries.slice(0,6)
         {sixCountries.map((country:any)=>{
           return(
           <SwiperSlide className={styles.swiperSlide}>
-            <div style={{position:'relative'}}>
-            <Link href={`/countries/${country.country}`}>
-                <Image className={styles.image} src={country.image2} alt={country.country} width="232" height="324"/>
-            </Link>  
-            {/* style example */}
-            <p style={{zIndex:'2',textAlign:'center',position:'absolute',marginLeft:'40%',top:'0',right:'0%',color:'white',borderRadius:'10px',fontSize:'20px',backgroundColor:'rgba(0, 0, 0, 0.3)'}}>{country.country}</p>
+            <div>
+              <div style={{position:'relative'}}>
+                <Link href={`/countries/${country.country}`}>
+                  <Image className={styles.image} src={country.image2} alt={country.country} width="232" height="324"/>
+                </Link>  
+              </div>
+              <div className={styles.imageText}>
+                <p >
+                  {country.country}
+                </p>
+              </div>
             </div> 
           </SwiperSlide>)
         })}
