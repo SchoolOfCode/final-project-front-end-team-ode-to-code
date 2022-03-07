@@ -134,9 +134,10 @@ function City({ city }: { city: any }) {
             <Link  href={`/countries/${capitalizeFirstLetter(
                 city.country
               )}`}>
+
               {city.country}
-              </Link>
-             </h2>
+            </Link>
+          </h2>
         </div>
       </Layout>
     </>

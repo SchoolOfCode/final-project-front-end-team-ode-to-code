@@ -57,6 +57,7 @@ function Country({ country }: { country: any }) {
               <Link  href={`/cities/${city}`}>
                 {/* <a> <p className={styles.city}>{city}</p> </a> */}
                 <a data-cy="countries-link">
+
                   <Button text={city} />
                 </a>
               </Link>

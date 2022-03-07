@@ -1,12 +1,11 @@
 import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import { images } from '../lib/images';
-import styles from '../styles/About.module.css'
+import styles from '../styles/About.module.css';
 import Link from 'next/link';
 import TeamMember from '../components/TeamMember';
 import { teamOdeToCode } from '../lib/team';
 import type { NextPage } from 'next';
-
 
 function About<NextPage>() {
    return (
@@ -26,9 +25,9 @@ function About<NextPage>() {
           key={teamMember.Name}/>
           </li>))}
         </ul>
-        </div>
-       </Layout>
-  )
+      </div>
+    </Layout>
+  );
 }
 
-export default About
+export default About;
