@@ -3,9 +3,14 @@ import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import { images } from '../lib/images';
 import styles from '../styles/Traveltips.module.css';
+import Head from 'next/head';
 
 function TravelTips<NextPage>() {
   return (
+    <>
+    <Head>
+      <title>beyonderbound | Travel Tips</title>
+    </Head>
     <Layout imageUrl={images.article2L}>
       <PageTitle text="Travel Tips" />
       <div className={styles.body}>
@@ -78,6 +83,7 @@ function TravelTips<NextPage>() {
         </div>
       </div>
     </Layout>
+    </>
   );
 }
 

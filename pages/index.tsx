@@ -62,6 +62,10 @@ useEffect(()=>{
 },[])
 
   return (
+    <>
+    <Head>
+      <title>beyonderbound | Home</title>
+    </Head>
       <Layout imageUrl={images.homepage}>
          <SearchSection
           input={input}
@@ -97,6 +101,7 @@ useEffect(()=>{
         <Carousel countries={countries}/>
         <Glasssection />
       </Layout>
+      </>
   );
 }
 

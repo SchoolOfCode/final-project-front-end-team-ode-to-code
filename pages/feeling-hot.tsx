@@ -3,9 +3,14 @@ import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import { images } from '../lib/images';
 import styles from '../styles/feelinghot.module.css';
+import Head from 'next/head';
 
 function FeelingHot<NextPage>() {
   return (
+    <>
+    <Head>
+      <title>beyonderbound | Where's hot now?</title>
+    </Head>
      <Layout imageUrl={images.article3L}>
         <PageTitle text="Where's hot now?" />
 
@@ -45,6 +50,7 @@ function FeelingHot<NextPage>() {
 
 
       </Layout>
+      </>
   );
 }
 

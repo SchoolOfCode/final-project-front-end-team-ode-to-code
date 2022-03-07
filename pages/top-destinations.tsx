@@ -3,9 +3,14 @@ import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import { images } from '../lib/images';
 import styles from '../styles/Topdestination.module.css';
+import Head from 'next/head';
 
 function TopDestinations<NextPage>() {
   return (
+    <>
+    <Head>
+      <title>beyonderbound | Top Destinations</title>
+    </Head>
       <Layout imageUrl={images.article1L}>
         <PageTitle text="Top 2022 Destinations" />
 
@@ -59,7 +64,7 @@ function TopDestinations<NextPage>() {
 
 
       </Layout>
-
+    </>
       
   );
 }

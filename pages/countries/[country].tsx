@@ -4,6 +4,7 @@ import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import styles from '../../styles/Country.module.css';
 import Button from '../../components/Button';
+import Head from 'next/head';
 
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
 
@@ -49,6 +50,9 @@ export async function getStaticProps(context: any) {
 function Country({ country }: { country: any }) {
   return (
     <>
+      <Head>
+        <title>beyonderbound | {country.country}</title>
+      </Head>
       <Layout imageUrl={country.image}>
         <PageTitle text={country.country} />
         <div className={styles.body}>

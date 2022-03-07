@@ -13,7 +13,7 @@ function Layout({
   return (
     <div>
       <Head>
-        <title>beyonderbound</title>
+        {/* <title>beyonderbound</title> */}
       </Head>
       <Navbar />
       <WaveImage imageUrl={imageUrl} />
