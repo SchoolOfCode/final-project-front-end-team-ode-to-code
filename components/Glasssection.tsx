@@ -6,7 +6,7 @@ import styles from './styles/Glasssection.module.css';
 
 export default function Glasssection() {
   return (
-    <section className={styles.section}>
+    <section data-cy="glass-section" className={styles.section}>
       <Link href="/top-destinations">
         <a>
           <GlassCard text="Top 2022 Destinations" imageUrl={images.article1} />
