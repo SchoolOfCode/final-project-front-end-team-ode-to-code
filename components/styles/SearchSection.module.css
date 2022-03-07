@@ -63,7 +63,7 @@
   height: 1.25rem;
   width: 1.25rem;
   border-radius: 50%;
-  border: 3px #003049 solid;
+  border: 3px var(--tc1) solid;
   display: inline-block;
   position: relative;
   transform: translateY(2px);
@@ -73,8 +73,8 @@
   content: '';
   width: 1px;
   height: 12px;
-  border: 1.5px #003049 solid;
-  background-color: #003049;
+  border: 1.5px var(--tc1) solid;
+  background-color: var(--tc1);
   position: absolute;
   top: 0;
   left: 0;
@@ -102,13 +102,13 @@
   opacity: 0;
   transition: opacity 0.3s;
   content: 'right';
-    height: 100px;
-    transform: translateX(calc(100% + 10px));
-    opacity: 1;
+  height: 100px;
+  transform: translateX(calc(100% + 10px));
+  opacity: 1;
 }
 
 .tooltip .tooltiptext::after {
-  content: "";
+  content: '';
   top: 100%;
   left: 50%;
   margin-right: 20px;
@@ -122,7 +122,6 @@
   opacity: 0.8;
   margin-right: 1px;
 }
-
 
 @media screen and (min-width: 768px) {
   .searchContainer {
@@ -147,6 +146,4 @@
   .input button::after {
     transform: translateY(23px) translateX(4px) rotate(45deg);
   }
-
 }
-
