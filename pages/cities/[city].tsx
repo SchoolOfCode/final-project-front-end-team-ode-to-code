@@ -63,7 +63,7 @@ function City({ city }: { city: any }) {
   }, []);
 
   const stars = '⭐️';
-  let icons = ['👨‍👩‍👧‍👦 ', '🚶‍♀️ ', '💆 ', '👫 ', '👢 ', '🌞 ', '🌝 ', '💃🕺🏻 '];
+  let icons = ['👨‍👩‍👧‍👦 ', '🚶‍♀️ ', '💆 ', '👫 ', '👢 ', '🌞 ', '🌝 ', '💃🕺🏻 ','🧗🏼‍♀️ ','⛺️'];
   return (
     <>
     <Head>
@@ -84,7 +84,7 @@ function City({ city }: { city: any }) {
               </p>
               <p className={styles.emojis}>
                 {city.great_for.map((element: string) => {
-                  if (element === 'families') {
+                  if (element === 'family') {
                     return (element = icons[0]);
                   }
                   if (element === 'solo') {
@@ -107,6 +107,9 @@ function City({ city }: { city: any }) {
                   }
                   if (element === 'nightlife') {
                     return (element = icons[7]);
+                  }
+                  if (element === 'adventure') {
+                    return (element = icons[8]);
                   }
                 })}
               </p>
