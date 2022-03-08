@@ -10,23 +10,23 @@ import styles from '../styles/Results.module.css';
 function Result() {
   const { query } = useRouter();
   const { data, isLoading } = useContext(AppContext);
+  let cityList = [];
+  let countryList = [];
+  let newValue;
+  let searchCriteria;
 
   const [citySearchResults, setCitySearchResults] = useState([]);
   const [countrySearchResults, setCountrySearchResults] = useState([]);
 
   useEffect(() => {
-    data && (query.continent || query.rating || query.budget || query.holiday_type) &&
-    advancedSearch(data); 
-    data && query.search && basicSearch(data); 
+    data &&
+      (query.continent || query.rating || query.budget || query.holiday_type) &&
+      advancedSearch(data);
+    data && query.search && basicSearch(data);
   }, [data]);
 
-
   function basicSearch(data) {
-    console.log("running basic search")
-    let cityList = [];
-    let countryList = [];
-    let newValue;
-    let searchCriteria;
+    console.log('running basic search');
     data.cities.map((city) => {
       searchCriteria = query.search.toLowerCase();
       if (
@@ -65,9 +65,7 @@ function Result() {
 
   function advancedSearch(data) {
     console.log('running advanced search');
-    let cityList = [];
-    let countryList = [];
-    let searchCriteria = {
+    searchCriteria = {
       holiday_type: '',
       rating: '',
       budget: '',
@@ -98,25 +96,24 @@ function Result() {
       // countryList = filteredCountries.map(country => country.country);
       // setCountrySearchResults(countryList);
     }
-  
+
     function filterCities(data, searchCriteria) {
       const filterKeys = Object.keys(searchCriteria);
       return data.filter((city) => {
         return filterKeys.every((key) => {
           if (!searchCriteria[key].length) return true;
           if (typeof city[key] === 'number') {
-            if (Number(searchCriteria[key]) === city[key]) return true;}
-          else {
+            if (Number(searchCriteria[key]) === city[key]) return true;
+          } else {
             if (searchCriteria[key] === city[key].toLowerCase()) return true;
           }
         });
       });
     }
 
-    const filteredCities = filterCities(data.cities, searchCriteria)
-    cityList = filteredCities.map(city => city.city_name)
-    setCitySearchResults(cityList)
-
+    const filteredCities = filterCities(data.cities, searchCriteria);
+    cityList = filteredCities.map((city) => city.city_name);
+    setCitySearchResults(cityList);
   }
 
   return (
@@ -124,16 +121,16 @@ function Result() {
       <PageTitle text="Search Results" />
       <div className={styles.body}>
         <ul>
-          {countrySearchResults.length > 0 &&
-            countrySearchResults.map((country) => (
-              <li key={country} className={styles.listItem}>
-                <Link href={`/countries/${country}`}>{country}</Link>
-              </li>
-            ))}
           {citySearchResults.length > 0 &&
             citySearchResults.map((city) => (
               <li key={city} className={styles.listItem}>
                 <Link href={`/cities/${city}`}>{city}</Link>
+              </li>
+            ))}
+          {countrySearchResults.length > 0 &&
+            countrySearchResults.map((country) => (
+              <li key={country} className={styles.listItem}>
+                <Link href={`/countries/${country}`}>{country}</Link>
               </li>
             ))}
           {countrySearchResults.length === 0 &&
