@@ -15,10 +15,8 @@ describe("renders a cities page", () => {
             });
             
 /// fetch cities API status
-it.skip("should fetch the cities infos", () => {
-// wrap null, so that you can use `then` to invoke a callback as an arbitrary command
-// and return a Cypress.Promise - so that cypress will wait on it's result
-// (or just use cy.request :))
+it("should fetch the cities infos", () => {
+
       try {
         cy.request("GET","http://localhost:3000/cities/Paris").then((req ,res) => {
         expect(req.status).to.eq(200)
@@ -30,4 +28,20 @@ it.skip("should fetch the cities infos", () => {
         console.log(e,'Error')
       }
   })
+
+///Unit test APi
+  it("should fetch the cities", async() => {
+          const result =  await fetch(`https://four-week-project.herokuapp.com/cities/?name=Paris`);
+          const citydata =  await result.json();
+  
+          console.log(citydata.payload[0])
+          expect(citydata.payload[0].city_name).to.eq('Paris')
+          expect(citydata.payload[0].country).to.eq('France')
+          expect(citydata.payload[0].continent).to.eq('Europe')
+          expect(citydata.payload[0].holiday_type).to.eq('city break')
+          expect(citydata.payload[0].rating).to.eq(5)
+          expect(citydata.payload[0].tags.length).to.eq(5)
+          expect(citydata.payload[0].tags).to.be.a('array')
+          expect(citydata.payload[0].image).to.be.a('string')
+      })
 });
