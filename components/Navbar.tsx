@@ -8,9 +8,9 @@ function Navbar() {
     <header>
       <div className={styles.identity}>
         <Link href="/">
-          <a data-cy="team-logo">
-            <div className={styles.bar}>
-              <div className={styles.flex}>
+          <div className={styles.bar}>
+            <div className={styles.flex}>
+              <a data-cy="team-logo">
                 <div className={styles.flexItem}>
                   <Image
                     src={images.globe}
@@ -25,18 +25,16 @@ function Navbar() {
                     be<span className={styles.span}>yonder</span>bound
                   </h1>
                 </div>
-              </div>
+              </a>
             </div>
-          </a>
+          </div>
         </Link>
       </div>
       <nav>
         <div className={styles.menuToggle}>
           {/* A fake / hidden checkbox is used as click reciever,
           so you can use the :checked selector on it. */}
-
           <input type="checkbox" />
-
           {/* Some spans to act as a hamburger.
     
           They are acting like a real hamburger,
