@@ -28,7 +28,6 @@ it("should fetch the countries infos", () => {
       const result =  await fetch(`https://four-week-project.herokuapp.com/countries/?name=Mexico`);
       const countrydata =  await result.json();
 
-      console.log(countrydata)
       expect(countrydata.payload).to.be.a('array') 
       expect(countrydata.payload[0].continent).to.eq('South America')
       expect(countrydata.payload[0].country).to.eq('Mexico')

@@ -34,7 +34,6 @@ it("should fetch the cities infos", () => {
           const result =  await fetch(`https://four-week-project.herokuapp.com/cities/?name=Paris`);
           const citydata =  await result.json();
   
-          console.log(citydata.payload[0])
           expect(citydata.payload[0].city_name).to.eq('Paris')
           expect(citydata.payload[0].country).to.eq('France')
           expect(citydata.payload[0].continent).to.eq('Europe')
