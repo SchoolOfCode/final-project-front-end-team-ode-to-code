@@ -111,6 +111,12 @@ function City({ city }: { city: any }) {
                   if (element === 'adventure') {
                     return (element = icons[8]);
                   }
+                  if (element === 'backpacking') {
+                    return (element = icons[9]);
+                  }
+                  if (element === 'families') {
+                    return (element = icons[0]);
+                  }
                 })}
               </p>
             </div>

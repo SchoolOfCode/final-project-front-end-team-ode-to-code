@@ -16,7 +16,7 @@ export default function SearchSection({handleChange,handleSubmit,luckyDip}:any) 
             <input id="input-text" className={styles.tooltip} type="text" placeholder="Search for holiday type..." onChange={handleChange}></input> 
             <br/>  
             <span className={styles.tooltiptext} >
-              <p>[￡:pound] [👨‍👩‍👧‍👦:family] [🚶‍♀️:solo] [💆:city break] [👫:romance] [👢Shopping] [🌞:sun] [🌝:honeymoon] [💃🕺🏻:night life]</p>
+              <p>[￡:pound] [👨‍👩‍👧‍👦:family] [🚶‍♀️:solo] [💆:city break] [👫:romance] [👢Shopping] [🌞:sun] [🌝:honeymoon] [💃🕺🏻:night life] [🧗🏼‍♀️:adventure] [⛺️:backpacking]</p>
             </span>
         </div>
        
