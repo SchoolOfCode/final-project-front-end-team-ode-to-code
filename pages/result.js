@@ -66,12 +66,18 @@ function Result() {
   function advancedSearch(data) {
     console.log('running advanced search');
     let cityList = [];
+    let countryList = [];
     let searchCriteria = {
       holiday_type: '',
       rating: '',
       budget: '',
       continent: '',
     };
+
+    // function filterCountries(data, criteria) {
+    //   return data.filter((country) => {
+    //     if (criteria === country.continent.toLowerCase()) return true })
+    //   }
 
     if (query.holiday_type) {
       searchCriteria.holiday_type = query.holiday_type;
@@ -87,33 +93,30 @@ function Result() {
 
     if (query.continent) {
       searchCriteria.continent = query.continent;
+      // const filteredCountries = filterCountries(data.countries, query.continent)
+      // console.log(filteredCountries)
+      // countryList = filteredCountries.map(country => country.country);
+      // setCountrySearchResults(countryList);
     }
-    console.log(searchCriteria);
-
-    function filterData(data, searchCriteria) {
+  
+    function filterCities(data, searchCriteria) {
       const filterKeys = Object.keys(searchCriteria);
-      return data.cities.filter((city) => {
+      return data.filter((city) => {
         return filterKeys.every((key) => {
-          if (!searchCriteria[key].length) {console.log(searchCriteria[key] + " has no length"); return true;}
+          if (!searchCriteria[key].length) return true;
           if (typeof city[key] === 'number') {
-            console.log(city[key] + " is a number")
-            if (Number(searchCriteria[key]) === city[key]) return true;
-            }
+            if (Number(searchCriteria[key]) === city[key]) return true;}
           else {
-            console.log(city[key] + " is not a number")
             if (searchCriteria[key] === city[key].toLowerCase()) return true;
           }
         });
       });
     }
 
-    console.log(filterData(data, searchCriteria));
+    const filteredCities = filterCities(data.cities, searchCriteria)
+    cityList = filteredCities.map(city => city.city_name)
+    setCitySearchResults(cityList)
 
-    // searchData = () => {
-    //   const filteredData = filterData(data, searchCriteria)
-    //   cityList = filteredData.filter(city => { return city.city_name})
-    // }
-    // setCitySearchResults(cityList);
   }
 
   return (
