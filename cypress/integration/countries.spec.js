@@ -9,7 +9,7 @@ describe("renders a cities page", () => {
 
       
         /// fetch cities API status
-it("should fetch the countries infos", () => {
+it("should check  country request status for Mexico link", () => {
   // wrap null, so that you can use `then` to invoke a callback as an arbitrary command
   // and return a Cypress.Promise - so that cypress will wait on it's result
   // (or just use cy.request :))
@@ -24,7 +24,7 @@ it("should fetch the countries infos", () => {
     })
 
 ////unit test Api
-    it("should fetch the countries", async() => {
+    it("should check Mexico values", async() => {
       const result =  await fetch(`https://four-week-project.herokuapp.com/countries/?name=Mexico`);
       const countrydata =  await result.json();
 

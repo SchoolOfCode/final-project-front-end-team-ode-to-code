@@ -6,7 +6,7 @@ describe("renders a cities page", () => {
     });
 
 ///should be clickable
-    it.skip("should be clickable", () => {
+    it("should be clickable", () => {
         cy.get('[data-cy=city-back-button]').click();
         });
 ///css check
@@ -15,7 +15,7 @@ describe("renders a cities page", () => {
             });
             
 /// fetch cities API status
-it("should fetch the cities infos", () => {
+it("should check API request for Paris", () => {
 
       try {
         cy.request("GET","http://localhost:3000/cities/Paris").then((req ,res) => {
@@ -30,7 +30,7 @@ it("should fetch the cities infos", () => {
   })
 
 ///Unit test APi
-  it("should fetch the cities", async() => {
+  it("should fetch the cities values for Paris", async() => {
           const result =  await fetch(`https://four-week-project.herokuapp.com/cities/?name=Paris`);
           const citydata =  await result.json();
   
