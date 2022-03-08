@@ -78,4 +78,22 @@ describe('Beyonderbound Website Walkthrough', () => {
 
     cy.get('[data-cy=home]').click();
   });
+
+  it('clicking "Top 2022 Destinations" shows appropriate page and content"', () => {
+    cy.get('[data-cy=glass-section]').contains('Top 2022 Destinations').click();
+
+    cy.go('back');
+  });
+
+  it('clicking "Travel Tips" shows appropriate page and content"', () => {
+    cy.get('[data-cy=glass-section]').contains('Travel Tips').click();
+
+    cy.go('back');
+  });
+
+  it('clicking "Wheres hot now?" shows appropriate page and content"', () => {
+    cy.get('[data-cy=glass-section]').contains("Where's hot now?").click();
+
+    cy.go('back');
+  });
 });
