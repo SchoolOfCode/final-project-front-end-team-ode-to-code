@@ -46,4 +46,36 @@ describe('Beyonderbound Website Walkthrough', () => {
 
     cy.get('footer').contains('All rights reserved ©');
   });
+
+  it('clicking "Lucky Dip" takes you to a random city page', () => {
+    cy.get('button').contains('Lucky Dip').click();
+
+    cy.url().should('include', '/cities/');
+  });
+
+  it('displays city page information', () => {
+    cy.get('h1');
+    cy.get('[data-cy=stats]').contains('Rating');
+    cy.get('[data-cy=stats]').contains('Great for');
+
+    cy.get('[data-cy=weather]').contains('Current Weather in');
+    cy.get('[data-cy=weather]').contains('Conditions');
+    cy.get('[data-cy=weather]').contains('Temp');
+    cy.get('[data-cy=weather]').contains("Today's High");
+    cy.get('[data-cy=weather]').contains("Today's Low");
+
+    cy.get('[data-cy=city-back-button').contains('Back to');
+    cy.get('[data-cy=country').click();
+
+    cy.url().should('include', '/countries/');
+  });
+
+  it('displays countries page information', () => {
+    cy.get('h1');
+    cy.get('[data-cy=all-about]').contains('All About');
+
+    cy.get('[type="checkbox"]').check();
+
+    cy.get('[data-cy=home]').click();
+  });
 });
