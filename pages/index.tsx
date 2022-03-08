@@ -10,7 +10,6 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import { useRouter } from 'next/router';
 
-
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
 
@@ -28,80 +27,80 @@ export async function getStaticProps() {
 function Home<NextPage>({
   cities,
   countries,
-} : {
+}: {
   cities: any;
   countries: any;
 }) {
-
   const [input, setInput] = useState('');
-  const [randCity,setRandCity] = useState('');
-  const router = useRouter()
+  const [randCity, setRandCity] = useState('');
+  const router = useRouter();
 
   ///////Search functionality
   function handleChange(e: any) {
     setInput(e.target.value);
   }
-  
+
   function handleSubmit(e: any) {
     e.preventDefault();
     e.target.reset();
-    router.push(`/result?search=${input}`)
+    router.push(`/result?search=${input}`);
   }
 
-function luckyDip() { //function to get the city name  
+  function luckyDip() {
+    //function to get the city name
     let url = `/cities/${randCity}`;
-    router.push(url)
+    router.push(url);
   }
 
-useEffect(()=>{
-  function randomCity(){
-    let randomCity:any = Math.floor(Math.random() * cities.length)
-    setRandCity(cities[randomCity].city_name)
-  }
-  randomCity()
-},[])
+  useEffect(() => {
+    function randomCity() {
+      let randomCity: any = Math.floor(Math.random() * cities.length);
+      setRandCity(cities[randomCity].city_name);
+    }
+    randomCity();
+  }, []);
 
   return (
     <>
-    <Head>
-      <title>beyonderbound | Home</title>
-    </Head>
+      <Head>
+        <title>beyonderbound | Home</title>
+      </Head>
       <Layout imageUrl={images.homepage}>
-         <SearchSection
+        <SearchSection
           input={input}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          luckyDip={luckyDip} 
+          luckyDip={luckyDip}
         />
-        {input && 
-        <div className={styles.searchResult}>
-          {cities.map((city: any) => (
-            <div key={city.id}>
-              <Link href={`/cities/${city.city_name}`}>
-                <a>
-                  {city.city_name === input ||
-                  city.country === input ||
-                  city.continent === input ||
-                  city.rating === input ||
-                  city.great_for.join(',').includes(input) ||
-                  city.tags.join(',').includes(input) ||
-                  city.budget === input ||
-                  city.holiday_type === input
-                    ? city.city_name
-                    : false}
-                </a>
-              </Link>
-            </div>
-          ))}
-        </div>
-        }
+        {input && (
+          <div className={styles.searchResult}>
+            {cities.map((city: any) => (
+              <div key={city.id}>
+                <Link href={`/cities/${city.city_name}`}>
+                  <a>
+                    {city.city_name === input ||
+                    city.country === input ||
+                    city.continent === input ||
+                    city.rating === input ||
+                    city.great_for.join(',').includes(input) ||
+                    city.tags.join(',').includes(input) ||
+                    city.budget === input ||
+                    city.holiday_type === input
+                      ? city.city_name
+                      : false}
+                  </a>
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
         <div className="wrapper wrapper--lg">
           <Heading text="Countries to discover..." justify="left" />
         </div>
-        <Carousel countries={countries}/>
+        <Carousel countries={countries} />
         <Glasssection />
       </Layout>
-      </>
+    </>
   );
 }
 
