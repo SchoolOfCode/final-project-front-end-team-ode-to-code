@@ -41,7 +41,7 @@ export default function SearchSection({
         {/* <p>￡:pound,👨‍👩‍👧‍👦:family,🚶‍♀️:solo,💆:city break,</p>
         <p>👫:romance,👢Shopping,🌞:sun,🌝:honeymoon,💃🕺🏻:night life</p> */}
 
-        {/* <div className="dropdown">
+        <div className="dropdown">
           <button className={styles.dropdownButton}>Advanced</button>
           <div className="advanced-dropdown-content">
             <div className="holiday-type-dropdown">
@@ -68,7 +68,7 @@ export default function SearchSection({
             </div>
           </div>
         </div>
-        <Button text="Lucky Dip" luckyDip={luckyDip} /> */}
+        <Button text="Lucky Dip" luckyDip={luckyDip} />
         <AdvancedSearch />
       </div>
     </div>
