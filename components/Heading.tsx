@@ -19,7 +19,8 @@ export default function Heading({
   justify: string;
 }) {
   return (
-    <h2 data-cy="heading"
+    <h2
+      data-cy="heading"
       className={styles.heading}
       style={{ textAlign: justify } as React.CSSProperties}
     >

@@ -63,12 +63,23 @@ function City({ city }: { city: any }) {
   }, []);
 
   const stars = '⭐️';
-  let icons = ['👨‍👩‍👧‍👦   ', '🚶‍♀️   ', '💆   ', '👫   ', '👢  ', '🌞   ', '🌝   ', '💃🕺🏻   ','🧗🏼‍♀️   ','⛺️  '];
+  let icons = [
+    '👨‍👩‍👧‍👦   ',
+    '🚶‍♀️   ',
+    '💆   ',
+    '👫   ',
+    '👢  ',
+    '🌞   ',
+    '🌝   ',
+    '💃🕺🏻   ',
+    '🧗🏼‍♀️   ',
+    '⛺️  ',
+  ];
   return (
     <>
-    <Head>
-      <title>beyonderbound | {city.city_name}</title>
-    </Head>
+      <Head>
+        <title>beyonderbound | {city.city_name}</title>
+      </Head>
       <Layout imageUrl={city.image}>
         <PageTitle text={city.city_name} />
         <div className={styles.body}>
