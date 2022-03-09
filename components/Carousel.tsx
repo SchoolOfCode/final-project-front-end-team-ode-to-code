@@ -67,7 +67,7 @@ export default function Carousel({ countries }: any) {
               </div>
               <div className={styles.imageText}>
                 <p >
-                  {country.country}
+                <Link href={`/countries/${country.country}`}>{country.country}</Link> 
                 </p>
               </div>
             </div> 
