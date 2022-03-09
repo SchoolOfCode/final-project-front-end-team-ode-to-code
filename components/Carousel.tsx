@@ -58,7 +58,7 @@ export default function Carousel({ countries }: any) {
       >
         {sixCountries.map((country: any) => {
           return (
-            <SwiperSlide className={styles.swiperSlide}>
+            <SwiperSlide key={country.country} className={styles.swiperSlide}>
               <div>
                 <div style={{ position: 'relative' }}>
                   <Link href={`/countries/${country.country}`}>
