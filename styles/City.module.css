@@ -42,3 +42,7 @@
 .country {
   color: var(--tc1);
 }
+
+.country a {
+  color: var(--tc1);
+}
