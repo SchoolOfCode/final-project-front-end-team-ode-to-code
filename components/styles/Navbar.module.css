@@ -21,7 +21,7 @@
 
 .flexItem h1 {
   color: var(--tc1);
-
+  cursor: pointer;
 }
 
 .span {
@@ -30,6 +30,7 @@
 
 .globe {
   transform: rotate(23.5deg);
+  cursor: pointer;
 }
 
 .menuToggle {
@@ -40,7 +41,7 @@
   z-index: 2;
   -webkit-user-select: none;
   user-select: none;
-  }
+}
 
 .menuToggle a {
   text-decoration: none;
@@ -114,7 +115,7 @@
   transform-origin: 0% 0%;
   transform: translate(0, -22rem);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  }
+}
 
 .menu li {
   padding: 10px 0;
@@ -135,7 +136,6 @@
   }
 
   .flexItem h1 {
-    /* padding-bottom: 1.2rem; */
     font-size: 1.1rem;
   }
 
