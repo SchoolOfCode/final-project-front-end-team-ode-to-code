@@ -17,20 +17,10 @@ export default function SearchSection({
       <div className={styles.input}>
         <form onSubmit={handleSubmit}>
           <div className={styles.tooltip}>
-            <input
-              data-cy="search-input"
-              id="input-text"
-              className={styles.tooltip}
-              type="text"
-              placeholder="Search for holiday type..."
-              onChange={handleChange}
-            ></input>
-            <br />
-            <span className={styles.tooltiptext}>
-              <p>
-                [￡:pound] [👨‍👩‍👧‍👦:family] [🚶‍♀️:solo] [💆:city break] [👫:romance]
-                [👢Shopping] [🌞:sun] [🌝:honeymoon] [💃🕺🏻:night life]
-              </p>
+            <input data-cy="search-input" id="input-text" className={styles.tooltip} type="text" placeholder="Search for holiday type..." onChange={handleChange}></input> 
+            <br/>  
+            <span className={styles.tooltiptext} >
+              <p>[￡:pound] [👨‍👩‍👧‍👦:family] [🚶‍♀️:solo] [💆:city break] [👫:romance] [👢Shopping] [🌞:sun] [🌝:honeymoon] [💃🕺🏻:night life] [🧗🏼‍♀️:adventure] [⛺️:backpacking]</p>
             </span>
           </div>
 
@@ -38,8 +28,6 @@ export default function SearchSection({
         </form>
       </div>
       <div className={styles.buttons}>
-        {/* <p>￡:pound,👨‍👩‍👧‍👦:family,🚶‍♀️:solo,💆:city break,</p>
-        <p>👫:romance,👢Shopping,🌞:sun,🌝:honeymoon,💃🕺🏻:night life</p> */}
         <Button text="Lucky Dip" luckyDip={luckyDip} />
       </div>
     </div>

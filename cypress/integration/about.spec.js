@@ -6,20 +6,20 @@
 // https://on.cypress.io/writing-first-test
 
 describe('check about page', () => {
-    it.skip('Should  render the about page', () => {
+    it('Should  render the about page', () => {
         cy.visit("http://localhost:3000/about")
     });
 
     
  describe('Team name ', () => {
-        it.skip('should contain the Team name', () => {
+        it('should contain the Team name', () => {
             cy.get('[data-cy=about-title]').contains('Team Ode to Code')
         })
      })
 
 
 describe('Children presence', () => {
-        it.skip('should contain  unorder list and paragraph as children element', () => {
+        it('should contain  unorder list and paragraph as children element', () => {
             cy.get('[data-cy=about-text-parent]').children('p')
             cy.get('[data-cy=about-text-parent]').children('ul')
            
