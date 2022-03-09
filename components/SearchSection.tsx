@@ -48,13 +48,6 @@ export default function SearchSection({
     );
   }
 
-
-export default function SearchSection({
-  handleChange,
-  handleSubmit,
-  luckyDip,
-}: any) {
-  
   return (
     <div className={styles.searchContainer}>
       <div className={styles.heading}>
