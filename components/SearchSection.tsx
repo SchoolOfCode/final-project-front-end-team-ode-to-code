@@ -81,8 +81,8 @@ export default function SearchSection({
         <Button text="Advanced" action={toggler} />
         <Button text="Lucky Dip" action={luckyDip} />
         {toggle && (
-          <form onSubmit={submitAdvancedCriteria}>
-            <label>Holiday Type</label>
+          <form className={styles.form} onSubmit={submitAdvancedCriteria}>
+            {/* <label>Holiday Type</label> */}
             <select onChange={changeAdvancedCriteria} name="holiday_type">
               <option value="">Holiday Type</option>
               <option value="sun">Sun Holiday</option>
@@ -90,14 +90,14 @@ export default function SearchSection({
               <option value="adventure">Adventure</option>
               <option value="winter">Winter Holiday</option>
             </select>
-            <label>Budget</label>
+            {/* <label>Budget</label> */}
             <select onChange={changeAdvancedCriteria} name="budget">
               <option value="">Budget</option>
               <option value="£">£</option>
               <option value="££">££</option>
               <option value="£££">£££</option>
             </select>
-            <label>Rating</label>
+            {/* <label>Rating</label> */}
             <select onChange={changeAdvancedCriteria} name="rating">
               <option value="">Rating</option>
               <option value="1">⭐</option>
@@ -106,7 +106,7 @@ export default function SearchSection({
               <option value="4">⭐⭐⭐⭐</option>
               <option value="5">⭐⭐⭐⭐⭐</option>
             </select>
-            <label>Continent</label>
+            {/* <label>Continent</label> */}
             <select onChange={changeAdvancedCriteria} name="continent">
               <option value="">Continent</option>
               <option value="europe">Europe</option>
@@ -116,7 +116,7 @@ export default function SearchSection({
               <option value="australia">Australia</option>
               <option value="asia">Asia</option>
             </select>
-            <input value="Search" type="submit" />
+            <input className={styles.search} value="Search" type="submit" />
           </form>
         )}
       </div>
