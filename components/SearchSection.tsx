@@ -3,18 +3,49 @@ import Button from './Button';
 import Heading from './Heading';
 import styles from './styles/SearchSection.module.css';
 import Link from 'next/link';
-import AdvancedSearch from './AdvancedSearch';
 import { useState } from 'react';
+import Router, { useRouter } from 'next/router';
 
 export default function SearchSection({
   handleChange,
   handleSubmit,
   luckyDip,
 }: any) {
+  interface iAdvancedOptions {
+    holiday_type: string;
+    budget: string;
+    rating: string;
+    continent: string;
+  }
+
   const [toggle, setToggle] = useState<boolean>(false);
+
+  const [advancedOptions, setAdvancedOptions] = useState<iAdvancedOptions>({
+    holiday_type: '',
+    budget: '',
+    rating: '',
+    continent: '',
+  });
 
   function toggler() {
     setToggle(!toggle);
+  }
+
+  function changeAdvancedCriteria(e: any) {
+    const name = e.target.name;
+    const value = e.target.value;
+    setAdvancedOptions((advancedOptions) => ({
+      ...advancedOptions,
+      [name]: value,
+    }));
+  }
+
+  function submitAdvancedCriteria(e: any) {
+    e.preventDefault();
+    const { holiday_type, budget, rating, continent } = advancedOptions;
+    Router.push(
+      `/result?holiday_type=${holiday_type}&budget=${budget}&rating=${rating}&continent=${continent}`
+    );
   }
 
   return (
@@ -50,33 +81,43 @@ export default function SearchSection({
         <Button text="Advanced" action={toggler} />
         <Button text="Lucky Dip" action={luckyDip} />
         {toggle && (
-          <div className="dropdown">
-            <div className="advanced-dropdown-content">
-              <div className="holiday-type-dropdown">
-                <button className={styles.buttons}>Holiday Type</button>
-                <div className="holiday-type-dropdown-content">
-                  <button className={styles.buttons}>Sun Holiday</button>
-                  <button className={styles.buttons}>City Break</button>
-                  <button className={styles.buttons}>Adventure</button>
-                  <button className={styles.buttons}>Wintry Holiday</button>
-                </div>
-              </div>
-              <a href="#">Budget</a>
-              <a href="#">Rating</a>
-              <div className="continent-dropdown">
-                <Button text="Continent" />
-                <div className="continent-dropdown-content">
-                  <Button text="Europe" />
-                  <Button text="North America" />
-                  <Button text="South America" />
-                  <Button text="Africa" />
-                  <Button text="Australia" />
-                  <Button text="Asia" />
-                </div>
-                <Button text="Search" />
-              </div>
-            </div>
-          </div>
+          <form onSubmit={submitAdvancedCriteria}>
+            <label>Holiday Type</label>
+            <select onChange={changeAdvancedCriteria} name="holiday_type">
+              <option value="">Holiday Type</option>
+              <option value="sun">Sun Holiday</option>
+              <option value="city break">City Break</option>
+              <option value="adventure">Adventure</option>
+              <option value="winter">Winter Holiday</option>
+            </select>
+            <label>Budget</label>
+            <select onChange={changeAdvancedCriteria} name="budget">
+              <option value="">Budget</option>
+              <option value="£">£</option>
+              <option value="££">££</option>
+              <option value="£££">£££</option>
+            </select>
+            <label>Rating</label>
+            <select onChange={changeAdvancedCriteria} name="rating">
+              <option value="">Rating</option>
+              <option value="1">⭐</option>
+              <option value="2">⭐⭐</option>
+              <option value="3">⭐⭐⭐</option>
+              <option value="4">⭐⭐⭐⭐</option>
+              <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+            <label>Continent</label>
+            <select onChange={changeAdvancedCriteria} name="continent">
+              <option value="">Continent</option>
+              <option value="europe">Europe</option>
+              <option value="north america">North America</option>
+              <option value="south america">South America</option>
+              <option value="africa">Africa</option>
+              <option value="australia">Australia</option>
+              <option value="asia">Asia</option>
+            </select>
+            <input value="Search" type="submit" />
+          </form>
         )}
         {/* <AdvancedSearch /> */}
       </div>
