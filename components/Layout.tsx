@@ -12,9 +12,6 @@ function Layout({
 }) {
   return (
     <div>
-      <Head>
-        {/* <title>beyonderbound</title> */}
-      </Head>
       <Navbar />
       <WaveImage imageUrl={imageUrl} />
       {children}

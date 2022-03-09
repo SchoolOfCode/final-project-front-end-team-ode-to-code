@@ -63,16 +63,27 @@ function City({ city }: { city: any }) {
   }, []);
 
   const stars = '⭐️';
-  let icons = ['👨‍👩‍👧‍👦 ', '🚶‍♀️ ', '💆 ', '👫 ', '👢 ', '🌞 ', '🌝 ', '💃🕺🏻 '];
+  let icons = [
+    '👨‍👩‍👧‍👦   ',
+    '🚶‍♀️   ',
+    '💆   ',
+    '👫   ',
+    '👢  ',
+    '🌞   ',
+    '🌝   ',
+    '💃🕺🏻   ',
+    '🧗🏼‍♀️   ',
+    '⛺️  ',
+  ];
   return (
     <>
-    <Head>
-      <title>beyonderbound | {city.city_name}</title>
-    </Head>
+      <Head>
+        <title>beyonderbound | {city.city_name}</title>
+      </Head>
       <Layout imageUrl={city.image}>
         <PageTitle text={city.city_name} />
         <div className={styles.body}>
-          <div className={styles.stats}>
+          <div data-cy="stats" className={styles.stats}>
             <div className={styles.tags}>
               <p>
                 <strong>Rating: </strong>
@@ -84,7 +95,7 @@ function City({ city }: { city: any }) {
               </p>
               <p className={styles.emojis}>
                 {city.great_for.map((element: string) => {
-                  if (element === 'families') {
+                  if (element === 'family') {
                     return (element = icons[0]);
                   }
                   if (element === 'solo') {
@@ -108,12 +119,21 @@ function City({ city }: { city: any }) {
                   if (element === 'nightlife') {
                     return (element = icons[7]);
                   }
+                  if (element === 'adventure') {
+                    return (element = icons[8]);
+                  }
+                  if (element === 'backpacking') {
+                    return (element = icons[9]);
+                  }
+                  if (element === 'families') {
+                    return (element = icons[0]);
+                  }
                 })}
               </p>
             </div>
 
             {weather && (
-              <div className={styles.weather}>
+              <div data-cy="weather" className={styles.weather}>
                 <h2>Current Weather in {city.city_name}:</h2>
                 <p>
                   <strong>Conditions:</strong> {weather.weather[0].description}
@@ -131,15 +151,14 @@ function City({ city }: { city: any }) {
             )}
           </div>
           <Heading text={`About ${city.city_name}`} justify="left" />
-          <p data-cy="city-description" className={styles.description}>{city.city_description}</p>
+          <p data-cy="city-description" className={styles.description}>
+            {city.city_description}
+          </p>
           {/* set actual country link site */}
           <h2 data-cy="city-back-button" className={styles.country}>
             Back to{' '}
-            <Link  href={`/countries/${capitalizeFirstLetter(
-                city.country
-              )}`}>
-
-              {city.country}
+            <Link href={`/countries/${capitalizeFirstLetter(city.country)}`}>
+              <a data-cy="country">{city.country}</a>
             </Link>
           </h2>
         </div>

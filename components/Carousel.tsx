@@ -24,7 +24,7 @@ export default function Carousel({ countries }: any) {
   //
 
   return (
-    <div data-cy="carousel"  className={styles.carousel}>
+    <div data-cy="carousel" className={styles.carousel}>
       <Swiper
         className={styles.swiper}
         modules={[Autoplay, Navigation, Pagination, FreeMode, Mousewheel]}
@@ -56,23 +56,31 @@ export default function Carousel({ countries }: any) {
           },
         }}
       >
-        {sixCountries.map((country:any)=>{
-          return(
-          <SwiperSlide className={styles.swiperSlide}>
-            <div>
-              <div style={{position:'relative'}}>
-                <Link href={`/countries/${country.country}`}>
-                  <Image className={styles.image} src={country.image2} alt={country.country} width="232" height="324"/>
-                </Link>  
+        {sixCountries.map((country: any) => {
+          return (
+            <SwiperSlide className={styles.swiperSlide}>
+              <div>
+                <div style={{ position: 'relative' }}>
+                  <Link href={`/countries/${country.country}`}>
+                    <Image
+                      className={styles.image}
+                      src={country.image2}
+                      alt={country.country}
+                      width="232"
+                      height="324"
+                    />
+                  </Link>
+                </div>
+                <div className={styles.imageText}>
+                  <p>
+                    <Link href={`/countries/${country.country}`}>
+                      {country.country}
+                    </Link>
+                  </p>
+                </div>
               </div>
-              <div className={styles.imageText}>
-                <p >
-                  {country.country}
-                </p>
-              </div>
-            </div> 
-          </SwiperSlide>)
-
+            </SwiperSlide>
+          );
         })}
       </Swiper>
     </div>
