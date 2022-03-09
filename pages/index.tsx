@@ -62,7 +62,6 @@ function Home<NextPage>({
 
   return (
     <>
-      console.log('wassup!')
       <Head>
         <title>beyonderbound | Home</title>
       </Head>
