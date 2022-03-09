@@ -73,7 +73,7 @@ function Home<NextPage>({
           luckyDip={luckyDip}
         />
         {input && (
-          <div className={styles.searchResult}>
+          <div data-cy="search-results" className={styles.searchResult}>
             {cities.map((city: any) => (
               <div key={city.id}>
                 <Link href={`/cities/${city.city_name}`}>

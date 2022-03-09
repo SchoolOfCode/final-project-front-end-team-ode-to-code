@@ -58,17 +58,18 @@ function Country({ country }: { country: any }) {
         <div className={styles.body}>
           <div className={styles.cityList}>
             {country.cities.map((city: any) => (
-              <Link  href={`/cities/${city}`}>
-                {/* <a> <p className={styles.city}>{city}</p> </a> */}
+              <Link key={city} href={`/cities/${city}`}>
                 <a data-cy="countries-link">
-
                   <Button text={city} />
                 </a>
               </Link>
             ))}
           </div>
           <div>
-            <p data-cy="all-about" className={styles.aboutCountry}> All About {country.country}</p>
+            <p data-cy="all-about" className={styles.aboutCountry}>
+              {' '}
+              All About {country.country}
+            </p>
           </div>
           <div className={styles.countryDescription}>
             <p>{country.country_description}</p>

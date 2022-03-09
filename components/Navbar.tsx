@@ -8,35 +8,33 @@ function Navbar() {
     <header>
       <div className={styles.identity}>
         <Link href="/">
-          <a data-cy="team-logo">
-            <div className={styles.bar}>
-              <div className={styles.flex}>
-                <div className={styles.flexItem}>
-                  <Image
-                    src={images.globe}
-                    alt="header image"
-                    className={styles.globe}
-                    height={40}
-                    width={40}
-                  />
-                </div>
-                <div className={styles.flexItem}>
-                  <h1 className={styles.beyonderbound}>
-                    be<span className={styles.span}>yonder</span>bound
-                  </h1>
-                </div>
+          {/* <a data-cy="team-logo"> */}
+          <div className={styles.bar}>
+            <div className={styles.flex}>
+              <div className={styles.flexItem}>
+                <Image
+                  src={images.globe}
+                  alt="header image"
+                  className={styles.globe}
+                  height={40}
+                  width={40}
+                />
+              </div>
+              <div className={styles.flexItem}>
+                <h1 data-cy="team-logo" className={styles.beyonderbound}>
+                  be<span className={styles.span}>yonder</span>bound
+                </h1>
               </div>
             </div>
-          </a>
+          </div>
+          {/* </a> */}
         </Link>
       </div>
       <nav>
         <div className={styles.menuToggle}>
           {/* A fake / hidden checkbox is used as click reciever,
           so you can use the :checked selector on it. */}
-
           <input type="checkbox" />
-
           {/* Some spans to act as a hamburger.
     
           They are acting like a real hamburger,
