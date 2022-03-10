@@ -156,7 +156,7 @@ function City({ city }: { city: any }) {
           </p>
           <Heading text="Popular Attractions" justify="left" />
           <ul data-cy="city-attractions" className={`${styles.attractions} ${styles.description}`}>
-            {city.city_attractions.map((attraction: string) => (<li key={attraction}><Link href={`https://www.google.co.uk/search?q=/${attraction}`}>{attraction}</Link></li>))}
+            {city.city_attractions.map((attraction: string) => (<li key={attraction}><Link href={`https://www.google.co.uk/search?q=${attraction}`}>{attraction}</Link></li>))}
            </ul>
           <h2 data-cy="city-back-button" className={styles.country}>
             More about{' '}
