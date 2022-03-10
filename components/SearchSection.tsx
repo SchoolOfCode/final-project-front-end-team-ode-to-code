@@ -65,12 +65,10 @@ export default function SearchSection({
                 onChange={handleChange}
               ></input> 
               <br />
-              <span className={styles.tooltiptext}>
-                <p><span className={styles.keywords}>Suggested keywords to search for:</span><br />
+                  <p className={styles.tooltiptext}><span className={styles.keywords}>Suggested keywords to search for:</span><br />
                   ￡, families, solo, city break, romance, shopping, sun, honeymoon, nightlife, backpacking, adventure<br />
                   <span className={styles.keywords}>You can also search by city / country / continent.</span>
                 </p>
-              </span>
             </div>
 
             <button></button>
