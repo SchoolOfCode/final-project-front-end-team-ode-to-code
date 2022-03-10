@@ -83,28 +83,31 @@
 
 .tooltip {
   position: relative;
+  font-size: 0.9rem;
 }
 
 .tooltip .tooltiptext {
   visibility: hidden;
   width: auto;
-  background-color: #555;
+  height: auto;
+  background-color: var(--tc1);
   color: #fff;
   text-align: bottom;
   border-radius: 6px;
-  padding: 5px 0;
+  padding: 0.5rem;
   position: absolute;
   z-index: 1;
   bottom: 10%;
   left: 10%;
   margin-left: -90px;
-  margin-top: 30px;
   opacity: 0;
   transition: opacity 0.3s;
   content: 'right';
-  height: 100px;
-  transform: translateX(calc(100% + 10px));
-  opacity: 1;
+  transform: translateY(12.5rem) translateX(2rem);
+}
+
+/* .keywords {
+  font-weight: 600;
 }
 
 .tooltip .tooltiptext::after {
@@ -115,13 +118,13 @@
   border-width: 5px;
   border-style: solid;
   border-color: #555 transparent transparent transparent;
-}
+} */
 
-.tooltip:hover .tooltiptext {
+/* .tooltip:hover .tooltiptext {
   visibility: visible;
-  opacity: 0.8;
+  opacity: 0.9;
   margin-right: 1px;
-}
+} */
 
 .form {
   color: var(--tc1);
@@ -160,8 +163,39 @@
   color: #e5e5e5;
 }
 
-
 @media screen and (min-width: 768px) {
+  .tooltip {
+    font-size: 0.9rem;
+  }
+
+  .tooltip .tooltiptext {
+    padding: 0.5rem;
+    bottom: 10%;
+    left: 10%;
+    margin-left: -90px;
+    transform: translateY(4rem) translateX(24rem);
+  }
+
+  .keywords {
+    font-weight: 600;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: '';
+    top: 100%;
+    left: 50%;
+    margin-right: 20px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 0.9;
+    margin-right: 1px;
+  }
+
   .search {
     font-size: 1rem;
     padding: 0.1rem 1.15rem 0.1rem 1.15rem;
@@ -193,4 +227,3 @@
     font-size: 1.1rem;
   }
 }
-
