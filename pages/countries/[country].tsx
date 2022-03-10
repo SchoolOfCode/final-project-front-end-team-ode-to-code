@@ -5,6 +5,7 @@ import PageTitle from '../../components/PageTitle';
 import styles from '../../styles/Country.module.css';
 import Button from '../../components/Button';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
 
@@ -47,7 +48,10 @@ export async function getStaticProps(context: any) {
   };
 }
 
+
 function Country({ country }: { country: any }) {
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -58,9 +62,9 @@ function Country({ country }: { country: any }) {
         <div className={styles.body}>
           <div className={styles.cityList}>
             {country.cities.map((city: any) => (
-              <Link href={`/cities/${city}`}>
+              <Link key={city} href={`/cities/${city}`}>
                 <a data-cy="countries-link">
-                  <Button text={city} />
+                  <Button text={city} action={()=>router.push(`/cities/${city}`)}/>
                 </a>
               </Link>
             ))}
