@@ -52,10 +52,6 @@ export async function getStaticProps(context: any) {
 function Country({ country }: { country: any }) {
   const router = useRouter();
 
-  // function reDirect(city) {
-  //   router.push(`/cities/${city}`);
-  // };
-
   return (
     <>
       <Head>
