@@ -154,7 +154,6 @@ function City({ city }: { city: any }) {
           <p data-cy="city-description" className={styles.description}>
             {city.city_description}
           </p>
-          {/* set actual country link site */}
           <h2 data-cy="city-back-button" className={styles.country}>
             Back to{' '}
             <Link href={`/countries/${capitalizeFirstLetter(city.country)}`}>
