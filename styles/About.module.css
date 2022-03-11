@@ -3,17 +3,18 @@
 }
 
 .container a {
-  color: var(--tc2)
+  color: var(--tc2);
 }
 
-.container, .subheading {
+.container,
+.subheading {
   margin: auto;
   font-size: 1.2em;
   color: var(--tc1);
   padding: 0em 1em 1em 1em;
 }
 
-.subheading{
+.subheading {
   text-align: center;
   padding-bottom: 1rem;
 }
@@ -39,9 +40,8 @@
   font-weight: bolder;
   color: var(--tc2);
   font-size: 1.6rem;
-  text-decoration:  overline solid var(--tc1);
+  text-decoration: overline solid var(--tc1);
 }
-
 
 .body {
   margin: 0.5rem auto 3rem auto;
