@@ -12,6 +12,16 @@ import 'swiper/css/free-mode';
 
 import styles from './styles/Carousel.module.css';
 
+interface CountriesData {
+  country: string;
+  continent: string;
+  image: string;
+  image2: string;
+  country_description: string;
+  cities: string[]
+}
+
+
 export default function Carousel({ countries }: any) {
   const [sixCountries, setSixCountries] = useState([]);
 
@@ -56,7 +66,7 @@ export default function Carousel({ countries }: any) {
           },
         }}
       >
-        {sixCountries.map((country: any) => {
+        {sixCountries.map((country: CountriesData) => {
           return (
             <SwiperSlide key={country.country} className={styles.swiperSlide}>
               <div>

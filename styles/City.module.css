@@ -39,6 +39,15 @@
   line-height: 1.75rem;
 }
 
+.attractions a {
+  color: var(--tc2)
+}
+
+.attractions a:hover {
+  color: var(--tc1);
+  font-weight: 600;
+}
+
 .country {
   color: var(--tc1);
 }
@@ -46,6 +55,26 @@
 .country a {
   color: var(--tc1);
 }
+
+.effect {
+  background-image: linear-gradient(
+    to right,
+    var(--tc2),
+    var(--tc2) 50%,
+    var(--tc1) 50%);
+  background-size: 200% 100%;
+  background-position: -100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.effect:hover {
+  background-position: 0;
+ }
+
+
 
 @media screen and (max-width: 768px) {
   .body {

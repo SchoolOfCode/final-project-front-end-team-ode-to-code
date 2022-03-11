@@ -24,34 +24,59 @@ export async function getStaticProps() {
   };
 }
 
+interface CountryData {
+  country: string;
+  continent: string;
+  image: string;
+  image2: string;
+  country_description: string;
+  cities: string[];
+}
+
+interface CityData {
+  city_name: string;
+  country: string;
+  continent: string;
+  rating: number;
+  image: string;
+  image2: string;
+  city_description: string;
+  city_attractions: string[];
+  great_for: string[];
+  tags: string[];
+  budget: string;
+  holiday_type: string;
+}
+
 function Home<NextPage>({
   cities,
   countries,
 }: {
-  cities: any;
-  countries: any;
+  cities: CityData[];
+  countries: CountryData[];
 }) {
   const [input, setInput] = useState('');
   const [randCity, setRandCity] = useState('');
   const router = useRouter();
 
-  ///////Search functionality
+  // changes the input state according to what is typed in search box
   function handleChange(e: any) {
     setInput(e.target.value);
   }
 
+  // page redirect to search results if enter is pressed in search box
   function handleSubmit(e: any) {
     e.preventDefault();
     e.target.reset();
     router.push(`/result?search=${input}`);
   }
 
+  // redirect to random city page
   function luckyDip() {
-    //function to get the city name
-    let url = `/cities/${randCity}`;
-    router.push(url);
+    router.push(`/cities/${randCity}`);
   }
 
+  // select a random city on each page load
   useEffect(() => {
     function randomCity() {
       let randomCity: any = Math.floor(Math.random() * cities.length);
