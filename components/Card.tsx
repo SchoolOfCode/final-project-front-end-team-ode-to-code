@@ -1,7 +1,15 @@
 import styles from './styles/Card.module.css';
 import Link from 'next/link';
 
-function Card({ name, image, linkedin, github, portfolio }: { name: string; image: string; linkedin: string; github: string; portfolio: string }) {
+interface CardDetails {
+    name: string;
+    image: string;
+    linkedin: string;
+    github: string;
+    portfolio: string;
+}
+
+function Card({name, image, linkedin, github, portfolio}: CardDetails) {
   return (
     <div className={styles.card}>
     <div className={styles.flipinner}>
