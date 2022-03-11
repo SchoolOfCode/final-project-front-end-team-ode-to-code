@@ -17,12 +17,11 @@ function About<NextPage>() {
       <Layout imageUrl={images.about}>
         <PageTitle text="About Us" />
         <div data-cy="about-text-parent" className={styles.body}>
-          <p className={styles.container}>
+          <p className={styles.subheading}>
             We are <br />
-            <span data-cy="about-title" className={styles.highlight}>
+            <span data-cy="about-title" className={styles.highlightheading}>
               Team Ode to Code
             </span>
-            !
           </p>
           <p className={styles.container}>
             We met via{' '}
@@ -35,31 +34,18 @@ function About<NextPage>() {
           <p className={styles.container}>
             For more information feel free to check out our pages:
           </p>
-          {/* <ul className={styles.list}>
-            {teamOdeToCode.map((teamMember) => (
-              <li>
-                <TeamMember
-                  Name={teamMember.Name}
-                  LinkedIn={teamMember.Linkedin}
-                  Portfolio={teamMember.Portfolio}
-                  GitHub={teamMember.GitHub}
-                  key={teamMember.Name}
-                />
-              </li>
-            ))}
-          </ul> */}
           <div className={styles.profilecards}>
-          {teamOdeToCode.map((teamMember) => (
-            <Card
-              key={teamMember.Name}
-              name={teamMember.Name}
-              image={teamMember.Image}
-              linkedin={teamMember.Linkedin}
-              github={teamMember.GitHub}
-              portfolio={teamMember.Portfolio}
-            />
-          ))}
-        </div>
+            {teamOdeToCode.map((teamMember) => (
+              <Card
+                key={teamMember.Name}
+                name={teamMember.Name}
+                image={teamMember.Image}
+                linkedin={teamMember.Linkedin}
+                github={teamMember.GitHub}
+                portfolio={teamMember.Portfolio}
+              />
+            ))}
+          </div>
         </div>
       </Layout>
     </>
