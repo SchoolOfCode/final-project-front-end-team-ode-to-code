@@ -1,12 +1,11 @@
 .card {
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s; */
   border-radius: 2rem;
   width: 250px;
   height: 250px;
   margin-bottom: 2rem;
   background-color: transparent;
   perspective: 1000px;
+  -webkit-perspective: 1000;
 }
 
 .profile {
@@ -28,11 +27,14 @@
   height: 100%;
   text-align: center;
   transition: transform 0.8s;
+  -webkit-transform-style: transform 0.8s;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 .card:hover .flipinner {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
 }
 
 .flipfront,
@@ -53,6 +55,7 @@
   background-color: var(--bc1);
   font-size: 1.2rem;
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
   margin: auto;
   display: flex;
   justify-content: center;
