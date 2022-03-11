@@ -9,6 +9,12 @@ import Head from 'next/head';
 import Card from '../components/Card';
 
 function About<NextPage>() {
+
+  const shuffledTeam = teamOdeToCode
+  .map(value => ({ value, sort: Math.random() }))
+  .sort((a, b) => a.sort - b.sort)
+  .map(({ value }) => value)
+
   return (
     <>
       <Head>
@@ -31,7 +37,7 @@ function About<NextPage>() {
             For more information feel free to check out our pages:
           </p>
           <div className={styles.profilecards}>
-            {teamOdeToCode.map((teamMember) => (
+            {shuffledTeam.map((teamMember) => (
               <Card
                 key={teamMember.Name}
                 name={teamMember.Name}
