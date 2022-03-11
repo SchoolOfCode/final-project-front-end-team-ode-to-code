@@ -1,0 +1,69 @@
+.card {
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s; */
+  border-radius: 2rem;
+  width: 250px;
+  height: 250px;
+  margin-bottom: 2rem;
+  background-color: transparent;
+  perspective: 1000px;
+}
+
+.profile {
+  border-radius: 2rem;
+}
+
+.name {
+  font-weight: bolder;
+  font-size: 1.3rem;
+  color: var(--tc1);
+  border: 5px solid var(--tc1);
+  padding: 0.2rem;
+}
+
+.flipinner {
+  border-radius: 2rem;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .flipinner {
+  transform: rotateY(180deg);
+}
+
+.flipfront,
+.flipback {
+  border-radius: 2rem;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flipfront {
+  background-color: var(--bc1);
+}
+
+.flipback {
+  background-color: var(--bc1);
+  font-size: 1.2rem;
+  transform: rotateY(180deg);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flipback a {
+  color: var(--tc2);
+}
+
+.flipback p {
+  padding: 0.2rem;
+}
