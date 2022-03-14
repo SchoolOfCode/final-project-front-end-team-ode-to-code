@@ -63,12 +63,21 @@ export default function SearchSection({
                 type="text"
                 placeholder="Search for holiday type..."
                 onChange={handleChange}
-              ></input> 
+                data-cy="search-input"
+              ></input>
               <br />
-                  <p className={styles.tooltiptext}><span className={styles.keywords}>Suggested keywords to search for:</span><br />
-                  ￡, families, solo, city break, romance, shopping, sun, honeymoon, nightlife, backpacking, adventure<br />
-                  <span className={styles.keywords}>You can also search by city / country / continent.</span>
-                </p>
+              <p className={styles.tooltiptext}>
+                <span className={styles.keywords}>
+                  Suggested keywords to search for:
+                </span>
+                <br />
+                ￡, families, solo, city break, romance, shopping, sun,
+                honeymoon, nightlife, backpacking, adventure
+                <br />
+                <span className={styles.keywords}>
+                  You can also search by city / country / continent.
+                </span>
+              </p>
             </div>
 
             <button></button>
