@@ -155,13 +155,24 @@ function City({ city }: { city: any }) {
             {city.city_description}
           </p>
           <Heading text="Popular Attractions" justify="left" />
-          <ul data-cy="city-attractions" className={`${styles.attractions} ${styles.description}`}>
-            {city.city_attractions.map((attraction: string) => (<li key={attraction}><Link href={`https://www.google.co.uk/search?q=${attraction}`}>{attraction}</Link></li>))}
-           </ul>
+          <ul
+            data-cy="city-attractions"
+            className={`${styles.attractions} ${styles.description}`}
+          >
+            {city.city_attractions.map((attraction: string) => (
+              <li key={attraction}>
+                <Link href={`https://www.google.co.uk/search?q=${attraction}`}>
+                  {attraction}
+                </Link>
+              </li>
+            ))}
+          </ul>
           <h2 data-cy="city-back-button" className={styles.country}>
             More about{' '}
             <Link href={`/countries/${capitalizeFirstLetter(city.country)}`}>
-              <a data-cy="country"><span className={styles.effect}>{city.country}</span></a>
+              <a data-cy="country">
+                <span className={styles.effect}>{city.country}</span>
+              </a>
             </Link>
           </h2>
         </div>
