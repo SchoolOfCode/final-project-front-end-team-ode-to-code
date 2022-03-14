@@ -18,9 +18,8 @@ interface CountriesData {
   image: string;
   image2: string;
   country_description: string;
-  cities: string[]
+  cities: string[];
 }
-
 
 export default function Carousel({ countries }: any) {
   const [sixCountries, setSixCountries] = useState([]);
@@ -73,13 +72,13 @@ export default function Carousel({ countries }: any) {
                 <div style={{ position: 'relative' }}>
                   <Link href={`/countries/${country.country}`} passHref>
                     <>
-                    <Image
-                      className={styles.image}
-                      src={country.image2}
-                      alt={country.country}
-                      width="232"
-                      height="324"
-                    />
+                      <Image
+                        className={styles.image}
+                        src={country.image2}
+                        alt={country.country}
+                        width="232"
+                        height="324"
+                      />
                     </>
                   </Link>
                 </div>
