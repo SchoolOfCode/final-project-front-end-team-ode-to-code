@@ -64,7 +64,7 @@ describe('Beyonderbound Website Walkthrough', () => {
     cy.get('[data-cy=weather]').contains("Today's High");
     cy.get('[data-cy=weather]').contains("Today's Low");
 
-    cy.get('[data-cy=city-back-button').contains('Back to');
+    cy.get('[data-cy=city-back-button').contains('More about');
     cy.get('[data-cy=country').click();
 
     cy.url().should('include', '/countries/');

@@ -48,7 +48,6 @@ export async function getStaticProps(context: any) {
   };
 }
 
-
 function Country({ country }: { country: any }) {
   const router = useRouter();
 
@@ -64,7 +63,10 @@ function Country({ country }: { country: any }) {
             {country.cities.map((city: any) => (
               <Link key={city} href={`/cities/${city}`}>
                 <a data-cy="countries-link">
-                  <Button text={city} action={()=>router.push(`/cities/${city}`)}/>
+                  <Button
+                    text={city}
+                    action={() => router.push(`/cities/${city}`)}
+                  />
                 </a>
               </Link>
             ))}

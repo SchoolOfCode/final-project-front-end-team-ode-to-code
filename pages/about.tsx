@@ -9,7 +9,6 @@ import Head from 'next/head';
 import Card from '../components/Card';
 
 function About<NextPage>() {
-
   return (
     <>
       <Head>
@@ -26,8 +25,15 @@ function About<NextPage>() {
           </p>
           <p className={styles.container}>
             We met via{' '}
-            <Link href="https://schoolofcode.co.uk/">School of Code</Link>'s first national bootcamp, and were grouped together for our final 4 week project. Our challenge was to work together remotely, using Agile Methodologies, to build a full stack application. </p>
-          <p className={styles.container}>Thus, <span className={styles.highlight}>beyonderbound</span> was born!</p>
+            <Link href="https://schoolofcode.co.uk/">School of Code</Link>'s
+            first national bootcamp, and were grouped together for our final 4
+            week project. Our challenge was to work together remotely, using
+            Agile Methodologies, to build a full stack application.{' '}
+          </p>
+          <p className={styles.container}>
+            Thus, <span className={styles.highlight}>beyonderbound</span> was
+            born!
+          </p>
           <p className={styles.container}>
             For more information feel free to check out our pages:
           </p>
