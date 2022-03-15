@@ -20,7 +20,7 @@ function Admin() {
   function selectedAction(e) {
     const value = e.target.value;
     setAction(value);
-    setCityOrCountry("");
+    setCityOrCountry('');
   }
 
   function selectCityorCountry(e) {
@@ -37,7 +37,7 @@ function Admin() {
         <PageTitle text="Admin" />
         <div className={styles.body}>
           <form className={styles.dropdown}>
-            <label for="actionType">Select action: </label>
+            <label>Select action: </label>
             <select onChange={selectedAction} name="actionType">
               <option value="">...</option>
               <option value="get">GET all cities/countries</option>
@@ -47,9 +47,11 @@ function Admin() {
               <option value="delete">DELETE a city/country</option>
             </select>
           </form>
+
+          {/* displays if GET selected */}
           {action === 'get' && (
             <>
-              <CityCountryDropDown action={selectCityorCountry}/>
+              <CityCountryDropDown action={selectCityorCountry} />
               {/* if city selected, display tiles with all city data, sorted alphabetically */}
               {cityOrCountry === 'city' &&
                 data.cities
@@ -76,7 +78,50 @@ function Admin() {
                   ))}
             </>
           )}
-          {action === "post" && (<CityCountryDropDown action={selectCityorCountry}/>)}
+
+          {/* displays if POST selected */}
+          {action === 'post' && (
+            <>
+              <CityCountryDropDown action={selectCityorCountry} />
+              {/* if city selected, display form for city submission */}
+              {cityOrCountry === 'city' && <p>City submission form</p>}
+              {/* if country selected, display form for country submission */}
+              {cityOrCountry === 'country' && <p>Country submission form</p>}
+            </>
+          )}
+
+          {/* displays if PATCH selected */}
+          {action === 'patch' && (
+            <>
+              <CityCountryDropDown action={selectCityorCountry} />
+              {/* if city selected, display form for city patch */}
+              {cityOrCountry === 'city' && <p>City patch form</p>}
+              {/* if country selected, display form for country patch */}
+              {cityOrCountry === 'country' && <p>Country patch form</p>}
+            </>
+          )}
+
+          {/* displays if PUT selected */}
+          {action === 'put' && (
+            <>
+              <CityCountryDropDown action={selectCityorCountry} />
+              {/* if city selected, display form for city replacement */}
+              {cityOrCountry === 'city' && <p>City replacement form</p>}
+              {/* if country selected, display form for country replacement */}
+              {cityOrCountry === 'country' && <p>Country replacement form</p>}
+            </>
+          )}
+
+          {/* displays if DELETE selected */}
+          {action === 'delete' && (
+            <>
+              <CityCountryDropDown action={selectCityorCountry} />
+              {/* if city selected, display form for city deletion */}
+              {cityOrCountry === 'city' && <p>City deletion form</p>}
+              {/* if country selected, display form for country deletion */}
+              {cityOrCountry === 'country' && <p>Country deletion form</p>}
+            </>
+          )}
         </div>
       </Layout>
     </>
