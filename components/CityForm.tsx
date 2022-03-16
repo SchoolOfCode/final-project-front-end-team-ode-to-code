@@ -86,6 +86,7 @@ function CityForm({ action }: { action?: any }) {
         ]}
         id="continent"
         label="Continent"
+        layout="flex"
         action={updateState}
       />
       <DropDown
@@ -98,6 +99,7 @@ function CityForm({ action }: { action?: any }) {
         ]}
         id="rating"
         label="Rating"
+        layout="flex"
         action={updateState}
       />
       <Input text="image" type="text" name="Image" action={updateState} />
@@ -128,6 +130,7 @@ function CityForm({ action }: { action?: any }) {
         ]}
         id="budget"
         label="Budget"
+        layout="flex"
         action={updateState}
       />
       <DropDown
@@ -139,9 +142,12 @@ function CityForm({ action }: { action?: any }) {
         ]}
         id="holiday_type"
         label="Holiday Type"
+        layout="flex"
         action={updateState}
       />
-      <div className={styles.center}><Button text="Submit" action={() => action(city)} /></div>
+      <div className={styles.center}>
+        <Button text="Submit" action={() => action(city)} />
+      </div>
     </div>
   );
 }

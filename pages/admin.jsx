@@ -165,6 +165,7 @@ function Admin() {
               ]}
               id="selectCityorCountry"
               label="Select City or Country"
+              layout="regular"
               action={selectCityorCountry}
             />
           )}

@@ -6,12 +6,14 @@ function DropDown({
   label,
   action,
   defaultvalue,
+  layout
 }: {
   values: any;
   id: string;
   label: string;
   action?: any;
   defaultvalue?: any;
+  layout: any;
 }) {
   function handleChange(e: any) {
     e.preventDefault();
@@ -21,7 +23,7 @@ function DropDown({
   }
 
   return (
-    <div className={styles.dropdown}>
+    <div className={`${styles[layout]}`}>
       <label htmlFor={id}>{label}: </label>
       <select onChange={handleChange} id={id} value={defaultvalue}>
         <option value=""></option>
