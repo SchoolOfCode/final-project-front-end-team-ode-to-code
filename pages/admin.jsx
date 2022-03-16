@@ -8,7 +8,8 @@ import Button from '../components/Button';
 import { AppContext } from '../context/state';
 import CityTile from '../components/CityTile';
 import CountryTile from '../components/CountryTile';
-import CityCountryDropDown from '../components/CityCountryDropDown';
+import DropDown from '../components/DropDown';
+import CityForm from '../components/CityForm';
 
 function Admin() {
   const { data, isLoading } = useContext(AppContext);
@@ -16,16 +17,37 @@ function Admin() {
   const countriesApi = 'https://four-week-project.herokuapp.com/countries';
   const [action, setAction] = useState('');
   const [cityOrCountry, setCityOrCountry] = useState('');
+  const [submitted, setSubmitted] = useState('');
+
+  function resetPage() {
+    setAction('');
+    setCityOrCountry('');
+    setSubmitted('');
+  }
 
   function selectedAction(e) {
     const value = e.target.value;
     setAction(value);
     setCityOrCountry('');
+    setSubmitted('');
   }
 
-  function selectCityorCountry(e) {
-    const value = e.target.value;
+  function selectCityorCountry(value, text) {
     setCityOrCountry(value);
+  }
+
+  async function postCity(newCity) {
+    const settings = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newCity),
+    };
+    const response = await fetch(citiesApi, settings);
+    const payload = await response.json();
+    setSubmitted(payload.payload);
   }
 
   let pageContent;
@@ -44,7 +66,7 @@ function Admin() {
                   ? 1
                   : 0;
               })
-              .map((city) => <CityTile key={city} city={city} />)}
+              .map((city) => <CityTile key={city.city_name} city={city} />)}
           {/* if country selected, display tiles with all country data, sorted alphabetically */}
           {cityOrCountry === 'country' &&
             data.countries
@@ -56,7 +78,7 @@ function Admin() {
                   : 0;
               })
               .map((country) => (
-                <CountryTile key={country} country={country} />
+                <CountryTile key={country.country} country={country} />
               ))}
         </>
       );
@@ -65,7 +87,13 @@ function Admin() {
       pageContent = (
         <>
           {/* if city selected, display form for city submission */}
-          {cityOrCountry === 'city' && <p>City submission form</p>}
+          {cityOrCountry === 'city' && !submitted.length && (
+            <CityForm action={postCity} />
+          )}
+          {submitted.length ? (<>
+              <p className={styles.alert}>Successfully submitted the below:</p>{' '}
+              <CityTile city={submitted[0]} />
+            </>) : <></>}
           {/* if country selected, display form for country submission */}
           {cityOrCountry === 'country' && <p>Country submission form</p>}
         </>
@@ -114,8 +142,8 @@ function Admin() {
         <PageTitle text="Admin" />
         <div className={styles.body}>
           <form className={styles.dropdown}>
-            <label>Select action: </label>
-            <select onChange={selectedAction} name="actionType">
+            <label htmlFor="actionType">Select action: </label>
+            <select onChange={selectedAction} id="actionType" value={action}>
               <option value="">...</option>
               <option value="get">GET all cities/countries</option>
               <option value="post">POST a new city/country</option>
@@ -124,7 +152,8 @@ function Admin() {
               <option value="delete">DELETE a city/country</option>
             </select>
           </form>
-          {action && (<CityCountryDropDown action={selectCityorCountry} />)}
+          {action && <DropDown defaultvalue={cityOrCountry} values={[{ value: 'city', option: 'City' },{ value: 'country', option: 'Country' }]} id="selectCityorCountry" label="Select City or Country" action={selectCityorCountry} />}
+          <Button text="Reset" action={resetPage} />
           {pageContent}
         </div>
       </Layout>

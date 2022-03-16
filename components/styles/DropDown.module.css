@@ -7,3 +7,7 @@
     color: #e5e5e5;
     border-radius: 0.5rem;
   }
+
+  .dropdown label {
+    font-weight: 600;
+}
