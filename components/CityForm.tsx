@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Input from './Input';
 import DropDown from './DropDown';
 import Button from './Button';
+import TextArea from './TextArea';
 
 function CityForm({ action }: { action?: any }) {
   const [city, setCity] = useState({
@@ -32,7 +33,7 @@ function CityForm({ action }: { action?: any }) {
         setCity((city) => ({ ...city, continent: value }));
         break;
       case 'rating':
-        const newValue= parseInt(value)
+        const newValue = parseInt(value);
         setCity((city) => ({ ...city, rating: newValue }));
         break;
       case 'image':
@@ -101,20 +102,11 @@ function CityForm({ action }: { action?: any }) {
       />
       <Input text="image" type="text" name="Image" action={updateState} />
       <Input text="image2" type="text" name="Image2" action={updateState} />
-      <div className={styles.formField}>
-        <label htmlFor="city_description">City Description: </label>
-        <textarea
-          id="city_description"
-          rows={4}
-          cols={50}
-          onChange={(e) => {
-            e.preventDefault();
-            const value = e.target.value;
-            const text = e.target.id;
-            updateState(value, text);
-          }}
-        ></textarea>
-      </div>
+      <TextArea
+        text="city_description"
+        name="City Description"
+        action={updateState}
+      />
       <Input
         text="city_attractions"
         type="text"
@@ -149,7 +141,7 @@ function CityForm({ action }: { action?: any }) {
         label="Holiday Type"
         action={updateState}
       />
-      <Button text="Submit" action={()=>action(city)} />
+      <div className={styles.center}><Button text="Submit" action={() => action(city)} /></div>
     </div>
   );
 }

@@ -1,13 +1,13 @@
 .dropdown {
-    padding-bottom: 1rem;
+  padding-bottom: 1rem;
 }
 
 .dropdown select {
-    background-color: var(--tc1);
-    color: #e5e5e5;
-    border-radius: 0.5rem;
-  }
+  background-color: var(--tc1);
+  color: #e5e5e5;
+  border-radius: 0.5rem;
+}
 
-  .dropdown label {
-    font-weight: 600;
+.dropdown label {
+  font-weight: 600;
 }

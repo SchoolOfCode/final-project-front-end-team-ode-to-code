@@ -40,7 +40,7 @@
 }
 
 .attractions a {
-  color: var(--tc2)
+  color: var(--tc2);
 }
 
 .attractions a:hover {
@@ -61,7 +61,8 @@
     to right,
     var(--tc2),
     var(--tc2) 50%,
-    var(--tc1) 50%);
+    var(--tc1) 50%
+  );
   background-size: 200% 100%;
   background-position: -100%;
   background-clip: text;
@@ -72,9 +73,7 @@
 
 .effect:hover {
   background-position: 0;
- }
-
-
+}
 
 @media screen and (max-width: 768px) {
   .body {

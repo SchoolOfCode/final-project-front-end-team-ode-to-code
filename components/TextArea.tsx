@@ -1,14 +1,12 @@
-import styles from '../components/styles/Input.module.css';
+import styles from '../components/styles/TextArea.module.css';
 
-function Input({
+function TextArea({
   text,
   name,
-  type,
   action,
 }: {
   text: string;
   name: string;
-  type: string;
   action?: any;
 }) {
   function handleChange(e: any) {
@@ -21,15 +19,15 @@ function Input({
   return (
     <div className={styles.formField}>
       <label htmlFor={text}>{name}: </label>
-      <input
-        id={text}
+      <textarea
         className={styles.input}
-        name={text}
-        type={type}
+        id={text}
+        rows={4}
+        cols={50}
         onChange={handleChange}
-      ></input>
+      ></textarea>
     </div>
   );
 }
 
-export default Input;
+export default TextArea;

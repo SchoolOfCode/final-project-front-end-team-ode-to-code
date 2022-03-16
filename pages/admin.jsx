@@ -90,10 +90,14 @@ function Admin() {
           {cityOrCountry === 'city' && !submitted.length && (
             <CityForm action={postCity} />
           )}
-          {submitted.length ? (<>
+          {submitted.length ? (
+            <>
               <p className={styles.alert}>Successfully submitted the below:</p>{' '}
               <CityTile city={submitted[0]} />
-            </>) : <></>}
+            </>
+          ) : (
+            <></>
+          )}
           {/* if country selected, display form for country submission */}
           {cityOrCountry === 'country' && <p>Country submission form</p>}
         </>
@@ -152,7 +156,18 @@ function Admin() {
               <option value="delete">DELETE a city/country</option>
             </select>
           </form>
-          {action && <DropDown defaultvalue={cityOrCountry} values={[{ value: 'city', option: 'City' },{ value: 'country', option: 'Country' }]} id="selectCityorCountry" label="Select City or Country" action={selectCityorCountry} />}
+          {action && (
+            <DropDown
+              defaultvalue={cityOrCountry}
+              values={[
+                { value: 'city', option: 'City' },
+                { value: 'country', option: 'Country' },
+              ]}
+              id="selectCityorCountry"
+              label="Select City or Country"
+              action={selectCityorCountry}
+            />
+          )}
           <Button text="Reset" action={resetPage} />
           {pageContent}
         </div>
