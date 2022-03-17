@@ -10,14 +10,16 @@ import CityTile from '../components/CityTile';
 import CountryTile from '../components/CountryTile';
 import DropDown from '../components/DropDown';
 import CityForm from '../components/CityForm';
+import CountryForm from '../components/CountryForm';
 
 function Admin() {
-  const { data, isLoading } = useContext(AppContext);
+  const { data, isLoading, fetchData } = useContext(AppContext);
   const citiesApi = 'https://four-week-project.herokuapp.com/cities';
   const countriesApi = 'https://four-week-project.herokuapp.com/countries';
   const [action, setAction] = useState('');
   const [cityOrCountry, setCityOrCountry] = useState('');
   const [submitted, setSubmitted] = useState('');
+   
 
   function resetPage() {
     setAction('');
@@ -28,6 +30,9 @@ function Admin() {
   function selectedAction(e) {
     const value = e.target.value;
     setAction(value);
+    if (value === 'get') {
+      fetchData();
+    }
     setCityOrCountry('');
     setSubmitted('');
   }
@@ -46,6 +51,37 @@ function Admin() {
       body: JSON.stringify(newCity),
     };
     const response = await fetch(citiesApi, settings);
+    const payload = await response.json();
+    setSubmitted(payload.payload);
+  }
+
+  async function postCountry(newCountry) {
+    const settings = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newCountry),
+    };
+    const response = await fetch(countriesApi, settings);
+    const payload = await response.json();
+    setSubmitted(payload.payload);
+  }
+
+  async function amendCity(newCity) {
+    const settings = {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newCity),
+    };
+    const response = await fetch(
+      `${citiesApi}?name=${newCity.city_name}`,
+      settings
+    );
     const payload = await response.json();
     setSubmitted(payload.payload);
   }
@@ -90,7 +126,7 @@ function Admin() {
           {cityOrCountry === 'city' && !submitted.length && (
             <CityForm action={postCity} />
           )}
-          {submitted.length ? (
+          {cityOrCountry === 'city' && submitted.length ? (
             <>
               <p className={styles.alert}>Successfully submitted the below:</p>{' '}
               <CityTile city={submitted[0]} />
@@ -99,7 +135,17 @@ function Admin() {
             <></>
           )}
           {/* if country selected, display form for country submission */}
-          {cityOrCountry === 'country' && <p>Country submission form</p>}
+          {cityOrCountry === 'country' && !submitted.length && (
+            <CountryForm action={postCountry} />
+          )}
+          {cityOrCountry === 'country' && submitted.length ? (
+            <>
+              <p className={styles.alert}>Successfully submitted the below:</p>{' '}
+              <CountryTile country={submitted[0]} />
+            </>
+          ) : (
+            <></>
+          )}
         </>
       );
       break;
@@ -107,7 +153,18 @@ function Admin() {
       pageContent = (
         <>
           {/* if city selected, display form for city replacement */}
-          {cityOrCountry === 'city' && <p>City replacement form</p>}
+          {cityOrCountry === 'city' && !submitted.length && (
+            <CityForm action={amendCity} />
+          )}
+          {cityOrCountry === 'city' && submitted.length ? (
+            <>
+              <p className={styles.alert}>Successfully submitted the below:</p>{' '}
+              <CityTile city={submitted[0]} />
+            </>
+          ) : (
+            <></>
+          )}
+
           {/* if country selected, display form for country replacement */}
           {cityOrCountry === 'country' && <p>Country replacement form</p>}
         </>
