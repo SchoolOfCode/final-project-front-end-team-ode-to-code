@@ -11,6 +11,7 @@ import CountryTile from '../components/CountryTile';
 import DropDown from '../components/DropDown';
 import CityForm from '../components/CityForm';
 import CountryForm from '../components/CountryForm';
+import AmendForm from '../components/AmendForm';
 
 function Admin() {
   const { data, isLoading, fetchData } = useContext(AppContext);
@@ -69,7 +70,7 @@ function Admin() {
     setSubmitted(payload.payload);
   }
 
-  async function amendCity(newCity) {
+  async function replaceCity(newCity) {
     const settings = {
       method: 'PUT',
       headers: {
@@ -80,6 +81,44 @@ function Admin() {
     };
     const response = await fetch(
       `${citiesApi}?name=${newCity.city_name}`,
+      settings
+    );
+    const payload = await response.json();
+    setSubmitted(payload.payload);
+  }
+
+  async function replaceCountry(newCountry) {
+    const settings = {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newCountry),
+    };
+    const response = await fetch(
+      `${countriesApi}?name=${newCountry.country}`,
+      settings
+    );
+    const payload = await response.json();
+    setSubmitted(payload.payload);
+  }
+
+  async function amendData(newData, type) {
+    let url;
+    console.log(type)
+    if (type === 'city') { url = `${citiesApi}?name=${newData.name}`}
+    else if (type === 'country') { url = `${countriesApi}?name=${newData.name}` }
+    const settings = {
+      method: 'PATCH',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({column: newData.column, data: newData.data}),
+    };
+    const response = await fetch(
+      url,
       settings
     );
     const payload = await response.json();
@@ -131,9 +170,7 @@ function Admin() {
               <p className={styles.alert}>Successfully submitted the below:</p>{' '}
               <CityTile city={submitted[0]} />
             </>
-          ) : (
-            <></>
-          )}
+          ) : (<></>) }
           {/* if country selected, display form for country submission */}
           {cityOrCountry === 'country' && !submitted.length && (
             <CountryForm action={postCountry} />
@@ -142,10 +179,7 @@ function Admin() {
             <>
               <p className={styles.alert}>Successfully submitted the below:</p>{' '}
               <CountryTile country={submitted[0]} />
-            </>
-          ) : (
-            <></>
-          )}
+            </>) : (<></>) }
         </>
       );
       break;
@@ -154,29 +188,47 @@ function Admin() {
         <>
           {/* if city selected, display form for city replacement */}
           {cityOrCountry === 'city' && !submitted.length && (
-            <CityForm action={amendCity} />
+            <CityForm action={replaceCity} />
           )}
           {cityOrCountry === 'city' && submitted.length ? (
             <>
               <p className={styles.alert}>Successfully submitted the below:</p>{' '}
               <CityTile city={submitted[0]} />
             </>
-          ) : (
-            <></>
-          )}
+          ) : (<></>) }
 
           {/* if country selected, display form for country replacement */}
-          {cityOrCountry === 'country' && <p>Country replacement form</p>}
+          {cityOrCountry === 'country' && !submitted.length && (
+            <CountryForm action={replaceCountry} />
+          )}
+          {cityOrCountry === 'country' && submitted.length ? (
+            <>
+              <p className={styles.alert}>Successfully submitted the below:</p>{' '}
+              <CountryTile country={submitted[0]} />
+            </>
+          ) : (<></>) }
         </>
       );
       break;
     case 'patch':
       pageContent = (
         <>
-          {/* if city selected, display form for city patch */}
-          {cityOrCountry === 'city' && <p>City patch form</p>}
-          {/* if country selected, display form for country patch */}
-          {cityOrCountry === 'country' && <p>Country patch form</p>}
+          {/* display form for patch request, regardless of whether city or country is selected*/}
+          {cityOrCountry.length && !submitted.length ? (
+              <AmendForm action={amendData} type={cityOrCountry} />
+          ) : (<></>)}
+          {cityOrCountry === 'city' && submitted.length ? (
+            <>
+              <p className={styles.alert}>Successfully submitted the below:</p>{' '}
+              <CityTile country={submitted[0]} />
+            </>
+          ) : (<></>) }
+          {cityOrCountry === 'country' && submitted.length ? (
+            <>
+              <p className={styles.alert}>Successfully submitted the below:</p>{' '}
+              <CountryTile country={submitted[0]} />
+            </>
+          ) : (<></>) }
         </>
       );
       break;
