@@ -39,65 +39,45 @@ function Admin() {
   }
 
   function selectCityorCountry(value, text) {
+    setSubmitted('');
     setCityOrCountry(value);
   }
 
-  async function postCity(newCity) {
+  async function postData(newData) {
+    let url;
+    if (cityOrCountry === 'city')  {url = citiesApi}
+    else if (cityOrCountry === 'country') {url = countriesApi}
     const settings = {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newCity),
+      body: JSON.stringify(newData),
     };
-    const response = await fetch(citiesApi, settings);
+    const response = await fetch(url, settings);
     const payload = await response.json();
     setSubmitted(payload.payload);
   }
 
-  async function postCountry(newCountry) {
-    const settings = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newCountry),
-    };
-    const response = await fetch(countriesApi, settings);
-    const payload = await response.json();
-    setSubmitted(payload.payload);
-  }
-
-  async function replaceCity(newCity) {
+  async function replaceData(newData) {
+    let url;
+    if (cityOrCountry==='city') {
+     url =  `${citiesApi}?name=${newData.city_name}`
+    }
+    else if (cityOrCountry==='country') {
+      url =  `${countriesApi}?name=${newData.country}`
+     }
     const settings = {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newCity),
+      body: JSON.stringify(newData),
     };
     const response = await fetch(
-      `${citiesApi}?name=${newCity.city_name}`,
-      settings
-    );
-    const payload = await response.json();
-    setSubmitted(payload.payload);
-  }
-
-  async function replaceCountry(newCountry) {
-    const settings = {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newCountry),
-    };
-    const response = await fetch(
-      `${countriesApi}?name=${newCountry.country}`,
+      url,
       settings
     );
     const payload = await response.json();
@@ -163,7 +143,7 @@ function Admin() {
         <>
           {/* if city selected, display form for city submission */}
           {cityOrCountry === 'city' && !submitted.length && (
-            <CityForm action={postCity} />
+            <CityForm action={postData} />
           )}
           {cityOrCountry === 'city' && submitted.length ? (
             <>
@@ -173,7 +153,7 @@ function Admin() {
           ) : (<></>) }
           {/* if country selected, display form for country submission */}
           {cityOrCountry === 'country' && !submitted.length && (
-            <CountryForm action={postCountry} />
+            <CountryForm action={postData} />
           )}
           {cityOrCountry === 'country' && submitted.length ? (
             <>
@@ -188,7 +168,7 @@ function Admin() {
         <>
           {/* if city selected, display form for city replacement */}
           {cityOrCountry === 'city' && !submitted.length && (
-            <CityForm action={replaceCity} />
+            <CityForm action={replaceData} />
           )}
           {cityOrCountry === 'city' && submitted.length ? (
             <>
@@ -199,7 +179,7 @@ function Admin() {
 
           {/* if country selected, display form for country replacement */}
           {cityOrCountry === 'country' && !submitted.length && (
-            <CountryForm action={replaceCountry} />
+            <CountryForm action={replaceData} />
           )}
           {cityOrCountry === 'country' && submitted.length ? (
             <>
