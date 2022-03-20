@@ -9,10 +9,10 @@ import { AppContext } from '../context/state';
 import CityTile from '../components/CityTile';
 import CountryTile from '../components/CountryTile';
 import DropDown from '../components/DropDown';
-import CityForm from '../components/CityForm';
-import CountryForm from '../components/CountryForm';
 import AmendForm from '../components/AmendForm';
 import DeleteForm from '../components/DeleteForm';
+import Form from '../components/Form';
+import Tile from '../components/Tile';
 
 function Admin() {
   const { data, fetchData } = useContext(AppContext);
@@ -158,27 +158,19 @@ function Admin() {
     case 'post':
       pageContent = (
         <>
-          {/* if city selected, display form for city submission */}
-          {cityOrCountry === 'city' && !submitted.length && (
-            <CityForm action={postData} />
-          )}
-          {cityOrCountry === 'city' && submitted.length ? (
-            <>
-              <p className={styles.alert}>Successfully submitted the below:</p>{' '}
-              <CityTile city={submitted[0]} />
-            </>
+          {/* If "post" is selected, and city or country is selected, but no form is submitted yet, display form */}
+          {!submitted.length && cityOrCountry.length ? (
+            <Form cityOrCountry={cityOrCountry} action={postData} />
           ) : (
             <></>
           )}
-          {/* if country selected, display form for country submission */}
-          {cityOrCountry === 'country' && !submitted.length && (
-            <CountryForm action={postData} />
-          )}
-          {cityOrCountry === 'country' && submitted.length ? (
-            <>
-              <p className={styles.alert}>Successfully submitted the below:</p>{' '}
-              <CountryTile country={submitted[0]} />
-            </>
+          {/* If data has been submitted, display the results */}
+          {submitted.length && cityOrCountry.length ? (
+            <Tile
+              cityOrCountry={cityOrCountry}
+              data={submitted[0]}
+              actionType={'submitted'}
+            />
           ) : (
             <></>
           )}
@@ -188,28 +180,19 @@ function Admin() {
     case 'put':
       pageContent = (
         <>
-          {/* if city selected, display form for city replacement */}
-          {cityOrCountry === 'city' && !submitted.length && (
-            <CityForm action={replaceData} />
-          )}
-          {cityOrCountry === 'city' && submitted.length ? (
-            <>
-              <p className={styles.alert}>Successfully replaced the below:</p>{' '}
-              <CityTile city={submitted[0]} />
-            </>
+          {/* If "put" is selected, and city or country is selected, but no form is submitted yet, display form */}
+          {!submitted.length && cityOrCountry.length ? (
+            <Form cityOrCountry={cityOrCountry} action={replaceData} />
           ) : (
             <></>
           )}
-
-          {/* if country selected, display form for country replacement */}
-          {cityOrCountry === 'country' && !submitted.length && (
-            <CountryForm action={replaceData} />
-          )}
-          {cityOrCountry === 'country' && submitted.length ? (
-            <>
-              <p className={styles.alert}>Successfully replaced the below:</p>{' '}
-              <CountryTile country={submitted[0]} />
-            </>
+          {/* If data has been submitted, display the results */}
+          {submitted.length && cityOrCountry.length ? (
+            <Tile
+              cityOrCountry={cityOrCountry}
+              data={submitted[0]}
+              actionType={'replaced'}
+            />
           ) : (
             <></>
           )}
@@ -225,19 +208,13 @@ function Admin() {
           ) : (
             <></>
           )}
-          {cityOrCountry === 'city' && submitted.length ? (
-            <>
-              <p className={styles.alert}>Successfully updated the below:</p>{' '}
-              <CityTile city={submitted[0]} />
-            </>
-          ) : (
-            <></>
-          )}
-          {cityOrCountry === 'country' && submitted.length ? (
-            <>
-              <p className={styles.alert}>Successfully updated the below:</p>{' '}
-              <CountryTile country={submitted[0]} />
-            </>
+        {/* If data has been submitted, display the results */}
+          {submitted.length && cityOrCountry.length ? (
+            <Tile
+              cityOrCountry={cityOrCountry}
+              data={submitted[0]}
+              actionType={'edited'}
+            />
           ) : (
             <></>
           )}
@@ -253,19 +230,13 @@ function Admin() {
           ) : (
             <></>
           )}
-          {cityOrCountry === 'city' && submitted.length ? (
-            <>
-              <p className={styles.alert}>Successfully deleted the below:</p>{' '}
-              <CityTile city={submitted[0]} />
-            </>
-          ) : (
-            <></>
-          )}
-          {cityOrCountry === 'country' && submitted.length ? (
-            <>
-              <p className={styles.alert}>Successfully deleted the below:</p>{' '}
-              <CountryTile country={submitted[0]} />
-            </>
+         {/* If data has been submitted, display the results */}
+         {submitted.length && cityOrCountry.length ? (
+            <Tile
+              cityOrCountry={cityOrCountry}
+              data={submitted[0]}
+              actionType={'deleted'}
+            />
           ) : (
             <></>
           )}
@@ -294,7 +265,7 @@ function Admin() {
             ]}
             defaultvalue={action}
             id="actionType"
-            label="Select action:"
+            label="Select action"
             layout="regular"
             action={selectedAction}
           />

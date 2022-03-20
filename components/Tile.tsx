@@ -1,23 +1,31 @@
-import styles from './styles/Tile.module.css';
+import CityTile from './CityTile';
+import CountryTile from './CountryTile';
+import styles from './styles/Tile.module.css'
 
 function Tile({
-  src,
-  destination,
-  text,
+  cityOrCountry,
+  data,
+  actionType,
 }: {
-  src: string;
-  destination: string;
-  text: string;
+  cityOrCountry: string;
+  data: any;
+  actionType: string;
 }) {
-  return (
-    <div className={styles.container}>
-      <h1 className={styles.headers1}>{destination}</h1>
-      <div className={styles.imagecontainer}>
-        <img className={styles.image} src={src} alt={destination} />
-        <p className={styles.paragraphs}>{text}</p>
-      </div>
-    </div>
-  );
+  if (cityOrCountry === 'city') {
+    return (
+      <>
+        <p className={styles.alert}>Successfully {actionType} the below:</p>
+        <CityTile city={data} />
+      </>
+    );
+  } else if (cityOrCountry === 'country') {
+    return (
+      <>
+        <p className={styles.alert}>Successfully {actionType} the below:</p>
+        <CountryTile country={data} />
+      </>
+    );
+  }
 }
 
 export default Tile;
