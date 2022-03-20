@@ -15,7 +15,7 @@ import AmendForm from '../components/AmendForm';
 import DeleteForm from '../components/DeleteForm';
 
 function Admin() {
-  const { data, isLoading, fetchData } = useContext(AppContext);
+  const { data, fetchData } = useContext(AppContext);
   const citiesApi = 'https://four-week-project.herokuapp.com/cities';
   const countriesApi = 'https://four-week-project.herokuapp.com/countries';
   const [action, setAction] = useState('');
@@ -38,7 +38,7 @@ function Admin() {
   }
 
   function selectCityorCountry(value) {
-    // setSubmitted('');
+    setSubmitted('');
     setCityOrCountry(value);
   }
 
