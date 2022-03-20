@@ -1,4 +1,4 @@
-import styles from './styles/CityForm.module.css';
+import styles from './styles/Form.module.css';
 import { useState } from 'react';
 import Input from './Input';
 import Button from './Button';

@@ -12,6 +12,7 @@ import DropDown from '../components/DropDown';
 import CityForm from '../components/CityForm';
 import CountryForm from '../components/CountryForm';
 import AmendForm from '../components/AmendForm';
+import DeleteForm from '../components/DeleteForm';
 
 function Admin() {
   const { data, isLoading, fetchData } = useContext(AppContext);
@@ -20,7 +21,6 @@ function Admin() {
   const [action, setAction] = useState('');
   const [cityOrCountry, setCityOrCountry] = useState('');
   const [submitted, setSubmitted] = useState('');
-   
 
   function resetPage() {
     setAction('');
@@ -28,8 +28,7 @@ function Admin() {
     setSubmitted('');
   }
 
-  function selectedAction(e) {
-    const value = e.target.value;
+  function selectedAction(value) {
     setAction(value);
     if (value === 'get') {
       fetchData();
@@ -38,15 +37,18 @@ function Admin() {
     setSubmitted('');
   }
 
-  function selectCityorCountry(value, text) {
-    setSubmitted('');
+  function selectCityorCountry(value) {
+    // setSubmitted('');
     setCityOrCountry(value);
   }
 
   async function postData(newData) {
     let url;
-    if (cityOrCountry === 'city')  {url = citiesApi}
-    else if (cityOrCountry === 'country') {url = countriesApi}
+    if (cityOrCountry === 'city') {
+      url = citiesApi;
+    } else if (cityOrCountry === 'country') {
+      url = countriesApi;
+    }
     const settings = {
       method: 'POST',
       headers: {
@@ -62,12 +64,11 @@ function Admin() {
 
   async function replaceData(newData) {
     let url;
-    if (cityOrCountry==='city') {
-     url =  `${citiesApi}?name=${newData.city_name}`
+    if (cityOrCountry === 'city') {
+      url = `${citiesApi}?name=${newData.city_name}`;
+    } else if (cityOrCountry === 'country') {
+      url = `${countriesApi}?name=${newData.country}`;
     }
-    else if (cityOrCountry==='country') {
-      url =  `${countriesApi}?name=${newData.country}`
-     }
     const settings = {
       method: 'PUT',
       headers: {
@@ -76,31 +77,47 @@ function Admin() {
       },
       body: JSON.stringify(newData),
     };
-    const response = await fetch(
-      url,
-      settings
-    );
+    const response = await fetch(url, settings);
     const payload = await response.json();
     setSubmitted(payload.payload);
   }
 
   async function amendData(newData, type) {
     let url;
-    console.log(type)
-    if (type === 'city') { url = `${citiesApi}?name=${newData.name}`}
-    else if (type === 'country') { url = `${countriesApi}?name=${newData.name}` }
+    const jsonData = { column: newData.column, data: newData.data };
+    if (type === 'city') {
+      url = `${citiesApi}?name=${newData.name}`;
+    } else if (type === 'country') {
+      url = `${countriesApi}?name=${newData.name}`;
+    }
     const settings = {
       method: 'PATCH',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({column: newData.column, data: newData.data}),
+      body: JSON.stringify(jsonData),
     };
-    const response = await fetch(
-      url,
-      settings
-    );
+    const response = await fetch(url, settings);
+    const payload = await response.json();
+    setSubmitted(payload.payload);
+  }
+
+  async function deleteData(newData, type) {
+    let url;
+    if (type === 'city') {
+      url = `${citiesApi}?name=${newData.name}`;
+    } else if (type === 'country') {
+      url = `${countriesApi}?name=${newData.name}`;
+    }
+    const settings = {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    };
+    const response = await fetch(url, settings);
     const payload = await response.json();
     setSubmitted(payload.payload);
   }
@@ -150,7 +167,9 @@ function Admin() {
               <p className={styles.alert}>Successfully submitted the below:</p>{' '}
               <CityTile city={submitted[0]} />
             </>
-          ) : (<></>) }
+          ) : (
+            <></>
+          )}
           {/* if country selected, display form for country submission */}
           {cityOrCountry === 'country' && !submitted.length && (
             <CountryForm action={postData} />
@@ -159,7 +178,10 @@ function Admin() {
             <>
               <p className={styles.alert}>Successfully submitted the below:</p>{' '}
               <CountryTile country={submitted[0]} />
-            </>) : (<></>) }
+            </>
+          ) : (
+            <></>
+          )}
         </>
       );
       break;
@@ -172,10 +194,12 @@ function Admin() {
           )}
           {cityOrCountry === 'city' && submitted.length ? (
             <>
-              <p className={styles.alert}>Successfully submitted the below:</p>{' '}
+              <p className={styles.alert}>Successfully replaced the below:</p>{' '}
               <CityTile city={submitted[0]} />
             </>
-          ) : (<></>) }
+          ) : (
+            <></>
+          )}
 
           {/* if country selected, display form for country replacement */}
           {cityOrCountry === 'country' && !submitted.length && (
@@ -183,10 +207,12 @@ function Admin() {
           )}
           {cityOrCountry === 'country' && submitted.length ? (
             <>
-              <p className={styles.alert}>Successfully submitted the below:</p>{' '}
+              <p className={styles.alert}>Successfully replaced the below:</p>{' '}
               <CountryTile country={submitted[0]} />
             </>
-          ) : (<></>) }
+          ) : (
+            <></>
+          )}
         </>
       );
       break;
@@ -195,30 +221,54 @@ function Admin() {
         <>
           {/* display form for patch request, regardless of whether city or country is selected*/}
           {cityOrCountry.length && !submitted.length ? (
-              <AmendForm action={amendData} type={cityOrCountry} />
-          ) : (<></>)}
+            <AmendForm action={amendData} type={cityOrCountry} />
+          ) : (
+            <></>
+          )}
           {cityOrCountry === 'city' && submitted.length ? (
             <>
-              <p className={styles.alert}>Successfully submitted the below:</p>{' '}
-              <CityTile country={submitted[0]} />
+              <p className={styles.alert}>Successfully updated the below:</p>{' '}
+              <CityTile city={submitted[0]} />
             </>
-          ) : (<></>) }
+          ) : (
+            <></>
+          )}
           {cityOrCountry === 'country' && submitted.length ? (
             <>
-              <p className={styles.alert}>Successfully submitted the below:</p>{' '}
+              <p className={styles.alert}>Successfully updated the below:</p>{' '}
               <CountryTile country={submitted[0]} />
             </>
-          ) : (<></>) }
+          ) : (
+            <></>
+          )}
         </>
       );
       break;
     case 'delete':
       pageContent = (
         <>
-          {/* if city selected, display form for city deletion */}
-          {cityOrCountry === 'city' && <p>City deletion form</p>}
-          {/* if country selected, display form for country deletion */}
-          {cityOrCountry === 'country' && <p>Country deletion form</p>}
+          {/* display form for deletion request, regardless of whether city or country is selected*/}
+          {cityOrCountry.length && !submitted.length ? (
+            <DeleteForm action={deleteData} type={cityOrCountry} />
+          ) : (
+            <></>
+          )}
+          {cityOrCountry === 'city' && submitted.length ? (
+            <>
+              <p className={styles.alert}>Successfully deleted the below:</p>{' '}
+              <CityTile city={submitted[0]} />
+            </>
+          ) : (
+            <></>
+          )}
+          {cityOrCountry === 'country' && submitted.length ? (
+            <>
+              <p className={styles.alert}>Successfully deleted the below:</p>{' '}
+              <CountryTile country={submitted[0]} />
+            </>
+          ) : (
+            <></>
+          )}
         </>
       );
       break;
@@ -234,17 +284,20 @@ function Admin() {
       <Layout imageUrl={images.admin}>
         <PageTitle text="Admin" />
         <div className={styles.body}>
-          <form className={styles.dropdown}>
-            <label htmlFor="actionType">Select action: </label>
-            <select onChange={selectedAction} id="actionType" value={action}>
-              <option value="">...</option>
-              <option value="get">GET all cities/countries</option>
-              <option value="post">POST a new city/country</option>
-              <option value="put">REPLACE a city/country</option>
-              <option value="patch">EDIT a city/country</option>
-              <option value="delete">DELETE a city/country</option>
-            </select>
-          </form>
+          <DropDown
+            values={[
+              { value: 'get', option: 'GET all cities/countries' },
+              { value: 'post', option: 'POST a new city/country' },
+              { value: 'put', option: 'REPLACE a city/country' },
+              { value: 'patch', option: 'EDIT a city/country' },
+              { value: 'delete', option: 'DELETE a city/country' },
+            ]}
+            defaultvalue={action}
+            id="actionType"
+            label="Select action:"
+            layout="regular"
+            action={selectedAction}
+          />
           {action && (
             <DropDown
               defaultvalue={cityOrCountry}
