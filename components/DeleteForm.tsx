@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Input from './Input';
 import Button from './Button';
 
-function DeleteForm({ action, type }: { action: any; type: string }) {
+function DeleteForm({ action }: { action: any}) {
   const [changes, setChanges] = useState({
     name: '',
   });
@@ -21,7 +21,7 @@ function DeleteForm({ action, type }: { action: any; type: string }) {
         action={updateState}
       />
       <div className={styles.center}>
-        <Button text="Submit" action={() => action(changes, type)} />
+        <Button text="Submit" action={() => action(changes)} />
       </div>
     </div>
   );

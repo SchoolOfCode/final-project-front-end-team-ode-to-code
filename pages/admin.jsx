@@ -15,121 +15,121 @@ import Form from '../components/Form';
 import Tile from '../components/Tile';
 
 function Admin() {
-  const { data, fetchData } = useContext(AppContext);
+  const { data, isLoading, fetchData } = useContext(AppContext);
   const citiesApi = 'https://four-week-project.herokuapp.com/cities';
   const countriesApi = 'https://four-week-project.herokuapp.com/countries';
   const [action, setAction] = useState('');
   const [cityOrCountry, setCityOrCountry] = useState('');
   const [submitted, setSubmitted] = useState('');
 
+  let pageContent;
+  let actionType;
+
+  //functionality for reset page button: resets the chosen action, resets city/country choice and resets any stored data
   function resetPage() {
     setAction('');
     setCityOrCountry('');
     setSubmitted('');
   }
 
+  //functionality for drop down menu to select CRUD action. Also does a fresh fetch of data if GET is selected, and makes sure city/country choice and stored data is reset
   function selectedAction(value) {
     setAction(value);
-    if (value === 'get') {
+    if (value === 'GET') {
       fetchData();
     }
     setCityOrCountry('');
     setSubmitted('');
   }
 
+  // functionality for drop down menu to select city or country. Also resets any stored data
   function selectCityorCountry(value) {
     setSubmitted('');
     setCityOrCountry(value);
   }
 
-  async function postData(newData) {
+  // functionality for CRUD
+  async function handleData(newData) {
     let url;
+    let settings;
+
+    if (action === 'POST' || action === 'PUT') {
+      settings = {
+        method: action,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newData),
+      };
+    }
+
+    if (action === 'PATCH') {
+      settings = {
+        method: action,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          column: newData.column,
+          data: newData.data,
+        }),
+      };
+    }
+
+    if (action === 'DELETE') {
+      settings = {
+        method: action,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      };
+    }
+
     if (cityOrCountry === 'city') {
-      url = citiesApi;
-    } else if (cityOrCountry === 'country') {
-      url = countriesApi;
+      switch (action) {
+        case 'POST':
+          url = citiesApi;
+          break;
+        case 'PATCH':
+        case 'DELETE':
+          url = `${citiesApi}?name=${newData.name}`;
+          break;
+        case 'PUT':
+          url = `${citiesApi}?name=${newData.city_name}`;
+          break;
+      }
     }
-    const settings = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newData),
-    };
+
+    if (cityOrCountry === 'country') {
+      switch (action) {
+        case 'POST':
+          url = countriesApi;
+          break;
+        case 'PATCH':
+        case 'DELETE':
+          url = `${countriesApi}?name=${newData.name}`;
+          break;
+        case 'PUT':
+          url = `${countriesApi}?name=${newData.country}`;
+          break;
+      }
+    }
+
     const response = await fetch(url, settings);
     const payload = await response.json();
     setSubmitted(payload.payload);
   }
 
-  async function replaceData(newData) {
-    let url;
-    if (cityOrCountry === 'city') {
-      url = `${citiesApi}?name=${newData.city_name}`;
-    } else if (cityOrCountry === 'country') {
-      url = `${countriesApi}?name=${newData.country}`;
-    }
-    const settings = {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newData),
-    };
-    const response = await fetch(url, settings);
-    const payload = await response.json();
-    setSubmitted(payload.payload);
-  }
-
-  async function amendData(newData, type) {
-    let url;
-    const jsonData = { column: newData.column, data: newData.data };
-    if (type === 'city') {
-      url = `${citiesApi}?name=${newData.name}`;
-    } else if (type === 'country') {
-      url = `${countriesApi}?name=${newData.name}`;
-    }
-    const settings = {
-      method: 'PATCH',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(jsonData),
-    };
-    const response = await fetch(url, settings);
-    const payload = await response.json();
-    setSubmitted(payload.payload);
-  }
-
-  async function deleteData(newData, type) {
-    let url;
-    if (type === 'city') {
-      url = `${citiesApi}?name=${newData.name}`;
-    } else if (type === 'country') {
-      url = `${countriesApi}?name=${newData.name}`;
-    }
-    const settings = {
-      method: 'DELETE',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    };
-    const response = await fetch(url, settings);
-    const payload = await response.json();
-    setSubmitted(payload.payload);
-  }
-
-  let pageContent;
-
+  // conditional rendering for each CRUD action
   switch (action) {
-    case 'get':
+    case 'GET':
       pageContent = (
         <>
-          {/* if city selected, display tiles with all city data, sorted alphabetically */}
-          {cityOrCountry === 'city' &&
+          {/* if GET & city selected, display tiles with all city data, sorted alphabetically */}
+          {cityOrCountry === 'city' && !isLoading &&
             data.cities
               .sort(function (a, b) {
                 return a.city_name < b.city_name
@@ -139,8 +139,8 @@ function Admin() {
                   : 0;
               })
               .map((city) => <CityTile key={city.city_name} city={city} />)}
-          {/* if country selected, display tiles with all country data, sorted alphabetically */}
-          {cityOrCountry === 'country' &&
+          {/* if GET & country selected, display tiles with all country data, sorted alphabetically */}
+          {cityOrCountry === 'country' && !isLoading &&
             data.countries
               .sort(function (a, b) {
                 return a.country < b.country
@@ -152,91 +152,57 @@ function Admin() {
               .map((country) => (
                 <CountryTile key={country.country} country={country} />
               ))}
+          {/* If data is still loading, display notification */}
+          {isLoading && <p className={styles.alert}>Data loading...</p>}
         </>
       );
       break;
-    case 'post':
+    case 'POST':
+      actionType = 'submitted';
       pageContent = (
         <>
-          {/* If "post" is selected, and city or country is selected, but no form is submitted yet, display form */}
+          {/* if POST selected and no data is stored from a form yet, display the form */}
           {!submitted.length && cityOrCountry.length ? (
-            <Form cityOrCountry={cityOrCountry} action={postData} />
-          ) : (
-            <></>
-          )}
-          {/* If data has been submitted, display the results */}
-          {submitted.length && cityOrCountry.length ? (
-            <Tile
-              cityOrCountry={cityOrCountry}
-              data={submitted[0]}
-              actionType={'submitted'}
-            />
+            <Form cityOrCountry={cityOrCountry} action={handleData} />
           ) : (
             <></>
           )}
         </>
       );
       break;
-    case 'put':
+    case 'PUT':
+      actionType = 'replaced';
       pageContent = (
         <>
-          {/* If "put" is selected, and city or country is selected, but no form is submitted yet, display form */}
+          {/* if PUT selected and no data is stored from a form yet, display the form */}
           {!submitted.length && cityOrCountry.length ? (
-            <Form cityOrCountry={cityOrCountry} action={replaceData} />
-          ) : (
-            <></>
-          )}
-          {/* If data has been submitted, display the results */}
-          {submitted.length && cityOrCountry.length ? (
-            <Tile
-              cityOrCountry={cityOrCountry}
-              data={submitted[0]}
-              actionType={'replaced'}
-            />
+            <Form cityOrCountry={cityOrCountry} action={handleData} />
           ) : (
             <></>
           )}
         </>
       );
       break;
-    case 'patch':
+    case 'PATCH':
+      actionType = 'edited';
       pageContent = (
         <>
-          {/* display form for patch request, regardless of whether city or country is selected*/}
+          {/* if PATCH selected and no data is stored from a form yet, display the form */}
           {cityOrCountry.length && !submitted.length ? (
-            <AmendForm action={amendData} type={cityOrCountry} />
-          ) : (
-            <></>
-          )}
-        {/* If data has been submitted, display the results */}
-          {submitted.length && cityOrCountry.length ? (
-            <Tile
-              cityOrCountry={cityOrCountry}
-              data={submitted[0]}
-              actionType={'edited'}
-            />
+            <AmendForm action={handleData} />
           ) : (
             <></>
           )}
         </>
       );
       break;
-    case 'delete':
+    case 'DELETE':
+      actionType = 'deleted';
       pageContent = (
         <>
-          {/* display form for deletion request, regardless of whether city or country is selected*/}
+          {/* if DELETE selected and no data is stored from a form yet, display the form */}
           {cityOrCountry.length && !submitted.length ? (
-            <DeleteForm action={deleteData} type={cityOrCountry} />
-          ) : (
-            <></>
-          )}
-         {/* If data has been submitted, display the results */}
-         {submitted.length && cityOrCountry.length ? (
-            <Tile
-              cityOrCountry={cityOrCountry}
-              data={submitted[0]}
-              actionType={'deleted'}
-            />
+            <DeleteForm action={handleData} />
           ) : (
             <></>
           )}
@@ -257,11 +223,11 @@ function Admin() {
         <div className={styles.body}>
           <DropDown
             values={[
-              { value: 'get', option: 'GET all cities/countries' },
-              { value: 'post', option: 'POST a new city/country' },
-              { value: 'put', option: 'REPLACE a city/country' },
-              { value: 'patch', option: 'EDIT a city/country' },
-              { value: 'delete', option: 'DELETE a city/country' },
+              { value: 'GET', option: 'GET all cities/countries' },
+              { value: 'POST', option: 'POST a new city/country' },
+              { value: 'PUT', option: 'REPLACE a city/country' },
+              { value: 'PATCH', option: 'EDIT a city/country' },
+              { value: 'DELETE', option: 'DELETE a city/country' },
             ]}
             defaultvalue={action}
             id="actionType"
@@ -284,6 +250,16 @@ function Admin() {
           )}
           <Button text="Reset" action={resetPage} />
           {pageContent}
+          {/* if a form has been submitted, display the results */}
+          {action !== 'get' && submitted.length && cityOrCountry.length ? (
+            <Tile
+              cityOrCountry={cityOrCountry}
+              data={submitted[0]}
+              actionType={actionType}
+            />
+          ) : (
+            <></>
+          )}
         </div>
       </Layout>
     </>

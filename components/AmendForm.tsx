@@ -4,7 +4,7 @@ import Input from './Input';
 import Button from './Button';
 import TextArea from './TextArea';
 
-function AmendForm({ action, type }: { action: any, type: string } ) {
+function AmendForm({action}: {action: any}) {
   const [changes,setChanges] = useState({
     name: '',
     column: '',
@@ -38,7 +38,7 @@ function AmendForm({ action, type }: { action: any, type: string } ) {
         action={updateState}
       />
     <div className={styles.center}>
-        <Button text="Submit" action={() => action(changes, type)} />
+        <Button text="Submit" action={() => action(changes)} />
       </div>
     </div>
   );
