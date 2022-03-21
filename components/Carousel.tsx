@@ -3,6 +3,8 @@ import { Autoplay, Navigation, Pagination, FreeMode, Mousewheel } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import {Country} from '../interfaces';
+import styles from './styles/Carousel.module.css';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -10,24 +12,15 @@ import 'swiper/css/pagination';
 import 'swiper/css/mousewheel';
 import 'swiper/css/free-mode';
 
-import styles from './styles/Carousel.module.css';
 
-interface CountriesData {
-  country: string;
-  continent: string;
-  image: string;
-  image2: string;
-  country_description: string;
-  cities: string[];
-}
 
-export default function Carousel({ countries }: any) {
-  const [sixCountries, setSixCountries] = useState([]);
+export default function Carousel({countries}: {countries: Country[]}): JSX.Element {
+  const [sixCountries, setSixCountries] = useState<Country[]>([]);
 
   // 5 random countries
   useEffect(() => {
-    let randomCountries: any = countries.sort(() => Math.random() - 0.5);
-    let sixCountries: any = randomCountries.slice(0, 6);
+    let randomCountries = countries.sort(() => Math.random() - 0.5);
+    let sixCountries = randomCountries.slice(0, 6);
     setSixCountries(sixCountries);
   }, []);
   //
@@ -65,7 +58,7 @@ export default function Carousel({ countries }: any) {
           },
         }}
       >
-        {sixCountries.map((country: CountriesData) => {
+        {sixCountries.map((country: Country) => {
           return (
             <SwiperSlide key={country.country} className={styles.swiperSlide}>
               <div>

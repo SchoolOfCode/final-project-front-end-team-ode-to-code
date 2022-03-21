@@ -3,15 +3,17 @@ import { useState } from 'react';
 import Input from './Input';
 import Button from './Button';
 import TextArea from './TextArea';
+import {Changes} from '../interfaces';
 
-function AmendForm({action}: {action: any}) {
-  const [changes,setChanges] = useState({
+
+function AmendForm({action}: {action: (changes: Changes)=>void}): JSX.Element {
+  const [changes,setChanges] = useState<Changes>({
     name: '',
     column: '',
     data: '',
  });
 
-  function updateState(value: any, text: string) {
+  function updateState(value: any, text: string): void {
     switch (text) {
       case 'name':
         setChanges((changes) => ({ ...changes, name: value }));

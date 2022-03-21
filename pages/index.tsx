@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import { useRouter } from 'next/router';
+import {City, Country} from '../interfaces';
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
@@ -24,39 +25,15 @@ export async function getStaticProps() {
   };
 }
 
-interface CountryData {
-  country: string;
-  continent: string;
-  image: string;
-  image2: string;
-  country_description: string;
-  cities: string[];
-}
-
-interface CityData {
-  city_name: string;
-  country: string;
-  continent: string;
-  rating: number;
-  image: string;
-  image2: string;
-  city_description: string;
-  city_attractions: string[];
-  great_for: string[];
-  tags: string[];
-  budget: string;
-  holiday_type: string;
-}
-
 function Home<NextPage>({
   cities,
   countries,
 }: {
-  cities: CityData[];
-  countries: CountryData[];
+  cities: City[];
+  countries: Country[];
 }) {
-  const [input, setInput] = useState('');
-  const [randCity, setRandCity] = useState('');
+  const [input, setInput] = useState<string>('');
+  const [randCity, setRandCity] = useState<string>('');
   const router = useRouter();
 
   // changes the input state according to what is typed in search box
@@ -65,14 +42,14 @@ function Home<NextPage>({
   }
 
   // page redirect to search results if enter is pressed in search box
-  function handleSubmit(e: any) {
+  function handleSubmit(e: any): void {
     e.preventDefault();
     e.target.reset();
     router.push(`/result?search=${input}`);
   }
 
   // redirect to random city page
-  function luckyDip() {
+  function luckyDip(): void {
     router.push(`/cities/${randCity}`);
   }
 
@@ -92,7 +69,6 @@ function Home<NextPage>({
       </Head>
       <Layout imageUrl={images.homepage}>
         <SearchSection
-          input={input}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           luckyDip={luckyDip}

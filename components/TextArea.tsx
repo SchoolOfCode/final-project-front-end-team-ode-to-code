@@ -7,8 +7,8 @@ function TextArea({
 }: {
   text: string;
   name: string;
-  action?: any;
-}) {
+  action: any;
+}): JSX.Element {
   function handleChange(e: any) {
     e.preventDefault();
     const value = e.target.value;

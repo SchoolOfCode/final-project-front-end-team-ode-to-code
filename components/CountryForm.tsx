@@ -4,9 +4,10 @@ import Input from './Input';
 import DropDown from './DropDown';
 import Button from './Button';
 import TextArea from './TextArea';
+import {Country} from '../interfaces';
 
-function CountryForm({ action }: { action?: any }) {
-  const [country, setCountry] = useState({
+function CountryForm(action: (country: Country) => void): JSX.Element {
+  const [country, setCountry] = useState<Country>({
     country: '',
     continent: '',
     image: '',
@@ -15,7 +16,7 @@ function CountryForm({ action }: { action?: any }) {
     cities: [''],
   });
 
-  function updateState(value: any, text: string) {
+  function updateState(value: string, text: string): void {
     switch (text) {
       case 'country':
         setCountry((country) => ({ ...country, country: value }));

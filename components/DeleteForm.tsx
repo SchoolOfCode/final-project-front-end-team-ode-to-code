@@ -2,13 +2,14 @@ import styles from './styles/Form.module.css';
 import { useState } from 'react';
 import Input from './Input';
 import Button from './Button';
+import {Changes} from '../interfaces';
 
-function DeleteForm({ action }: { action: any}) {
-  const [changes, setChanges] = useState({
+function DeleteForm(action: (data: Changes)=> void): JSX.Element {
+  const [changes, setChanges] = useState<{name: string}>({
     name: '',
   });
 
-  function updateState(value: any) {
+  function updateState(value: string) {
     setChanges({ name: value });
   }
 

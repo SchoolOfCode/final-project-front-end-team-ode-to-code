@@ -1,6 +1,7 @@
 import styles from './styles/CityTile.module.css';
+import {Country} from '../interfaces'
 
-function CountryTile({ country }: { country: any }) {
+function CountryTile({country, key}: {country: Country, key?: string}): JSX.Element {
   return (
     <div className={styles.container}>
       <p>

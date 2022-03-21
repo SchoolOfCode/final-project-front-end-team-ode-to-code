@@ -4,9 +4,10 @@ import Input from './Input';
 import DropDown from './DropDown';
 import Button from './Button';
 import TextArea from './TextArea';
+import {City} from '../interfaces'
 
-function CityForm({ action }: { action?: any }) {
-  const [city, setCity] = useState({
+function CityForm(action: (city: City)=> void): JSX.Element {
+  const [city, setCity] = useState<City>({
     city_name: '',
     country: '',
     continent: '',
@@ -21,7 +22,7 @@ function CityForm({ action }: { action?: any }) {
     holiday_type: '',
   });
 
-  function updateState(value: any, text: string) {
+  function updateState(value: string, text: string) {
     switch (text) {
       case 'city_name':
         setCity((city) => ({ ...city, city_name: value }));

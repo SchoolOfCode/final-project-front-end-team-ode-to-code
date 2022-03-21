@@ -9,8 +9,8 @@ function Input({
   text: string;
   name: string;
   type: string;
-  action?: any;
-}) {
+  action: (value: string, text: string)=>void;
+}): JSX.Element {
   function handleChange(e: any) {
     e.preventDefault();
     const value = e.target.value;

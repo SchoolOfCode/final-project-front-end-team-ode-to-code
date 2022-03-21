@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import styles from './styles/Glasssection.module.css';
 
-export default function Glasssection() {
+export default function Glasssection(): JSX.Element {
   return (
     <section data-cy="glass-section" className={styles.section}>
       <Link href="/top-destinations">

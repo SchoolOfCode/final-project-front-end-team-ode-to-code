@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import styles from './styles/WaveImage.module.css';
-import { useMediaQuery } from 'react-responsive';
 
-export default function WaveImage({ imageUrl }: { imageUrl: string }) {
+export default function WaveImage({ imageUrl }: { imageUrl: string }): JSX.Element {
   return (
     <div>
       <Image

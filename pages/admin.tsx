@@ -13,26 +13,22 @@ import AmendForm from '../components/AmendForm';
 import DeleteForm from '../components/DeleteForm';
 import Form from '../components/Form';
 import Tile from '../components/Tile';
-import {City, Country} from '../interfaces';
+import { City, Country, Changes} from '../interfaces';
+
 
 function Admin() {
   const { data, isLoading, fetchData } = useContext(AppContext);
   const citiesApi: string = 'https://four-week-project.herokuapp.com/cities';
-  const countriesApi: string = 'https://four-week-project.herokuapp.com/countries';
-  const [action, setAction] = useState('');
-  const [cityOrCountry, setCityOrCountry] = useState('');
+  const countriesApi: string =
+    'https://four-week-project.herokuapp.com/countries';
+  const [action, setAction] = useState<string>('');
+  const [cityOrCountry, setCityOrCountry] = useState<string>('');
   const [submitted, setSubmitted] = useState('');
 
   let pageContent: JSX.Element;
   let actionType: string = '';
 
-  interface PatchData {
-    name: string;
-    column: string;
-    data: string | number | string [];
-  }
-
- 
+  
   //functionality for reset page button: resets the chosen action, resets city/country choice and resets any stored data
   function resetPage() {
     setAction('');
@@ -57,9 +53,15 @@ function Admin() {
   }
 
   // functionality for CRUD
-  async function handleData(newData: any ): Promise<void>{
+  async function handleData(newData: City | Country | Changes): Promise<void> {
     let url: string = '';
-    let settings;
+    let settings: RequestInit = {
+      method: '',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    };
 
     if (action === 'POST' || action === 'PUT') {
       settings = {
@@ -137,7 +139,8 @@ function Admin() {
       pageContent = (
         <>
           {/* if GET & city selected, display tiles with all city data, sorted alphabetically */}
-          {cityOrCountry === 'city' && !isLoading &&
+          {cityOrCountry === 'city' &&
+            !isLoading &&
             data.cities
               .sort(function (a: City, b: City) {
                 return a.city_name < b.city_name
@@ -146,9 +149,12 @@ function Admin() {
                   ? 1
                   : 0;
               })
-              .map((city: City) => <CityTile key={city.city_name} city={city} />)}
+              .map((city: City) => (
+                <CityTile key={city.city_name} city={city} />
+              ))}
           {/* if GET & country selected, display tiles with all country data, sorted alphabetically */}
-          {cityOrCountry === 'country' && !isLoading &&
+          {cityOrCountry === 'country' &&
+            !isLoading &&
             data.countries
               .sort(function (a: Country, b: Country) {
                 return a.country < b.country
@@ -259,7 +265,7 @@ function Admin() {
           <Button text="Reset" action={resetPage} />
           {pageContent}
           {/* if a form has been submitted, display the results */}
-          {action !== 'get' && submitted.length && cityOrCountry.length ? (
+          {action !== 'GET' && submitted.length && cityOrCountry.length ? (
             <Tile
               cityOrCountry={cityOrCountry}
               data={submitted[0]}

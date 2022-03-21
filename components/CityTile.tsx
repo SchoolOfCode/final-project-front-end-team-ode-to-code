@@ -1,6 +1,8 @@
 import styles from './styles/CityTile.module.css';
+import {City} from '../interfaces';
 
-function CityTile({ city }: { city: any }) {
+
+function CityTile({city, key}: {city: City, key?: string}): JSX.Element {
   return (
     <div className={styles.container}>
       <p>

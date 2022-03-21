@@ -8,7 +8,7 @@ function ContentTile({
   src: string;
   destination: string;
   text: string;
-}) {
+}): JSX.Element {
   return (
     <div className={styles.container}>
       <h1 className={styles.headers1}>{destination}</h1>

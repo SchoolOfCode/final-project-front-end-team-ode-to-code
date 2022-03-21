@@ -1,6 +1,7 @@
 import CityTile from './CityTile';
 import CountryTile from './CountryTile';
 import styles from './styles/Tile.module.css'
+import {City, Country} from '../interfaces';
 
 function Tile({
   cityOrCountry,
@@ -8,9 +9,9 @@ function Tile({
   actionType,
 }: {
   cityOrCountry: string;
-  data: any;
+  data: City | Country;
   actionType: string;
-}) {
+}): JSX.Element {
   if (cityOrCountry === 'city') {
     return (
       <>

@@ -2,7 +2,6 @@ import React from 'react';
 import Button from './Button';
 import Heading from './Heading';
 import styles from './styles/SearchSection.module.css';
-import Link from 'next/link';
 import { useState } from 'react';
 import Router, { useRouter } from 'next/router';
 
@@ -10,17 +9,23 @@ export default function SearchSection({
   handleChange,
   handleSubmit,
   luckyDip,
-}: any) {
-  interface iAdvancedOptions {
+}: {
+  handleChange: (e: any) => void;
+  handleSubmit: (e: any) => void;
+  luckyDip: (e: any) => void;
+}): JSX.Element {
+
+  interface AdvancedOptions {
     holiday_type: string;
     budget: string;
     rating: string;
     continent: string;
   }
 
+  const router = useRouter();
   const [toggle, setToggle] = useState<boolean>(false);
 
-  const [advancedOptions, setAdvancedOptions] = useState<iAdvancedOptions>({
+  const [advancedOptions, setAdvancedOptions] = useState<AdvancedOptions>({
     holiday_type: '',
     budget: '',
     rating: '',
@@ -43,7 +48,7 @@ export default function SearchSection({
   function submitAdvancedCriteria(e: any) {
     e.preventDefault();
     const { holiday_type, budget, rating, continent } = advancedOptions;
-    Router.push(
+    router.push(
       `/result?holiday_type=${holiday_type}&budget=${budget}&rating=${rating}&continent=${continent}`
     );
   }

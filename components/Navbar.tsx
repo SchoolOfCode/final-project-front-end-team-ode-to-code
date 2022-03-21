@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { images } from '../lib/images';
 
-function Navbar() {
+function Navbar(): JSX.Element {
   return (
     <header>
       <div className={styles.identity}>

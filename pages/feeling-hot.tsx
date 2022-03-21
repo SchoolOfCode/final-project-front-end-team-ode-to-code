@@ -6,7 +6,7 @@ import Head from 'next/head';
 import ContentTile from '../components/ContentTile';
 import { hotCountries } from '../lib/hotcountries';
 
-function FeelingHot<NextPage>() {
+function FeelingHot<NextPage>(): JSX.Element {
   return (
     <>
       <Head>
