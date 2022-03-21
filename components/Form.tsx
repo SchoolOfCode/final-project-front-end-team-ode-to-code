@@ -13,6 +13,7 @@ function Form({
   } else if (cityOrCountry === 'country') {
     return <CountryForm action={action} />;
   }
+  else {return <></>}
 }
 
 export default Form;

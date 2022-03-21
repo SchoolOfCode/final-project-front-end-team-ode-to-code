@@ -26,6 +26,7 @@ function Tile({
       </>
     );
   }
+  else {return <></>}
 }
 
 export default Tile;

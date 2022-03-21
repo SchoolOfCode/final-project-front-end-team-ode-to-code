@@ -13,18 +13,26 @@ import AmendForm from '../components/AmendForm';
 import DeleteForm from '../components/DeleteForm';
 import Form from '../components/Form';
 import Tile from '../components/Tile';
+import {City, Country} from '../interfaces';
 
 function Admin() {
   const { data, isLoading, fetchData } = useContext(AppContext);
-  const citiesApi = 'https://four-week-project.herokuapp.com/cities';
-  const countriesApi = 'https://four-week-project.herokuapp.com/countries';
+  const citiesApi: string = 'https://four-week-project.herokuapp.com/cities';
+  const countriesApi: string = 'https://four-week-project.herokuapp.com/countries';
   const [action, setAction] = useState('');
   const [cityOrCountry, setCityOrCountry] = useState('');
   const [submitted, setSubmitted] = useState('');
 
-  let pageContent;
-  let actionType;
+  let pageContent: JSX.Element;
+  let actionType: string = '';
 
+  interface PatchData {
+    name: string;
+    column: string;
+    data: string | number | string [];
+  }
+
+ 
   //functionality for reset page button: resets the chosen action, resets city/country choice and resets any stored data
   function resetPage() {
     setAction('');
@@ -33,7 +41,7 @@ function Admin() {
   }
 
   //functionality for drop down menu to select CRUD action. Also does a fresh fetch of data if GET is selected, and makes sure city/country choice and stored data is reset
-  function selectedAction(value) {
+  function selectedAction(value: string) {
     setAction(value);
     if (value === 'GET') {
       fetchData();
@@ -43,14 +51,14 @@ function Admin() {
   }
 
   // functionality for drop down menu to select city or country. Also resets any stored data
-  function selectCityorCountry(value) {
+  function selectCityorCountry(value: string) {
     setSubmitted('');
     setCityOrCountry(value);
   }
 
   // functionality for CRUD
-  async function handleData(newData) {
-    let url;
+  async function handleData(newData: any ): Promise<void>{
+    let url: string = '';
     let settings;
 
     if (action === 'POST' || action === 'PUT') {
@@ -131,25 +139,25 @@ function Admin() {
           {/* if GET & city selected, display tiles with all city data, sorted alphabetically */}
           {cityOrCountry === 'city' && !isLoading &&
             data.cities
-              .sort(function (a, b) {
+              .sort(function (a: City, b: City) {
                 return a.city_name < b.city_name
                   ? -1
                   : a.city_name > b.city_name
                   ? 1
                   : 0;
               })
-              .map((city) => <CityTile key={city.city_name} city={city} />)}
+              .map((city: City) => <CityTile key={city.city_name} city={city} />)}
           {/* if GET & country selected, display tiles with all country data, sorted alphabetically */}
           {cityOrCountry === 'country' && !isLoading &&
             data.countries
-              .sort(function (a, b) {
+              .sort(function (a: Country, b: Country) {
                 return a.country < b.country
                   ? -1
                   : a.country > b.country
                   ? 1
                   : 0;
               })
-              .map((country) => (
+              .map((country: Country) => (
                 <CountryTile key={country.country} country={country} />
               ))}
           {/* If data is still loading, display notification */}
