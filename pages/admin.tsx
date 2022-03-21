@@ -237,8 +237,8 @@ function Admin() {
         <div className={styles.body}>
           <DropDown
             values={[
-              { value: 'GET', option: 'GET all cities/countries' },
-              { value: 'POST', option: 'POST a new city/country' },
+              { value: 'GET', option: 'VIEW all cities/countries' },
+              { value: 'POST', option: 'CREATE a new city/country' },
               { value: 'PUT', option: 'REPLACE a city/country' },
               { value: 'PATCH', option: 'EDIT a city/country' },
               { value: 'DELETE', option: 'DELETE a city/country' },
