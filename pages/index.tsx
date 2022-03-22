@@ -75,14 +75,14 @@ function Home<NextPage>({
         />
         {input && (
           <div data-cy="search-results" className={styles.searchResult}>
-            {cities.map((city: any) => (
+            {cities.map((city: City) => (
               <div key={city.id}>
                 <Link href={`/cities/${city.city_name}`}>
                   <a>
                     {city.city_name === input ||
                     city.country === input ||
                     city.continent === input ||
-                    city.rating === input ||
+                    city.rating === parseInt(input) ||
                     city.great_for.join(',').includes(input) ||
                     city.tags.join(',').includes(input) ||
                     city.budget === input ||

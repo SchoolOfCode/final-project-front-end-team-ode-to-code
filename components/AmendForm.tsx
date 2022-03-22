@@ -3,15 +3,18 @@ import { useState } from 'react';
 import Input from './Input';
 import Button from './Button';
 import TextArea from './TextArea';
-import {Changes} from '../interfaces';
+import { City, Country, Changes } from '../interfaces';
 
-
-function AmendForm({action}: {action: (changes: Changes)=>void}): JSX.Element {
-  const [changes,setChanges] = useState<Changes>({
+function AmendForm({
+  action,
+}: {
+  action: (newData: City | Country | Changes) => Promise<void>;
+}): JSX.Element {
+  const [changes, setChanges] = useState<Changes>({
     name: '',
     column: '',
     data: '',
- });
+  });
 
   function updateState(value: string, text: string): void {
     switch (text) {
@@ -22,14 +25,19 @@ function AmendForm({action}: {action: (changes: Changes)=>void}): JSX.Element {
         setChanges((changes) => ({ ...changes, column: value }));
         break;
       case 'data':
-        if (changes.column === 'city attractions' || changes.column === 'great_for' || changes.column === 'tags' || changes.column === 'cities') {
+        if (
+          changes.column === 'city attractions' ||
+          changes.column === 'great_for' ||
+          changes.column === 'tags' ||
+          changes.column === 'cities'
+        ) {
           setChanges((changes) => ({ ...changes, data: value.split(', ') }));
-        }
-        else if (changes.column === 'rating') {
+        } else if (changes.column === 'rating') {
           const newValue = parseInt(value);
           setChanges((changes) => ({ ...changes, data: newValue }));
+        } else {
+          setChanges((changes) => ({ ...changes, data: value.split(', ') }));
         }
-        else {setChanges((changes) => ({ ...changes, data: value.split(', ') }))};
         break;
       default:
         console.log('something has gone wrong!');
@@ -39,14 +47,20 @@ function AmendForm({action}: {action: (changes: Changes)=>void}): JSX.Element {
 
   return (
     <div className={styles.form}>
-      <Input text="name" type="text" name="Name of City/Country" action={updateState} />
-      <Input text="column" type="text" name="Field to update" action={updateState} />
-      <TextArea
-        text="data"
-        name="New Data"
+      <Input
+        text="name"
+        type="text"
+        name="Name of City/Country"
         action={updateState}
       />
-    <div className={styles.center}>
+      <Input
+        text="column"
+        type="text"
+        name="Field to update"
+        action={updateState}
+      />
+      <TextArea text="data" name="New Data" action={updateState} />
+      <div className={styles.center}>
         <Button text="Submit" action={() => action(changes)} />
       </div>
     </div>
