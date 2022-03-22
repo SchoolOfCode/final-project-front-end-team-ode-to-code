@@ -8,7 +8,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Card from '../components/Card';
 
-function About<NextPage>() {
+function About<NextPage>(): JSX.Element {
   return (
     <>
       <Head>

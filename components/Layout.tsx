@@ -1,7 +1,7 @@
 import Navbar from './Navbar';
 import WaveImage from './WaveImage';
 import Footer from './Footer';
-import Head from 'next/head';
+
 
 function Layout({
   imageUrl,
@@ -9,7 +9,7 @@ function Layout({
 }: {
   imageUrl: string;
   children: React.ReactNode;
-}) {
+}): JSX.Element {
   return (
     <div>
       <Navbar />

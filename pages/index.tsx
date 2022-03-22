@@ -5,10 +5,11 @@ import { images } from '../lib/images';
 import Carousel from '../components/Carousel';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import { useRouter } from 'next/router';
+import {City, Country} from '../interfaces';
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
@@ -24,61 +25,37 @@ export async function getStaticProps() {
   };
 }
 
-interface CountryData {
-  country: string;
-  continent: string;
-  image: string;
-  image2: string;
-  country_description: string;
-  cities: string[];
-}
-
-interface CityData {
-  city_name: string;
-  country: string;
-  continent: string;
-  rating: number;
-  image: string;
-  image2: string;
-  city_description: string;
-  city_attractions: string[];
-  great_for: string[];
-  tags: string[];
-  budget: string;
-  holiday_type: string;
-}
-
 function Home<NextPage>({
   cities,
   countries,
 }: {
-  cities: CityData[];
-  countries: CountryData[];
+  cities: City[];
+  countries: Country[];
 }) {
-  const [input, setInput] = useState('');
-  const [randCity, setRandCity] = useState('');
+  const [input, setInput] = useState<string>('');
+  const [randCity, setRandCity] = useState<string>('');
   const router = useRouter();
 
   // changes the input state according to what is typed in search box
-  function handleChange(e: any) {
-    setInput(e.target.value);
+  function handleChange(e: FormEvent<HTMLInputElement>): void {
+    setInput(e.currentTarget.value);
   }
 
   // page redirect to search results if enter is pressed in search box
-  function handleSubmit(e: any) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>): void {
     e.preventDefault();
-    e.target.reset();
+    e.currentTarget.reset();
     router.push(`/result?search=${input}`);
   }
 
   // redirect to random city page
-  function luckyDip() {
+  function luckyDip(): void {
     router.push(`/cities/${randCity}`);
   }
 
   // select a random city on each page load
   useEffect(() => {
-    function randomCity() {
+    function randomCity(): void {
       let randomCity: any = Math.floor(Math.random() * cities.length);
       setRandCity(cities[randomCity].city_name);
     }
@@ -92,21 +69,20 @@ function Home<NextPage>({
       </Head>
       <Layout imageUrl={images.homepage}>
         <SearchSection
-          input={input}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           luckyDip={luckyDip}
         />
         {input && (
           <div data-cy="search-results" className={styles.searchResult}>
-            {cities.map((city: any) => (
+            {cities.map((city: City) => (
               <div key={city.id}>
                 <Link href={`/cities/${city.city_name}`}>
                   <a>
                     {city.city_name === input ||
                     city.country === input ||
                     city.continent === input ||
-                    city.rating === input ||
+                    city.rating === parseInt(input) ||
                     city.great_for.join(',').includes(input) ||
                     city.tags.join(',').includes(input) ||
                     city.budget === input ||

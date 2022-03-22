@@ -17,7 +17,7 @@ export default function Heading({
 }: {
   text: string;
   justify: string;
-}) {
+}): JSX.Element {
   return (
     <h2
       data-cy="heading"

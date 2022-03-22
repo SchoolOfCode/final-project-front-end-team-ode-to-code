@@ -5,7 +5,7 @@ interface ButtonProps {
   action: () => void;
 }
 
-function Button({ text, action }: ButtonProps) {
+function Button({ text, action }: ButtonProps): JSX.Element {
   return (
     <button data-cy="button" className={styles.button} onClick={() => action()}>
       {text}

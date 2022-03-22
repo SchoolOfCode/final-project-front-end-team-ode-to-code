@@ -2,36 +2,41 @@ import React from 'react';
 import Button from './Button';
 import Heading from './Heading';
 import styles from './styles/SearchSection.module.css';
-import Link from 'next/link';
-import { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import Router, { useRouter } from 'next/router';
 
 export default function SearchSection({
   handleChange,
   handleSubmit,
   luckyDip,
-}: any) {
-  interface iAdvancedOptions {
+}: {
+  handleChange: (e: FormEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  luckyDip: () => void;
+}): JSX.Element {
+
+  interface AdvancedOptions {
     holiday_type: string;
     budget: string;
     rating: string;
     continent: string;
   }
 
+  const router = useRouter();
   const [toggle, setToggle] = useState<boolean>(false);
 
-  const [advancedOptions, setAdvancedOptions] = useState<iAdvancedOptions>({
+  const [advancedOptions, setAdvancedOptions] = useState<AdvancedOptions>({
     holiday_type: '',
     budget: '',
     rating: '',
     continent: '',
   });
 
-  function toggler() {
+  function toggler(): void {
     setToggle(!toggle);
   }
 
-  function changeAdvancedCriteria(e: any) {
+  function changeAdvancedCriteria(e: ChangeEvent<HTMLSelectElement>): void {
     const name = e.target.name;
     const value = e.target.value;
     setAdvancedOptions((advancedOptions) => ({
@@ -40,10 +45,10 @@ export default function SearchSection({
     }));
   }
 
-  function submitAdvancedCriteria(e: any) {
+  function submitAdvancedCriteria(e: FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     const { holiday_type, budget, rating, continent } = advancedOptions;
-    Router.push(
+    router.push(
       `/result?holiday_type=${holiday_type}&budget=${budget}&rating=${rating}&continent=${continent}`
     );
   }
@@ -55,7 +60,7 @@ export default function SearchSection({
       </div>
       <div className={styles.input}>
         {!toggle && (
-          <form onSubmit={handleSubmit}>
+          <form name="search-box" onSubmit={handleSubmit}>
             <div className={styles.tooltip}>
               <input
                 id="input-text"

@@ -15,7 +15,7 @@ export default function Glasscard({
 }: {
   text: string;
   imageUrl: string;
-}) {
+}): JSX.Element {
   return (
     <div
       style={{ backgroundImage: `url(${imageUrl})` }}

@@ -1,23 +1,42 @@
-import styles from './styles/Tile.module.css';
+import CityTile from './CityTile';
+import CountryTile from './CountryTile';
+import styles from './styles/Tile.module.css'
+import {City, Country} from '../interfaces';
 
 function Tile({
-  src,
-  destination,
-  text,
+  cityOrCountry,
+  data,
+  actionType,
 }: {
-  src: string;
-  destination: string;
-  text: string;
-}) {
-  return (
-    <div className={styles.container}>
-      <h1 className={styles.headers1}>{destination}</h1>
-      <div className={styles.imagecontainer}>
-        <img className={styles.image} src={src} alt={destination} />
-        <p className={styles.paragraphs}>{text}</p>
-      </div>
-    </div>
-  );
-}
+  cityOrCountry: string;
+  data: City | Country | string;
+  actionType: string;
+}): JSX.Element {
 
+  function isCity(data: City | Country | string): data is City {
+    return data.hasOwnProperty('city_name')
+  }
+
+  function isCountry(data: City | Country | string): data is Country {
+    return data.hasOwnProperty('country_description')
+  }
+  
+  if (isCity(data)) {
+    return (
+      <>
+        <p className={styles.alert}>Successfully {actionType} the below:</p>
+        <CityTile city={data} />
+      </>
+    );}
+  
+  else if (isCountry(data)) {
+    return (
+      <>
+        <p className={styles.alert}>Successfully {actionType} the below:</p>
+        <CountryTile country={data} />
+      </>)
+  }
+  else { return <></>}
+  } 
+  
 export default Tile;
