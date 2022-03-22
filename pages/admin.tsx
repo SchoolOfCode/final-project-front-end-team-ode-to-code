@@ -54,6 +54,21 @@ function Admin() {
 
   // functionality for CRUD
   async function handleData(newData: City | Country | Changes): Promise<void> {
+
+
+  function isCity(newData: City | Country | Changes): newData is City {
+    return newData.hasOwnProperty('city_name')
+  }
+
+  function isCountry(newData: City | Country | Changes): newData is Country {
+    return newData.hasOwnProperty('country_description')
+  }
+
+  function isChanges(newData: City | Country | Changes): newData is Changes {
+    return newData.hasOwnProperty('name')
+  }
+  
+
     let url: string = '';
     let settings: RequestInit = {
       method: '',
@@ -63,7 +78,7 @@ function Admin() {
       },
     };
 
-    if (action === 'POST' || action === 'PUT') {
+    if (action === 'POST' || action === 'PUT' ) {
       settings = {
         method: action,
         headers: {
@@ -75,6 +90,7 @@ function Admin() {
     }
 
     if (action === 'PATCH') {
+      if (isChanges(newData)) {
       settings = {
         method: action,
         headers: {
@@ -86,7 +102,7 @@ function Admin() {
           data: newData.data,
         }),
       };
-    }
+    }}
 
     if (action === 'DELETE') {
       settings = {
@@ -99,16 +115,20 @@ function Admin() {
     }
 
     if (cityOrCountry === 'city') {
+      
       switch (action) {
         case 'POST':
-          url = citiesApi;
+          if (isCity(newData)){
+          url = citiesApi;}
           break;
         case 'PATCH':
         case 'DELETE':
-          url = `${citiesApi}?name=${newData.name}`;
+          if (isChanges(newData)){
+          url = `${citiesApi}?name=${newData.name}`;}
           break;
         case 'PUT':
-          url = `${citiesApi}?name=${newData.city_name}`;
+          if (isCity(newData)){
+          url = `${citiesApi}?name=${newData.city_name}`;}
           break;
       }
     }
@@ -116,14 +136,17 @@ function Admin() {
     if (cityOrCountry === 'country') {
       switch (action) {
         case 'POST':
-          url = countriesApi;
+          if (isCountry(newData)) {
+          url = countriesApi;}
           break;
         case 'PATCH':
         case 'DELETE':
-          url = `${countriesApi}?name=${newData.name}`;
+          if (isChanges(newData)){
+          url = `${countriesApi}?name=${newData.name}`;}
           break;
         case 'PUT':
-          url = `${countriesApi}?name=${newData.country}`;
+          if (isCountry(newData)){
+          url = `${countriesApi}?name=${newData.country}`;}
           break;
       }
     }

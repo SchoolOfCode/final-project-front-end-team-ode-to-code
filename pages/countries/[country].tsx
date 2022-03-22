@@ -6,6 +6,7 @@ import styles from '../../styles/Country.module.css';
 import Button from '../../components/Button';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { Country } from '../../interfaces';
 
 const countriesApi = 'https://four-week-project.herokuapp.com/countries';
 
@@ -13,7 +14,7 @@ export async function getStaticPaths() {
   const resCountries = await fetch(countriesApi);
   const dataCountries = await resCountries.json();
 
-  const paths = dataCountries.payload.map((country: any) => {
+  const paths = dataCountries.payload.map((country: Country) => {
     return {
       params: {
         country: country.country,
@@ -48,7 +49,7 @@ export async function getStaticProps(context: any) {
   };
 }
 
-function Country({ country }: { country: any }) {
+function Country({ country }: { country: Country }) {
   const router = useRouter();
 
   return (
@@ -60,7 +61,7 @@ function Country({ country }: { country: any }) {
         <PageTitle text={country.country} />
         <div className={styles.body}>
           <div className={styles.cityList}>
-            {country.cities.map((city: any) => (
+            {country.cities.map((city: string) => (
               <Link key={city} href={`/cities/${city}`}>
                 <a data-cy="countries-link">
                   <Button
@@ -80,6 +81,17 @@ function Country({ country }: { country: any }) {
           <div className={styles.countryDescription}>
             <p>{country.country_description}</p>
           </div>
+          <div
+            className={styles.widget}
+            data-skyscanner-widget="SearchWidget"
+            data-locale="en-GB"
+            data-market="GB"
+            data-currency="GBP"
+          ></div>
+          <script
+            src="https://widgets.skyscanner.net/widget-server/js/loader.js"
+            async
+          ></script>
         </div>
       </Layout>
     </>

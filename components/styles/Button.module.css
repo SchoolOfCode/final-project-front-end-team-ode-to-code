@@ -7,7 +7,7 @@
   border: 2px var(--tc1) solid;
   border-radius: 15px;
   background-color: rgba(0, 0, 0, 0);
-  padding: 0.15rem 1.1rem 0.15rem 1.1rem;
+  padding: 0.15rem 0.5rem 0.15rem 0.5rem;
   margin: 0 1rem 0 1rem;
   transition: all 0.15s;
 }
