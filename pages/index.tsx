@@ -56,7 +56,7 @@ function Home<NextPage>({
   // select a random city on each page load
   useEffect(() => {
     function randomCity(): void {
-      let randomCity: any = Math.floor(Math.random() * cities.length);
+      let randomCity: number = Math.floor(Math.random() * cities.length);
       setRandCity(cities[randomCity].city_name);
     }
     randomCity();

@@ -57,6 +57,7 @@ function City({ city }: { city: City }) {
         `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city.city_name}&APPID=50b40a5db92361b0367f15385971300e`
       );
       let data = await res.json();
+      console.log(data)
       setWeather(data);
     }
 
@@ -135,19 +136,19 @@ function City({ city }: { city: City }) {
 
             {weather && (
               <div data-cy="weather" className={styles.weather}>
-                <h2>Current Weather in {city.city_name}:</h2>
+                <h2>Current Weather in {city.city_name}: </h2>
                 <p>
-                  <strong>Conditions:</strong> {weather.weather[0].description}
+                  <strong>Conditions: </strong> {weather.weather[0].description}
                 </p>
                 <p>
-                  <strong>Temp:</strong> {Math.floor(weather.main.temp)}˚C
+                  <strong>Temp: </strong> {Math.floor(weather.main.temp)}˚C
                 </p>
                 <p>
-                  <strong>Today's High:</strong>{' '}
+                  <strong>Today's High: </strong>
                   {Math.floor(weather.main.temp_max)}˚C
                 </p>
                 <p>
-                  <strong>Today's Low:</strong>{' '}
+                  <strong>Today's Low: </strong>
                   {Math.floor(weather.main.temp_min)}˚C
                 </p>
               </div>
