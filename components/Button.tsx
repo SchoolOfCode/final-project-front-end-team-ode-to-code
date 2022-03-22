@@ -2,12 +2,12 @@ import styles from './styles/Button.module.css';
 
 interface ButtonProps {
   text: string;
-  action: (e:any) => void;
+  action: () => void;
 }
 
 function Button({ text, action }: ButtonProps): JSX.Element {
   return (
-    <button data-cy="button" className={styles.button} onClick={(e) => action(e)}>
+    <button data-cy="button" className={styles.button} onClick={() => action()}>
       {text}
     </button>
   );

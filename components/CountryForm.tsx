@@ -6,7 +6,7 @@ import Button from './Button';
 import TextArea from './TextArea';
 import {Country} from '../interfaces';
 
-function CountryForm(action: (country: Country) => void): JSX.Element {
+function CountryForm({action}: {action: (country: Country) => void}): JSX.Element {
   const [country, setCountry] = useState<Country>({
     country: '',
     continent: '',

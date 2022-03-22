@@ -4,7 +4,7 @@ import Input from './Input';
 import Button from './Button';
 import {Changes} from '../interfaces';
 
-function DeleteForm(action: (data: Changes)=> void): JSX.Element {
+function DeleteForm({action}: {action: (data: Changes)=> void}): JSX.Element {
   const [changes, setChanges] = useState<{name: string}>({
     name: '',
   });

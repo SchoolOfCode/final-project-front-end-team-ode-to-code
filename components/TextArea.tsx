@@ -1,4 +1,5 @@
 import styles from '../components/styles/TextArea.module.css';
+import {ChangeEvent} from 'react';
 
 function TextArea({
   text,
@@ -9,7 +10,7 @@ function TextArea({
   name: string;
   action: any;
 }): JSX.Element {
-  function handleChange(e: any) {
+  function handleChange(e: ChangeEvent<HTMLTextAreaElement>) {
     e.preventDefault();
     const value = e.target.value;
     const text = e.target.id;

@@ -1,6 +1,5 @@
 import CityForm from './CityForm';
 import CountryForm from './CountryForm';
-import {City, Country} from '../interfaces';
 
 function Form({
   cityOrCountry,

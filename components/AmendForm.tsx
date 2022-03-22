@@ -13,7 +13,7 @@ function AmendForm({action}: {action: (changes: Changes)=>void}): JSX.Element {
     data: '',
  });
 
-  function updateState(value: any, text: string): void {
+  function updateState(value: string, text: string): void {
     switch (text) {
       case 'name':
         setChanges((changes) => ({ ...changes, name: value }));
@@ -22,7 +22,14 @@ function AmendForm({action}: {action: (changes: Changes)=>void}): JSX.Element {
         setChanges((changes) => ({ ...changes, column: value }));
         break;
       case 'data':
-        setChanges((changes) => ({ ...changes, data: value }));
+        if (changes.column === 'city attractions' || changes.column === 'great_for' || changes.column === 'tags' || changes.column === 'cities') {
+          setChanges((changes) => ({ ...changes, data: value.split(', ') }));
+        }
+        else if (changes.column === 'rating') {
+          const newValue = parseInt(value);
+          setChanges((changes) => ({ ...changes, data: newValue }));
+        }
+        else {setChanges((changes) => ({ ...changes, data: value.split(', ') }))};
         break;
       default:
         console.log('something has gone wrong!');

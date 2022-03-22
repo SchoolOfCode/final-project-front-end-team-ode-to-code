@@ -5,7 +5,7 @@ import { images } from '../lib/images';
 import Carousel from '../components/Carousel';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import { useRouter } from 'next/router';
@@ -37,14 +37,14 @@ function Home<NextPage>({
   const router = useRouter();
 
   // changes the input state according to what is typed in search box
-  function handleChange(e: any) {
-    setInput(e.target.value);
+  function handleChange(e: FormEvent<HTMLInputElement>): void {
+    setInput(e.currentTarget.value);
   }
 
   // page redirect to search results if enter is pressed in search box
-  function handleSubmit(e: any): void {
+  function handleSubmit(e: FormEvent<HTMLFormElement>): void {
     e.preventDefault();
-    e.target.reset();
+    e.currentTarget.reset();
     router.push(`/result?search=${input}`);
   }
 
@@ -55,7 +55,7 @@ function Home<NextPage>({
 
   // select a random city on each page load
   useEffect(() => {
-    function randomCity() {
+    function randomCity(): void {
       let randomCity: any = Math.floor(Math.random() * cities.length);
       setRandCity(cities[randomCity].city_name);
     }
