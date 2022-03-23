@@ -1,34 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+  <img alt="beyonderbound-logo" src="https://ik.imagekit.io/wletmmv9huf/beyonderbound_6sCbv4RPO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1645615669388g" />
+</p>
 
-## Getting Started
+## 🔵 Our App
 
-First, run the development server:
+**beyonderbound** was created in Feb/March 2022 by "Team Ode to Code" as the final 4 week project for [School of Code](https://www.schoolofcode.co.uk/).
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Technologies used include Next.js, Typescript, CSS modules, HTML, Node.js, Express, PostgreSQL, RESTful API.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Testing performed with Jest, Supertest, Cypress and Postman.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Other tools used include Jira, Miro, Figma and Excalidraw.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 🔵 Where to find it
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The main branch of this project is currently deployed at [https://beyonderbound.netlify.app/](https://beyonderbound.netlify.app/)
 
-## Learn More
+## 🔵 Meet the Team
 
-To learn more about Next.js, take a look at the following resources:
+### Tom Earl
+**LinkedIn:** [https://www.linkedin.com/in/tom-a-earl](https://www.linkedin.com/in/tom-a-earl)<br />
+**GitHub:** [tmserl](https://github.com/tmserl)<br />
+**Portfolio:** [https://tmserl.com](https://tmserl.com)
+### Hannah Whelan
+**LinkedIn:** [https://www.linkedin.com/in/hannah-whelan-196666224/](https://www.linkedin.com/in/hannah-whelan-196666224/)<br />
+**GitHub:** [HWhelan256](https://github.com/HWhelan256)
+### Najma Elmi
+**LinkedIn:** [https://www.linkedin.com/in/najma-elmi/](https://www.linkedin.com/in/najma-elmi/)<br />
+**GitHub:** [najma-e](https://github.com/najma-e)
+### George Spicer
+**LinkedIn:** [https://www.linkedin.com/in/george-spicer-55291b229](https://www.linkedin.com/in/george-spicer-55291b229)<br />
+**GitHub:** [RedGeorge](https://github.com/RedGeorge)
+### Ilham Abdi
+**LinkedIn:** [https://www.linkedin.com/in/ilham-abdi-95b723170/](https://www.linkedin.com/in/ilham-abdi-95b723170/)<br />
+**GitHub:** [Ilhamabdi13](https://github.com/Ilhamabdi13)
+### Pietro Annobil
+**LinkedIn:** [https://www.linkedin.com/in/pietro-annobil-025483180](https://www.linkedin.com/in/pietro-annobil-025483180)<br />
+**GitHub:** [xXm4ntr4Xx](https://github.com/xXm4ntr4Xx)<br />
+**Portfolio:** [https://pietroannoibl-portfolio.netlify.app/](https://pietroannoibl-portfolio.netlify.app/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<br />
+<br />
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p align="center">
+  <img alt="beyonderbound" src="https://ik.imagekit.io/wletmmv9huf/beyonderbound_Vo6t-hpcp.png?ik-sdk-version=javascript-1.4.3&updatedAt=1647996037648" />
+</p>
