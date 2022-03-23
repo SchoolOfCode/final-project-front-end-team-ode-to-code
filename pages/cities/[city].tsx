@@ -57,7 +57,6 @@ function City({ city }: { city: City }) {
         `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city.city_name}&APPID=50b40a5db92361b0367f15385971300e`
       );
       let data = await res.json();
-      console.log(data)
       setWeather(data);
     }
 
