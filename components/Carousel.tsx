@@ -17,7 +17,7 @@ import 'swiper/css/free-mode';
 export default function Carousel({countries}: {countries: Country[]}): JSX.Element {
   const [sixCountries, setSixCountries] = useState<Country[]>([]);
 
-  // 5 random countries
+  // 6 random countries
   useEffect(() => {
     let randomCountries = countries.sort(() => Math.random() - 0.5);
     let sixCountries = randomCountries.slice(0, 6);
@@ -64,7 +64,7 @@ export default function Carousel({countries}: {countries: Country[]}): JSX.Eleme
               <div>
                 <div style={{ position: 'relative' }}>
                   <Link href={`/countries/${country.country}`} passHref>
-                    <>
+                    <a>
                       <Image
                         className={styles.image}
                         src={country.image2}
@@ -72,7 +72,7 @@ export default function Carousel({countries}: {countries: Country[]}): JSX.Eleme
                         width="232"
                         height="324"
                       />
-                    </>
+                    </a>
                   </Link>
                 </div>
                 <div className={styles.imageText}>
