@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles/Footer.module.css';
 
-function Footer() {
+function Footer(): JSX.Element {
   const [year, setYear] = useState<number>();
 
   useEffect(() => {
-    function getCurrentYear() {
+    function getCurrentYear(): void {
       const date = new Date();
       setYear(date.getFullYear());
     }

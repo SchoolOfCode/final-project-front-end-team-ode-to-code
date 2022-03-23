@@ -57,7 +57,8 @@
 }
 
 .menuToggle a:hover {
-  color: tomato;
+  color: var(--tc2);
+  font-weight: 600;
 }
 
 .menuToggle input {

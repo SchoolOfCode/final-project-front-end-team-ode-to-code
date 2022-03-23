@@ -8,7 +8,7 @@ function HomeLayout({
 }: {
   imageUrl: string;
   children: React.ReactNode;
-}) {
+}): JSX.Element {
   return (
     <div>
       <Navbar />

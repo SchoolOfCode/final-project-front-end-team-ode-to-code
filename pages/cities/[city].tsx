@@ -5,6 +5,7 @@ import PageTitle from '../../components/PageTitle';
 import Heading from '../../components/Heading';
 import Link from 'next/link';
 import Head from 'next/head';
+import { City } from '../../interfaces';
 
 const citiesApi = 'https://four-week-project.herokuapp.com/cities';
 
@@ -12,7 +13,7 @@ export async function getStaticPaths() {
   const resCities = await fetch(citiesApi);
   const dataCities = await resCities.json();
 
-  const paths = dataCities.payload.map((city: any) => {
+  const paths = dataCities.payload.map((city: City) => {
     return {
       params: {
         city: city.city_name,
@@ -46,7 +47,7 @@ export async function getStaticProps(context: any) {
   };
 }
 
-function City({ city }: { city: any }) {
+function City({ city }: { city: City }) {
   // Fetching weather API
   const [weather, setWeather] = useState<any>(null);
 
@@ -134,18 +135,20 @@ function City({ city }: { city: any }) {
 
             {weather && (
               <div data-cy="weather" className={styles.weather}>
-                <h2>Current Weather in {city.city_name}:</h2>
+                <h2>Current Weather in {city.city_name}: </h2>
                 <p>
-                  <strong>Conditions:</strong> {weather.weather[0].description}
+                  <strong>Conditions: </strong> {weather.weather[0].description}
                 </p>
                 <p>
-                  <strong>Temp:</strong> {weather.main.temp}˚C
+                  <strong>Temp: </strong> {Math.floor(weather.main.temp)}˚C
                 </p>
                 <p>
-                  <strong>Today's High:</strong> {weather.main.temp_max}˚C
+                  <strong>Today's High: </strong>
+                  {Math.floor(weather.main.temp_max)}˚C
                 </p>
                 <p>
-                  <strong>Today's Low:</strong> {weather.main.temp_min}˚C
+                  <strong>Today's Low: </strong>
+                  {Math.floor(weather.main.temp_min)}˚C
                 </p>
               </div>
             )}
@@ -167,7 +170,7 @@ function City({ city }: { city: any }) {
               </li>
             ))}
           </ul>
-          <h2 data-cy="city-back-button" className={styles.country}>
+           <h2 data-cy="city-back-button" className={styles.country}>
             More about{' '}
             <Link href={`/countries/${capitalizeFirstLetter(city.country)}`}>
               <a data-cy="country">

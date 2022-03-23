@@ -9,7 +9,7 @@ interface CardDetails {
   portfolio: string;
 }
 
-function Card({ name, image, linkedin, github, portfolio }: CardDetails) {
+function Card({ name, image, linkedin, github, portfolio }: CardDetails): JSX.Element {
   return (
     <div className={styles.card}>
       <div className={styles.flipinner}>
